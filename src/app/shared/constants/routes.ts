@@ -5,4 +5,5 @@ export const ROUTES = {
     feed: '/feed',
     notifications: '/notifications',
     messages: '/messages',
+    signup: '/signup',
 } as const

@@ -28,6 +28,8 @@ export const Login = () => {
     handleSubmit,
   } = useForm<FormInputs>();
 
+  const createAccountLink = () => router.push(ROUTES.signup);
+
   const onSubmit = (data: FormInputs) => {
     console.log(data);
     router.push(ROUTES.about);
@@ -75,7 +77,9 @@ export const Login = () => {
         Forgot password?
       </Link>
       <div className={styles.formDivider}></div>
-      <Button appearance="secondary">Create Account</Button>
+      <Button appearance="secondary" onClick={createAccountLink}>
+        Create Account
+      </Button>
     </form>
   );
 };
