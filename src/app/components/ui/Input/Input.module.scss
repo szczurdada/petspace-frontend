@@ -1,0 +1,19 @@
+.default {
+  border: none;
+  padding: 10px;
+  cursor: text;
+  outline: none;
+  border-radius: 12px;
+}
+
+.primary {
+  background: var(--bg-input);
+  color: var(--text-primary);
+}
+
+.search {
+  background: var(--bg-page);
+  color: var(--text-primary);
+  padding-left: 40px;
+  width: 300px;
+}

@@ -1,0 +1,37 @@
+body {
+  padding: 0;
+  margin: 0;
+  background: var(--bg-page);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding-top: 60px;
+}
+
+:root {
+  --bg-surface: #ffffff;
+  --bg-page: #ede4d8;
+  --bg-input: #f9f6f2;
+  --bg-error: #faebe9;
+
+  --primary: #d86b4d;
+  --primary-hover: #bd5439;
+
+  --border-input: #cec0b0;
+  --border-input-focus: #d86b4d;
+  --border-divider: #ddd2c5;
+  --border-button-secondary: #c9baaa;
+  --border-error: #e88178;
+
+  --text-primary: #2b1f1a;
+  --text-secondary: #7a6b5d;
+  --text-placeholder: #9d8f7f;
+  --text-error: #c4463e;
+
+  --link: #d86b4d;
+  --link-hover: #bd5439;
+
+  --button-secondary-bg: #f9f6f2;
+  --button-secondary-hover: #ede4d8;
+}
