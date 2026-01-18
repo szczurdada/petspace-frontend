@@ -32,7 +32,7 @@ export const Login = () => {
 
   const onSubmit = (data: FormInputs) => {
     console.log(data);
-    router.push(ROUTES.about);
+    router.push(ROUTES.profile);
   };
 
   return (
@@ -47,7 +47,7 @@ export const Login = () => {
           })}
           type="text"
           appearance="primary"
-          placeholder="Email or Username"
+          placeholder="Email"
           autoComplete="login"
         />
 

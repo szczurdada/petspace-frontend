@@ -6,4 +6,5 @@ export const ROUTES = {
     notifications: '/notifications',
     messages: '/messages',
     signup: '/signup',
+    login: '/login',
 } as const

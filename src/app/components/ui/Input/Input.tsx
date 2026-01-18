@@ -7,7 +7,7 @@ interface InputProps
     InputHTMLAttributes<HTMLInputElement>,
     HTMLInputElement
   > {
-  appearance: "primary" | "search";
+  appearance?: "primary" | "search";
 }
 
 export const Input = ({ appearance, ...rest }: InputProps) => {

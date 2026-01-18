@@ -1,0 +1,41 @@
+.signUp {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 32px;
+}
+
+.signUpTitle {
+  margin: 0;
+  font-size: 32px;
+}
+
+.signUpDescription {
+  margin: 0;
+  color: var(--text-secondary);
+}
+
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  label {
+    font-weight: 500;
+    font-size: 14px;
+  }
+}
+
+.buttons {
+  display: flex;
+  gap: 16px;
+  flex-direction: column;
+}
