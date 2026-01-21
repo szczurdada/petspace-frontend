@@ -5,15 +5,18 @@ import styles from "./Login.module.scss";
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "../../ui/ErrorMessage/ErrorMessage";
 import {
+  emailValidationPattern,
   loginValidationMax,
   loginValidationMin,
   passwordValidationMax,
   passwordValidationMin,
+  requiredValidation,
 } from "@/app/shared/constants/validations";
 import { ROUTES } from "@/app/shared/constants/routes";
 import { Input } from "../../ui/Input/Input";
 import { Button } from "../../ui/Button/Button";
 import { Link } from "../../ui/Link/Link";
+import { useTranslations } from "next-intl";
 
 interface FormInputs {
   login: string;
@@ -21,6 +24,7 @@ interface FormInputs {
 }
 
 export const Login = () => {
+  const t = useTranslations();
   const router = useRouter();
   const {
     register,
@@ -37,17 +41,18 @@ export const Login = () => {
 
   return (
     <form className={styles.loginForm} onSubmit={handleSubmit(onSubmit)}>
-      <p className={styles.appName}>PetSpace</p>
+      <h2 className={styles.appName}>{t("login.title")}</h2>
       <div className={styles.inputsWrapper}>
         <Input
           {...register("login", {
-            required: "This field is required",
-            minLength: loginValidationMin,
-            maxLength: loginValidationMax,
+            required: t(requiredValidation),
+            minLength: loginValidationMin(t),
+            maxLength: loginValidationMax(t),
+            pattern: emailValidationPattern(t),
           })}
           type="text"
           appearance="primary"
-          placeholder="Email"
+          placeholder={t("login.email")}
           autoComplete="login"
         />
 
@@ -57,13 +62,13 @@ export const Login = () => {
 
         <Input
           {...register("password", {
-            required: "This field is required",
-            minLength: passwordValidationMin,
-            maxLength: passwordValidationMax,
+            required: t(requiredValidation),
+            minLength: passwordValidationMin(t),
+            maxLength: passwordValidationMax(t),
           })}
           type="password"
           appearance="primary"
-          placeholder="Password"
+          placeholder={t("login.password")}
           autoComplete="current-password"
         />
         {errors.password?.message && (
@@ -71,14 +76,14 @@ export const Login = () => {
         )}
       </div>
       <Button type="submit" appearance="primary">
-        Sign In
+        {t("login.submit")}
       </Button>
       <Link href={ROUTES.forgotPassword} appearance="primary">
-        Forgot password?
+        {t("login.forgotPassword")}
       </Link>
       <div className={styles.formDivider}></div>
       <Button appearance="secondary" onClick={createAccountLink}>
-        Create Account
+        {t("login.createAccount")}
       </Button>
     </form>
   );

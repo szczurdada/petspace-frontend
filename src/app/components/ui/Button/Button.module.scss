@@ -2,7 +2,7 @@
   border: none;
   padding: 10px;
   cursor: pointer;
-  border-radius: 12px;
+  border-radius: var(--radius-md);
 }
 
 .primary {
@@ -19,5 +19,5 @@
 .ghost {
   background: transparent;
   color: var(--text-primary);
-  border-radius: 50%;
+  border-radius: var(--radius-full);
 }

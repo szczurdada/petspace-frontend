@@ -14,18 +14,18 @@ export const Header = () => {
           <Logo />
         </div>
         <SearchBar />
-        <nav className={styles.actions} aria-label="User actions">
-          <Link href={ROUTES.profile} aria-label="Profile">
+        <nav className={styles.actions}>
+          <Link href={ROUTES.profile}>
             <Button appearance="ghost">
               <Home size={24} />
             </Button>
           </Link>
-          <Link href={ROUTES.notifications} aria-label="Notifications">
+          <Link href={ROUTES.notifications}>
             <Button appearance="ghost">
               <Bell size={24} />
             </Button>
           </Link>
-          <Link href={ROUTES.messages} aria-label="Messages">
+          <Link href={ROUTES.messages}>
             <Button appearance="ghost">
               <MessageCircle size={24} />
             </Button>

@@ -13,6 +13,7 @@ interface ButtonProps
 export const Button = ({ appearance, children, ...rest }: ButtonProps) => {
   return (
     <button
+    type="button"
       {...rest}
       className={cn(styles.default, {
         [styles.primary]: appearance === "primary",

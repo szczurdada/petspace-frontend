@@ -1,15 +1,18 @@
 .signUp {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: var(--gap-xxl);
   max-width: 400px;
   margin: 0 auto;
   padding: 32px;
+  background: var(--bg-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
 .signUpTitle {
   margin: 0;
-  font-size: 32px;
+  font-size: var(--font-xl);
 }
 
 .signUpDescription {
@@ -20,22 +23,22 @@
 .fields {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: var(--gap-l);
 }
 
 .field {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: var(--gap-xs);
 
   label {
     font-weight: 500;
-    font-size: 14px;
+    font-size: var(--font-s);
   }
 }
 
 .buttons {
   display: flex;
-  gap: 16px;
+  gap: var(--gap-l);
   flex-direction: column;
 }

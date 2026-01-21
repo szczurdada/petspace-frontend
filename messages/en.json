@@ -1,0 +1,27 @@
+{
+  "login": {
+    "title": "Petspace",
+    "email": "Email",
+    "password": "Password",
+    "submit": "Sign In",
+    "forgotPassword": "Forgot password?",
+    "createAccount": "Create Account"
+  },
+  "signUp": {
+    "title": "Sign Up",
+    "description": "Please fill out the form below to create an account.",
+    "username": "Username",
+    "email": "Email",
+    "password": "Password",
+    "createAccount": "Create Account",
+    "haveAccount": "I already have an account"
+  },
+  "validations" : {
+    "minLength": "Must be at least {min} characters",
+    "maxLength": "Must not exceed {max} characters",
+    "required": "This field is required",
+    "emailPattern": "Invalid email address",
+    "usernamePattern": "Username can only contain letters, numbers, and underscores",
+    "passwordPattern": "Password must contain at least one letter and one number"
+  }
+}

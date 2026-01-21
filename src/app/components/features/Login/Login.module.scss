@@ -3,8 +3,8 @@
   flex-direction: column;
   background: var(--bg-surface);
   padding: 40px;
-  border-radius: 16px;
-  gap: 10px;
+  border-radius: var(--radius-lg);
+  gap: var(--gap-m);
   width: 250px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
@@ -12,13 +12,13 @@
 .inputsWrapper {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: var(--gap-m);
 }
 
 .appName {
   margin: 0;
   text-align: center;
-  font-size: 26px;
+  font-size: var(--font-size-xl);
   font-weight: 500;
   color: var(--text-primary);
 }

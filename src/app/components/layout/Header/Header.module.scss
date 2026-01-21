@@ -12,17 +12,16 @@
   align-items: center;
   height: 100%;
   padding: 0 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
 }
 
 .headerLogo {
   justify-self: start;
-  height: 40px;
-  width: 40px;
 }
 
 .actions {
   justify-self: end;
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: var(--gap-l);
 }

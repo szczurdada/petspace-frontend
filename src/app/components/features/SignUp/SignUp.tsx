@@ -10,11 +10,13 @@ import {
   passwordValidationMax,
   passwordValidationMin,
   passwordValidationPattern,
+  requiredValidation,
   usernameValidationMax,
   usernameValidationMin,
   usernameValidationPattern,
 } from "@/app/shared/constants/validations";
 import { ErrorMessage } from "../../ui/ErrorMessage/ErrorMessage";
+import { useTranslations } from "next-intl";
 
 interface FormInputs {
   username: string;
@@ -23,6 +25,7 @@ interface FormInputs {
 }
 
 export const SignUp = () => {
+  const t = useTranslations();
   const router = useRouter();
 
   const {
@@ -42,19 +45,17 @@ export const SignUp = () => {
 
   return (
     <form className={styles.signUp} onSubmit={handleSubmit(onSubmit)}>
-      <h1 className={styles.signUpTitle}>Sign Up</h1>
-      <p className={styles.signUpDescription}>
-        Please fill out the form below to create an account.
-      </p>
+      <h1 className={styles.signUpTitle}>{t("signUp.title")}</h1>
+      <p className={styles.signUpDescription}>{t("signUp.description")}</p>
       <div className={styles.fields}>
         <div className={styles.field}>
-          <label htmlFor="username">Username</label>
+          <label htmlFor="username">{t("signUp.username")}</label>
           <Input
             {...register("username", {
-              required: "Username is required",
-              minLength: usernameValidationMin,
-              maxLength: usernameValidationMax,
-              pattern: usernameValidationPattern,
+              required: t(requiredValidation),
+              minLength: usernameValidationMin(t),
+              maxLength: usernameValidationMax(t),
+              pattern: usernameValidationPattern(t),
             })}
             id="username"
             type="text"
@@ -67,12 +68,14 @@ export const SignUp = () => {
         </div>
 
         <div className={styles.field}>
-          <label htmlFor="email">Email</label>
+          {/* TODO move to separate component */}
+          {/* TODO add privacy policy */}
+          <label htmlFor="email">{t("signUp.email")}</label>
           <Input
             {...register("email", {
-              required: "Email is required",
-              maxLength: emailValidationMax,
-              pattern: emailValidationPattern,
+              required: t(requiredValidation),
+              maxLength: emailValidationMax(t),
+              pattern: emailValidationPattern(t),
             })}
             id="email"
             type="email"
@@ -85,13 +88,13 @@ export const SignUp = () => {
         </div>
 
         <div className={styles.field}>
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password">{t("signUp.password")}</label>
           <Input
             {...register("password", {
-              required: "Password is required",
-              minLength: passwordValidationMin,
-              maxLength: passwordValidationMax,
-              pattern: passwordValidationPattern,
+              required: t(requiredValidation),
+              minLength: passwordValidationMin(t),
+              maxLength: passwordValidationMax(t),
+              pattern: passwordValidationPattern(t),
             })}
             id="password"
             type="password"
@@ -104,10 +107,10 @@ export const SignUp = () => {
       </div>
       <div className={styles.buttons}>
         <Button type="submit" appearance="primary">
-          Create Account
+          {t("signUp.createAccount")}
         </Button>
         <Button type="button" appearance="secondary" onClick={returnToLogin}>
-          I already have an account
+          {t("signUp.haveAccount")}
         </Button>
       </div>
     </form>

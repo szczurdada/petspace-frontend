@@ -1,3 +1,48 @@
+:root {
+  --bg-surface: #ffffff;
+  --bg-page: #e5d5c3;
+  --bg-input: #f5f0e8;
+  --bg-error: #f5dbd8;
+
+  --primary: #c94f2d;
+  --primary-hover: #a03820;
+
+  --border-input: #b8a590;
+  --border-input-focus: #c94f2d;
+  --border-divider: #d0c0ad;
+  --border-button-secondary: #b39d88;
+  --border-error: #d85545;
+
+  --text-primary: #1a0f0a;
+  --text-secondary: #5c4d3f;
+  --text-placeholder: #857563;
+  --text-error: #c4463e;
+
+  --link: #c94f2d;
+  --link-hover: #a03820;
+
+  --button-secondary-bg: #f5f0e8;
+  --button-secondary-hover: #e5d5c3;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-full: 50%;
+
+  --gap-xs: 4px;
+  --gap-s: 8px;
+  --gap-m: 12px;
+  --gap-l: 16px;
+  --gap-xl: 20px;
+  --gap-xxl: 24px;
+
+  --font-xs: 12px;
+  --font-s: 16px;
+  --font-m: 24px;
+  --font-xl: 32px;
+}
+
 body {
   padding: 0;
   margin: 0;
@@ -7,31 +52,4 @@ body {
   align-items: center;
   min-height: 100vh;
   padding-top: 60px;
-}
-
-:root {
-  --bg-surface: #ffffff;
-  --bg-page: #ede4d8;
-  --bg-input: #f9f6f2;
-  --bg-error: #faebe9;
-
-  --primary: #d86b4d;
-  --primary-hover: #bd5439;
-
-  --border-input: #cec0b0;
-  --border-input-focus: #d86b4d;
-  --border-divider: #ddd2c5;
-  --border-button-secondary: #c9baaa;
-  --border-error: #e88178;
-
-  --text-primary: #2b1f1a;
-  --text-secondary: #7a6b5d;
-  --text-placeholder: #9d8f7f;
-  --text-error: #c4463e;
-
-  --link: #d86b4d;
-  --link-hover: #bd5439;
-
-  --button-secondary-bg: #f9f6f2;
-  --button-secondary-hover: #ede4d8;
 }
