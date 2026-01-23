@@ -69,7 +69,6 @@ export const SignUp = () => {
 
         <div className={styles.field}>
           {/* TODO move to separate component */}
-          {/* TODO add privacy policy */}
           <label htmlFor="email">{t("signUp.email")}</label>
           <Input
             {...register("email", {

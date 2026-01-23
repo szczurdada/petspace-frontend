@@ -1,33 +1,38 @@
-import { Bell, Home, MessageCircle } from "lucide-react";
-import { SearchBar } from "../../SearchBar/SearchBar";
 import { Button } from "../../ui/Button/Button";
 import { Logo } from "../../ui/Logo/Logo";
 import styles from "./Header.module.scss";
 import { Link } from "../../ui/Link/Link";
 import { ROUTES } from "@/app/shared/constants/routes";
+import { IoHomeSharp } from "react-icons/io5";
+import { BsBellFill } from "react-icons/bs";
+import { BiSolidMessage } from "react-icons/bi";
+import { SearchBar } from "../../ui/SearchBar/SearchBar";
 
 export const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.headerContainer}>
-        <div className={styles.headerLogo}>
-          <Logo />
+        <div className={styles.logoWrapper}>
+          <Link href={ROUTES.feed} className={styles.logo}>
+            <Logo />
+            <h1 className={styles.logoTitle}>Petspace</h1>
+          </Link>
         </div>
         <SearchBar />
         <nav className={styles.actions}>
           <Link href={ROUTES.profile}>
             <Button appearance="ghost">
-              <Home size={24} />
+              <IoHomeSharp size={20} />
             </Button>
           </Link>
           <Link href={ROUTES.notifications}>
             <Button appearance="ghost">
-              <Bell size={24} />
+              <BsBellFill size={20} />
             </Button>
           </Link>
           <Link href={ROUTES.messages}>
             <Button appearance="ghost">
-              <MessageCircle size={24} />
+              <BiSolidMessage size={20} />
             </Button>
           </Link>
         </nav>

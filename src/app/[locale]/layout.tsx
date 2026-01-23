@@ -1,4 +1,4 @@
-import "../globals.scss";
+import "./../globals.scss";
 import { Roboto } from "next/font/google";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { notFound } from "next/navigation";

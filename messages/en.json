@@ -16,6 +16,18 @@
     "createAccount": "Create Account",
     "haveAccount": "I already have an account"
   },
+  "searchBar": {
+    "search": "Search"
+  },
+  "sidebar": {
+    "profile": "Profile",
+    "feed": "Feed",
+    "messages": "Messages",
+    "friends": "Friends",
+    "photos": "Photos",
+    "favorites": "Favorites",
+    "places": "Places"
+  },
   "validations" : {
     "minLength": "Must be at least {min} characters",
     "maxLength": "Must not exceed {max} characters",
