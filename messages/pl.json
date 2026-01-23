@@ -16,6 +16,18 @@
     "createAccount": "Utwórz konto",
     "haveAccount": "Mam już konto"
   },
+  "searchBar": {
+    "search": "Szukaj"
+  },
+  "sidebar": {
+    "profile": "Profil",
+    "feed": "Aktualności",
+    "messages": "Wiadomości",
+    "friends": "Znajomi",
+    "photos": "Zdjęcia",
+    "favorites": "Ulubione",
+    "places": "Miejsca"
+  },
   "validations": {
     "minLength": "Musi zawierać co najmniej {min} znaków",
     "maxLength": "Nie może przekraczać {max} znaków",

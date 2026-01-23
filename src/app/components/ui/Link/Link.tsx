@@ -5,19 +5,29 @@ import NextLink from "next/link";
 import cn from "classnames";
 
 interface LinkProps
-  extends Omit<AnchorHTMLAttributes<HTMLAnchorElement>, keyof NextLinkProps>,
+  extends
+    Omit<AnchorHTMLAttributes<HTMLAnchorElement>, keyof NextLinkProps>,
     NextLinkProps {
   appearance?: "primary" | "secondary";
 }
 
-export const Link = ({ appearance, children, ...rest }: LinkProps) => {
+export const Link = ({
+  appearance,
+  children,
+  className,
+  ...rest
+}: LinkProps) => {
   return (
     <NextLink
       {...rest}
-      className={cn(styles.default, {
-        [styles.primary]: appearance === "primary",
-        [styles.secondary]: appearance === "secondary",
-      })}
+      className={cn(
+        styles.default,
+        {
+          [styles.primary]: appearance === "primary",
+          [styles.secondary]: appearance === "secondary",
+        },
+        className,
+      )}
     >
       {children}
     </NextLink>
