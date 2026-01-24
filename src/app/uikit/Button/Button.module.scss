@@ -1,0 +1,23 @@
+.default {
+  border: none;
+  padding: var(--padding-s);
+  cursor: pointer;
+  border-radius: var(--radius-md);
+}
+
+.primary {
+  background: var(--primary);
+  color: white;
+  font-weight: 600;
+}
+
+.secondary {
+  background: var(--button-secondary-bg);
+  color: var(--text-secondary);
+}
+
+.ghost {
+  background: transparent;
+  color: var(--text-primary);
+  border-radius: var(--radius-full);
+}

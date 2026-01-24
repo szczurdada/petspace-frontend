@@ -1,0 +1,43 @@
+.header {
+  position: fixed;
+  top: 0;
+  background: var(--bg-card);
+  width: 100%;
+  height: 50px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  z-index: 100;
+}
+
+.headerContainer {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  gap: var(--gap-l);
+  align-items: center;
+  height: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.logoWrapper {
+  justify-self: start;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-m);
+  text-decoration: none;
+}
+
+.logoTitle {
+  margin: 0;
+  font-size: var(--font-2xl);
+  color: var(--text-primary);
+}
+
+.actions {
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: var(--gap-m);
+}

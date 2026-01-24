@@ -1,0 +1,42 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  gap: var(--gap-xl);
+  min-height: 100vh;
+  background: var(--bg-page);
+  grid-template-areas:
+    "sd prf prf"
+    "sd pscr pht"
+    "sd fd frnd";
+  align-items: start;
+  margin: 0 auto;
+  max-width: 1400px;
+  width: 100%;
+}
+
+.sidebar {
+  grid-area: sd;
+  position: sticky;
+  top: 70px;
+  height: fit-content;
+}
+
+.profileBanner {
+  grid-area: prf;
+}
+
+.postCreator {
+  grid-area: pscr;
+}
+
+.photos {
+  grid-area: pht;
+}
+
+.feed {
+  grid-area: fd;
+}
+
+.friends {
+  grid-area: frnd;
+}
