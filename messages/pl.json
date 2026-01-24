@@ -28,6 +28,13 @@
     "favorites": "Ulubione",
     "places": "Miejsca"
   },
+"profileBanner": {
+    "friends": "znajomi",
+    "photos": "zdjęcia",
+    "places": "miejsca",
+    "achievements": "Osiągnięcia",
+    "editProfile": "Edytuj profil"
+  },
   "validations": {
     "minLength": "Musi zawierać co najmniej {min} znaków",
     "maxLength": "Nie może przekraczać {max} znaków",

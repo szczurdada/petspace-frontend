@@ -1,12 +1,11 @@
 import "./../globals.scss";
-import { Roboto } from "next/font/google";
+import { Inter } from "next/font/google";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 
-const roboto = Roboto({
-  weight: ["300", "400", "500", "700"],
-  subsets: ["latin", "cyrillic"],
+const inter = Inter({
+  subsets: ["latin", "latin-ext"],
 });
 
 export default async function RootLayout({
@@ -23,7 +22,7 @@ export default async function RootLayout({
 
   return (
     <html lang={locale}>
-      <body className={roboto.className}>
+      <body className={inter.className}>
         <NextIntlClientProvider>{children}</NextIntlClientProvider>
       </body>
     </html>

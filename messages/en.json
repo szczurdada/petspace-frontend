@@ -28,6 +28,13 @@
     "favorites": "Favorites",
     "places": "Places"
   },
+  "profileBanner": {
+    "friends": "friends",
+    "photos": "photos",
+    "places": "places",
+    "achievements": "Achievements",
+    "editProfile": "Edit profile"
+  },
   "validations" : {
     "minLength": "Must be at least {min} characters",
     "maxLength": "Must not exceed {max} characters",

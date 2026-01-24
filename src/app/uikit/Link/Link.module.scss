@@ -1,0 +1,13 @@
+.default {
+  text-decoration: none;
+  font-size: var(--font-m);
+  text-align: center;
+}
+
+.primary {
+  color: var(--link);
+}
+
+.secondary {
+  color: var(--text-secondary);
+}
