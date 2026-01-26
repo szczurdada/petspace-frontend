@@ -78,7 +78,11 @@ export const Login = () => {
       <Button type="submit" appearance="primary">
         {t("login.submit")}
       </Button>
-      <Link href={ROUTES.forgotPassword} appearance="primary">
+      <Link
+        href={ROUTES.forgotPassword}
+        appearance="primary"
+        className={styles.link}
+      >
         {t("login.forgotPassword")}
       </Link>
       <div className={styles.formDivider}></div>

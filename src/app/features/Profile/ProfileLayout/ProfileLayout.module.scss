@@ -1,42 +1,40 @@
 .wrapper {
   display: grid;
-  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-columns: 1fr 2.5fr 1fr;
+  grid-template-rows: auto 1fr;
   gap: var(--gap-xl);
   min-height: 100vh;
-  background: var(--bg-page);
-  grid-template-areas:
-    "sd prf prf"
-    "sd pscr pht"
-    "sd fd frnd";
-  align-items: start;
-  margin: 0 auto;
   max-width: 1400px;
   width: 100%;
+  margin: 0 auto;
+  background: var(--bg-page);
+  grid-template-areas:
+    "sidebar profileBanner profileBanner"
+    "sidebar feedContainer friends";
+  align-items: start;
 }
 
 .sidebar {
-  grid-area: sd;
+  grid-area: sidebar;
   position: sticky;
-  top: 70px;
-  height: fit-content;
+  top: 0;
 }
 
 .profileBanner {
-  grid-area: prf;
+  grid-area: profileBanner;
 }
 
-.postCreator {
-  grid-area: pscr;
+.feedContainer {
+  grid-area: feedContainer;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-xl);
 }
 
 .photos {
-  grid-area: pht;
-}
-
-.feed {
-  grid-area: fd;
+  grid-area: friends;
 }
 
 .friends {
-  grid-area: frnd;
+  margin-top: var(--gap-xl);
 }

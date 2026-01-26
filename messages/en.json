@@ -28,12 +28,25 @@
     "favorites": "Favorites",
     "places": "Places"
   },
+  "dailyTip": {
+    "title": "Tip of the day",
+    "text": "Regular walks are essential for your pet's physical and mental health. Aim for at least 30 minutes of activity daily to keep them happy, healthy, and well-behaved. Don't forget to bring water and treats!"
+  },
   "profileBanner": {
     "friends": "friends",
     "photos": "photos",
     "places": "places",
     "achievements": "Achievements",
     "editProfile": "Edit profile"
+  },
+  "profiilePhotos": {
+    "photos": "Photos"
+  },
+  "postCreator": {
+    "photo": "Photo",
+    "place": "Place",
+    "publish": "Add post",
+    "placeholder": "Share something..."
   },
   "validations" : {
     "minLength": "Must be at least {min} characters",

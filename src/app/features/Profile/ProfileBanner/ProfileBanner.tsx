@@ -2,7 +2,7 @@ import { useTranslations } from "next-intl";
 import { Avatar } from "../../../uikit/Avatar/Avatar";
 import { Button } from "../../../uikit/Button/Button";
 import styles from "./ProfileBanner.module.scss";
-import { FaImages, FaMapMarkerAlt, FaUserFriends } from "react-icons/fa";
+import { FaCamera, FaMapMarkerAlt, FaUserFriends } from "react-icons/fa";
 import { ROUTES } from "@/app/uikit/constants/routes";
 import { Link } from "../../../uikit/Link/Link";
 import { StaticImageData } from "next/image";
@@ -59,7 +59,7 @@ export const ProfileBanner = ({
           </div>
           <div className={styles.stat}>
             <Link href={ROUTES.photos} appearance="secondary">
-              <FaImages size={16} />
+              <FaCamera size={16} />
               <span className={styles.statValue}>{photosCount}</span>
               <span className={styles.statLabel}>
                 {t("profileBanner.photos")}

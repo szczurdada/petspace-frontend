@@ -3,14 +3,15 @@ import { CgProfile } from "react-icons/cg";
 import { MdOutlineLocalPostOffice, MdOutlineMessage } from "react-icons/md";
 import {
   FaUserFriends,
-  FaImages,
   FaHeart,
   FaMapMarkerAlt,
+  FaCamera,
 } from "react-icons/fa";
 import styles from "./Sidebar.module.scss";
 import { ROUTES } from "@/app/uikit/constants/routes";
 import { Button } from "@/app/uikit/Button/Button";
 import { Link } from "@/app/uikit/Link/Link";
+import { DailyTip } from "@/app/uikit/DailyTip/DailyTip";
 
 export const Sidebar = () => {
   const t = useTranslations();
@@ -44,7 +45,7 @@ export const Sidebar = () => {
         </Link>
         <Link href={ROUTES.photos}>
           <Button appearance="secondary">
-            <FaImages size={20} />
+            <FaCamera size={20} />
             {t("sidebar.photos")}
           </Button>
         </Link>
@@ -61,6 +62,7 @@ export const Sidebar = () => {
           </Button>
         </Link>
       </div>
+      <DailyTip />
     </nav>
   );
 };
