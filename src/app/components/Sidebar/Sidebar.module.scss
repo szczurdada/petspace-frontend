@@ -1,14 +1,18 @@
 .navigation {
   background: var(--bg-card);
   height: 100vh;
+  max-height: 100%;
   box-shadow: 3px 0 6px rgba(0, 0, 0, 0.08);
+  padding: var(--padding-l);
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-xl);
 }
 
 .navigationList {
   display: flex;
   flex-direction: column;
   gap: var(--gap-s);
-  padding: var(--padding-l);
 
   button {
     width: 100%;
@@ -16,5 +20,10 @@
     align-items: center;
     gap: var(--gap-m);
     justify-content: flex-start;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: var(--text-primary);
+    }
   }
 }

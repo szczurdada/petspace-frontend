@@ -28,12 +28,25 @@
     "favorites": "Ulubione",
     "places": "Miejsca"
   },
-"profileBanner": {
+  "dailyTip": {
+    "title": "Porada dnia",
+    "text": "Regularne spacery są niezbędne dla fizycznego i psychicznego zdrowia Twojego pupila. Staraj się zapewnić co najmniej 30 minut aktywności dziennie, aby był szczęśliwy, zdrowy i dobrze wychowany. Nie zapomnij zabrać wody i smakołyków!"
+  },
+  "profileBanner": {
     "friends": "znajomi",
     "photos": "zdjęcia",
     "places": "miejsca",
     "achievements": "Osiągnięcia",
     "editProfile": "Edytuj profil"
+  },
+  "profiilePhotos": {
+    "photos": "Zdjęcia"
+  },
+  "postCreator": {
+    "photo": "Zdjęcie",
+    "place": "Miejsce",
+    "publish": "Opublikuj post",
+    "placeholder": "Podziel się czymś..."
   },
   "validations": {
     "minLength": "Musi zawierać co najmniej {min} znaków",

@@ -1,0 +1,24 @@
+.container {
+  background: var(--bg-input);
+  padding: var(--padding-l);
+  border-radius: var(--radius-md);
+}
+
+.titleBlock {
+  color: var(--text-primary);
+  display: flex;
+  gap: var(--gap-xs);
+  align-items: center;
+  margin-bottom: var(--gap-m);
+}
+
+.title {
+  font-size: var(--font-m);
+  margin: 0;
+}
+
+.text {
+  margin: 0;
+  font-size: var(--font-m);
+  color: var(--text-secondary);
+}
