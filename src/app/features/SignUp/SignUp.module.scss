@@ -1,8 +1,8 @@
-.signUp {
+.signUpForm {
   display: flex;
   flex-direction: column;
-  gap: var(--gap-xxl);
-  max-width: 400px;
+  gap: var(--gap-l);
+  min-width: 360px;
   margin: 0 auto;
   padding: var(--padding-xxl);
   background: var(--bg-surface);
@@ -10,13 +10,15 @@
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
-.signUpTitle {
+.title {
   margin: 0;
   font-size: var(--font-3xl);
 }
 
-.signUpDescription {
+.subtitle {
   margin: 0;
+  padding: var(--padding-xs) 0;
+  font-size: var(--font-m);
   color: var(--text-secondary);
 }
 
@@ -35,6 +37,18 @@
     font-weight: 500;
     font-size: var(--font-base);
   }
+}
+
+.fieldWrapper {
+  display: flex;
+  flex-direction: row;
+  gap: var(--gap-xs);
+  align-items: baseline;
+}
+
+.hint {
+  color: var(--text-secondary);
+  //TODO add font-size
 }
 
 .buttons {

@@ -8,11 +8,11 @@ import { BsBellFill } from "react-icons/bs";
 import { BiSolidMessage } from "react-icons/bi";
 import { SearchBar } from "../../uikit/SearchBar/SearchBar";
 
-export const Header = () => {
+export const Header = ({ username }: { username: string }) => {
   return (
     <header className={styles.header}>
-      <div className={styles.headerContainer}>
-        <div className={styles.logoWrapper}>
+      <div className={styles.container}>
+        <div className={styles.wrapper}>
           <Link href={ROUTES.feed} className={styles.logo}>
             <Logo />
             <h1 className={styles.logoTitle}>Petspace</h1>
@@ -20,11 +20,6 @@ export const Header = () => {
         </div>
         <SearchBar />
         <nav className={styles.actions}>
-          <Link href={ROUTES.profile}>
-            <Button appearance="ghost">
-              <IoHomeSharp size={20} />
-            </Button>
-          </Link>
           <Link href={ROUTES.notifications}>
             <Button appearance="ghost">
               <BsBellFill size={20} />
@@ -33,6 +28,11 @@ export const Header = () => {
           <Link href={ROUTES.messages}>
             <Button appearance="ghost">
               <BiSolidMessage size={20} />
+            </Button>
+          </Link>
+          <Link href={ROUTES.profile(username)}>
+            <Button appearance="ghost">
+              <IoHomeSharp size={20} />
             </Button>
           </Link>
         </nav>

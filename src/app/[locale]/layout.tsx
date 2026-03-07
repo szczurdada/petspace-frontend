@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
+import { Toast } from "../uikit/Toast/Toast";
 
 const inter = Inter({
   subsets: ["latin", "latin-ext"],
@@ -23,6 +24,7 @@ export default async function RootLayout({
   return (
     <html lang={locale}>
       <body className={inter.className}>
+        <Toast></Toast>
         <NextIntlClientProvider>{children}</NextIntlClientProvider>
       </body>
     </html>

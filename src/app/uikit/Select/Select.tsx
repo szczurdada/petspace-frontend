@@ -1,0 +1,54 @@
+import { Input } from "../Input/Input";
+import { useState } from "react";
+import styles from "./Select.module.scss";
+import { FaAngleDown } from "react-icons/fa";
+
+interface SelectProps {
+  value: string;
+  onChange: (value: string) => void;
+  options: { label: string; value: string }[];
+  placeholder?: string;
+}
+
+export const Select = ({
+  value,
+  onChange,
+  options,
+  placeholder,
+}: SelectProps) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const selected = options.find((o) => o.value === value);
+  const toggle = () => setIsOpen((p) => !p);
+
+  return (
+    <div className={styles.wrapper}>
+      <div className={styles.inputWrapper}>
+        <Input
+          appearance="wide"
+          value={selected?.label ?? ""}
+          placeholder={placeholder}
+          readOnly
+          onClick={toggle}
+          onBlur={() => setIsOpen(false)}
+        />
+        <FaAngleDown className={styles.arrowIcon} size={20} onClick={toggle} />
+      </div>
+      {isOpen && (
+        <ul className={styles.dropdown}>
+          {options.map((o) => (
+            <li
+              className={styles.option}
+              key={o.value}
+              onClick={() => {
+                onChange(o.value);
+                setIsOpen(false);
+              }}
+            >
+              {o.label}
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+};

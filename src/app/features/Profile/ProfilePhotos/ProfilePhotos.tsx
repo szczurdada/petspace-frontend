@@ -21,7 +21,7 @@ export const ProfilePhotos = ({ photos }: ProfilePhotosProps) => {
   return (
     <div className={styles.container}>
       <Link href={ROUTES.photos} className={styles.titleLink}>
-        <h3 className={styles.title}>{t("profiilePhotos.photos")}</h3>
+        <h3 className={styles.title}>{t("profilePhotos.photos")}</h3>
       </Link>
       <div className={styles.gallery}>
         <div className={styles.photo}>

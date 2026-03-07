@@ -1,0 +1,25 @@
+.container {
+  width: 400px;
+}
+
+.toast {
+  border-radius: var(--radius-md);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  padding: var(--padding-m) var(--padding-l);
+  min-height: 50px;
+  font-size: var(--font-m);
+
+  &:global(.Toastify__toast--error) {
+    background: var(--primary);
+    color: var(--text-on-primary);
+  }
+
+  :global(.Toastify__close-button) {
+    color: currentColor;
+    opacity: 0.6;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}

@@ -7,11 +7,12 @@ import Img5 from "@/public/img5.jpg";
 
 export const MOCK_PROFILE = {
   avatar: AvatarImg,
-  name: "Barney",
+  name: "Vova",
+  username: "Luthirija",
   breed: "Dachshund",
   age: "1 year",
   city: "Warsaw",
-  description: "Friendly and playful dachshund who loves long walks and treats!",
+  bio: "Still learning to type with paws...",
   friendsCount: 5,
   photosCount: 10,
   placesCount: 16,

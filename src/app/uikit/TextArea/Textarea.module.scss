@@ -1,0 +1,15 @@
+.default {
+  border: none;
+  padding: var(--padding-s);
+  cursor: text;
+  outline: none;
+  border-radius: var(--radius-md);
+  height: 70px;
+  resize: none;
+}
+
+.primary {
+  background: var(--bg-input);
+  color: var(--text-placeholder);
+  width: 250px;
+}

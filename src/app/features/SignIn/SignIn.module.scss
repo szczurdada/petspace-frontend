@@ -1,4 +1,4 @@
-.loginForm {
+.signInForm {
   display: flex;
   flex-direction: column;
   background: var(--bg-surface);
@@ -15,18 +15,37 @@
   gap: var(--gap-m);
 }
 
-.appName {
+.title {
   margin: 0;
   text-align: center;
   font-size: var(--font-3xl);
-  font-weight: 500;
   color: var(--text-primary);
 }
 
-.link {
+.subtitle {
+  margin: 0;
+  padding: var(--padding-xs) 0;
+  text-align: center;
+  font-size: var(--font-m);
+  color: var(--text-secondary);
+}
+
+.forgotPassword {
   text-align: center;
 }
 
 .formDivider {
-  border-block-start: 1.5px solid var(--border-divider);
+  display: flex;
+  align-items: center;
+  gap: var(--gap-m);
+  color: var(--text-secondary);
+  font-size: var(--font-m);
+
+  &::before,
+  &::after {
+    content: "";
+    flex: 1;
+    height: 2px;
+    background: var(--border-divider);
+  }
 }

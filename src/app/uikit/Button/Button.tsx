@@ -2,22 +2,22 @@ import { ButtonHTMLAttributes, DetailedHTMLProps } from "react";
 import styles from "./Button.module.scss";
 import cn from "classnames";
 
-interface ButtonProps
-  extends DetailedHTMLProps<
-    ButtonHTMLAttributes<HTMLButtonElement>,
-    HTMLButtonElement
-  > {
-  appearance: "primary" | "secondary" | "ghost";
+interface ButtonProps extends DetailedHTMLProps<
+  ButtonHTMLAttributes<HTMLButtonElement>,
+  HTMLButtonElement
+> {
+  appearance: "primary" | "secondary" | "third" | "ghost";
 }
 
 export const Button = ({ appearance, children, ...rest }: ButtonProps) => {
   return (
     <button
-    type="button"
+      type="button"
       {...rest}
       className={cn(styles.default, {
         [styles.primary]: appearance === "primary",
         [styles.secondary]: appearance === "secondary",
+        [styles.third]: appearance === "third",
         [styles.ghost]: appearance === "ghost",
       })}
     >

@@ -14,10 +14,22 @@
   flex: 1;
 }
 
+.nameWrapper {
+  display: flex;
+  flex-direction: row;
+  gap: var(--gap-s);
+  align-items: baseline;
+}
+
 .name {
-  font-size: var(--font-3xl);
+  font-size: var(--font-2xl);
   font-weight: 700;
   color: var(--text-primary);
+}
+
+.username {
+  font-size: var(--font-m);
+  color: var(--text-secondary);
 }
 
 .details {
@@ -26,16 +38,9 @@
   gap: var(--gap-xs);
   color: var(--text-secondary);
   font-size: var(--font-m);
-
-  > div:not(:last-child)::after {
-    content: "•";
-    margin-left: var(--gap-xs);
-    //TODO//
-    color: var(--text-secondary);
-  }
 }
 
-.description {
+.bio {
   color: var(--text-secondary);
   font-size: var(--font-base);
 }
