@@ -4,6 +4,10 @@
   cursor: text;
   outline: none;
   border-radius: var(--radius-md);
+
+  &::placeholder {
+    color: var(--text-placeholder);
+  }
 }
 
 .primary {
@@ -16,4 +20,10 @@
   color: var(--text-primary);
   padding-left: 40px;
   width: 300px;
+}
+
+.wide {
+  background: var(--bg-input);
+  color: var(--text-placeholder);
+  width: 250px;
 }

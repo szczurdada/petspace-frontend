@@ -1,13 +1,12 @@
 import { Avatar } from "@/app/uikit/Avatar/Avatar";
 import styles from "./Post.module.scss";
 import Image, { StaticImageData } from "next/image";
-import { FaComment, FaHeart } from "react-icons/fa";
-import { FaRetweet } from "react-icons/fa6";
+import { FaComment, FaHeart, FaReply} from "react-icons/fa";
 
 export interface Post {
   id: string;
   avatar: string | StaticImageData;
-  name: string;
+  username: string;
   time: string;
   text?: string;
   img?: string | StaticImageData;
@@ -17,10 +16,10 @@ export interface Post {
 }
 
 export interface PostProps {
-    post: Post;
+  post: Post;
 }
 
-export const Post = ({post}: PostProps) => {
+export const Post = ({ post }: PostProps) => {
   return (
     <div>
       <div className={styles.wrapper}>
@@ -28,7 +27,7 @@ export const Post = ({post}: PostProps) => {
           <Avatar src={post.avatar} />
         </div>
         <div className={styles.info}>
-          <div className={styles.name}>{post.name}</div>
+          <div className={styles.username}>{post.username}</div>
           <div className={styles.time}>{post.time}</div>
         </div>
       </div>
@@ -55,7 +54,7 @@ export const Post = ({post}: PostProps) => {
           <span>{post.comments}</span>
         </div>
         <div className={styles.stat}>
-          <FaRetweet size={18} />
+          <FaReply size={18} />
           <span>{post.reposts}</span>
         </div>
       </div>

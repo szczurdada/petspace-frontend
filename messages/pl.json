@@ -1,6 +1,22 @@
 {
-  "login": {
+  "common": {
+    "save": "Zapisz",
+    "continue": "Kontynuuj",
+    "skip": "Pomiń",
+    "cancel": "Anuluj",
+    "or": "lub"
+  },
+  "gender": {
+    "male": "Samiec",
+    "female": "Samica"
+  },
+  "placeholder": {
+    "noneSelected": "Nie wybrano",
+    "chose": "Wybierz"
+  },
+  "signin": {
     "title": "Petspace",
+    "subtitle": "Welcome back to the pack",
     "email": "E-mail",
     "password": "Hasło",
     "submit": "Zaloguj się",
@@ -9,12 +25,31 @@
   },
   "signUp": {
     "title": "Rejestracja",
-    "description": "Wypełnij poniższy formularz, aby utworzyć konto.",
+    "subtitle": "Wypełnij poniższy formularz, aby utworzyć konto.",
+    "name": "Imię",
+    "displayNameHint": "Twoje imię wyświetlane",
     "username": "Nazwa użytkownika",
+    "displayUsernameHint": "Twój @identyfikator",
     "email": "E-mail",
     "password": "Hasło",
     "createAccount": "Utwórz konto",
     "haveAccount": "Mam już konto"
+  },
+  "registrationSteps": {
+    "step": "KROK 1 Z 2",
+    "title": "Zanim zaczniemy...",
+    "subtitle": "Każda wielka sfora zaczyna się od przedstawienia",
+    "bio": "O sobie:",
+    "birthday": "Urodziny:",
+    "gender": "Płeć:",
+    "country": "Kraj:",
+    "city": "Miasto:",
+    "breed": "Rasa:"
+  },
+  "registrationStepsAvatar": {
+    "step": "KROK 2 Z 2",
+    "title": "Dodaj zdjęcie",
+    "subtitle": "Dołącz do sfory — pokaż kim jesteś"
   },
   "searchBar": {
     "search": "Szukaj"
@@ -33,13 +68,14 @@
     "text": "Regularne spacery są niezbędne dla fizycznego i psychicznego zdrowia Twojego pupila. Staraj się zapewnić co najmniej 30 minut aktywności dziennie, aby był szczęśliwy, zdrowy i dobrze wychowany. Nie zapomnij zabrać wody i smakołyków!"
   },
   "profileBanner": {
+    "age": "years",
     "friends": "znajomi",
     "photos": "zdjęcia",
     "places": "miejsca",
     "achievements": "Osiągnięcia",
     "editProfile": "Edytuj profil"
   },
-  "profiilePhotos": {
+  "profilePhotos": {
     "photos": "Zdjęcia"
   },
   "postCreator": {
@@ -48,6 +84,36 @@
     "publish": "Opublikuj post",
     "placeholder": "Podziel się czymś..."
   },
+  "profileEditor": {
+    "title": "Edytuj profil",
+    "bio": "Bio:",
+    "birthday": "Wiek:",
+    "gender": "Płeć:",
+    "country": "Kraj",
+    "city": "Miasto:",
+    "breed": "Rasa:",
+    "toastSave": "Zmiany zostały zapisane",
+    "toastError": "Błąd"
+  },
+  "profileInterests": {
+    "title": "Edytuj zainteresowania",
+    "edit": "Edytuj zainteresowania:",
+    "toys": "Moje ulubione zabawki:",
+    "treats": "Moje ulubione przysmaki:",
+    "activities": "Moje ulubione aktywności:",
+    "crimes": "Moje zbrodnie:",
+    "habits": "Winne nawyki:",
+    "humans": "Moi ludzie:"
+},
+  "profileInformation": {
+    "profile": "Profil",
+    "interests": "Zainteresowania"
+  },
+  "avatarEdit": {
+    "open": "Otwórz zdjęcie",
+    "change": "Zmień zdjęcie",
+    "delete": "Usuń zdjęcie"
+  },
   "validations": {
     "minLength": "Musi zawierać co najmniej {min} znaków",
     "maxLength": "Nie może przekraczać {max} znaków",
@@ -55,5 +121,10 @@
     "emailPattern": "Nieprawidłowy adres e-mail",
     "usernamePattern": "Nazwa użytkownika może zawierać tylko litery, cyfry i podkreślenia",
     "passwordPattern": "Hasło musi zawierać co najmniej jedną literę i jedną cyfrę"
+  },
+  "errors": {
+    "EMAIL_ALREADY_EXISTS": "Ten email jest już zarejestrowany",
+    "USERNAME_ALREADY_EXISTS": "Ta nazwa użytkownika jest już zajęta",
+    "INVALID_CREDENTIALS": "Nieprawidłowy email lub hasło"
   }
 }

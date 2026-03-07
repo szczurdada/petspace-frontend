@@ -2,12 +2,11 @@ import { DetailedHTMLProps, InputHTMLAttributes } from "react";
 import styles from "./Input.module.scss";
 import cn from "classnames";
 
-interface InputProps
-  extends DetailedHTMLProps<
-    InputHTMLAttributes<HTMLInputElement>,
-    HTMLInputElement
-  > {
-  appearance?: "primary" | "search";
+interface InputProps extends DetailedHTMLProps<
+  InputHTMLAttributes<HTMLInputElement>,
+  HTMLInputElement
+> {
+  appearance?: "primary" | "search" | "wide";
 }
 
 export const Input = ({ appearance, ...rest }: InputProps) => {
@@ -17,7 +16,8 @@ export const Input = ({ appearance, ...rest }: InputProps) => {
       className={cn(styles.default, {
         [styles.primary]: appearance === "primary",
         [styles.search]: appearance === "search",
+        [styles.wide]: appearance === "wide"
       })}
     />
   );
-}
+};

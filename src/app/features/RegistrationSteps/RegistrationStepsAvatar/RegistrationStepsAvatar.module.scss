@@ -1,0 +1,45 @@
+.container {
+  background: var(--bg-card);
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-xxl);
+  width: 240px;
+  padding: var(--padding-xl) var(--padding-xxl);
+  border-radius: var(--radius-md);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.tag {
+  display: inline-block;
+  background: var(--bg-primary);
+  color: var(--primary);
+  font-size: var(--font-xs);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  // TODO padding
+  padding: 4px var(--padding-xs);
+  border-radius: var(--radius-md);
+}
+
+.title {
+  margin: 0;
+}
+
+.subtitle {
+  font-size: var(--font-m);
+  color: var(--text-secondary);
+}
+
+.avatar {
+  justify-items: center;
+}
+
+.formDivider {
+  border: 1.5px solid var(--border-divider);
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-s);
+}

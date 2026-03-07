@@ -1,11 +1,11 @@
 import { _Translator } from "next-intl";
 
-export const loginValidationMin = (t: _Translator) => ({
+export const signInValidationMin = (t: _Translator) => ({
   value: 3,
   message: t("validations.minLength", { min: 3 }),
 });
 
-export const loginValidationMax = (t: _Translator) => ({
+export const signInValidationMax = (t: _Translator) => ({
   value: 30,
   message: t("validations.maxLength", { max: 30 }),
 });

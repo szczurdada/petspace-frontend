@@ -2,20 +2,24 @@ import { Input } from "@/app/uikit/Input/Input";
 import styles from "./PostCreator.module.scss";
 import { Button } from "@/app/uikit/Button/Button";
 import { Avatar } from "@/app/uikit/Avatar/Avatar";
-import { MOCK_PROFILE } from "@/app/uikit/constants/profile";
 import { FaCamera, FaMapMarkerAlt } from "react-icons/fa";
 import { Link } from "@/app/uikit/Link/Link";
 import { ROUTES } from "@/app/uikit/constants/routes";
 import { useTranslations } from "next-intl";
+import { StaticImageData } from "next/image";
 
-export const PostCreator = () => {
+interface PostCreatorProps {
+  avatar?: string | StaticImageData;
+}
+
+export const PostCreator = ({avatar}: PostCreatorProps) => {
   const t = useTranslations();
 
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
         <div className={styles.avatarWrapper}>
-          <Avatar src={MOCK_PROFILE.avatar} />
+          <Avatar src={avatar} />
         </div>
         <div className={styles.inputWrapper}>
           <Input appearance="primary" placeholder={t("postCreator.placeholder")} />

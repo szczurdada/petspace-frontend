@@ -1,3 +1,5 @@
+"use client";
+
 import { Post } from "@/app/components/Post/Post";
 import styles from "./Feed.module.scss";
 
@@ -14,4 +16,3 @@ export const Feed = ({ posts }: FeedProps) => {
     </div>
   );
 };
-

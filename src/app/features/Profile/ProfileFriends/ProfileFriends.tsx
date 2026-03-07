@@ -1,5 +1,5 @@
 import styles from './FriendsWidget.module.scss'
 
-export const FriendsWidget = () => {
+export const ProfileFriends = () => {
     return <div></div>
 }

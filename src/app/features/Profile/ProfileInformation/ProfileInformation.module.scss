@@ -1,0 +1,25 @@
+.container {
+  background: var(--bg-card);
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-xxl);
+  padding: var(--padding-m);
+  border-radius: var(--radius-md);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-s);
+
+  button {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+
+    &:hover {
+      background: var(--button-secondary-bg);
+    }
+  }
+}
