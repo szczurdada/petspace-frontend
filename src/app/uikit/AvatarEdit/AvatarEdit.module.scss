@@ -37,3 +37,25 @@
     }
   }
 }
+
+.title {
+  margin: 0;
+}
+
+.description {
+  font-size: var(--font-m);
+  text-align: center;
+}
+
+.upload {
+  display: flex;
+  justify-content: center;
+}
+
+.action {
+  display: flex;
+  justify-content: center;
+  //TODO margin-top
+  margin-top: 8px;
+  gap: var(--gap-s);
+}

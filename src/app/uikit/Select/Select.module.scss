@@ -1,6 +1,6 @@
 .wrapper {
   position: relative;
-  width: 100%ж
+  width: 100%;
 }
 
 .inputWrapper {
@@ -13,6 +13,12 @@
   right: 30px;
   color: var(--text-secondary);
   cursor: pointer;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: calc(var(--z-dropdown) - 1);
 }
 
 .dropdown {

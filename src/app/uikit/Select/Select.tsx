@@ -22,6 +22,9 @@ export const Select = ({
 
   return (
     <div className={styles.wrapper}>
+      {isOpen && (
+        <div className={styles.overlay} onClick={() => setIsOpen(false)} />
+      )}
       <div className={styles.inputWrapper}>
         <Input
           appearance="wide"
@@ -29,7 +32,6 @@ export const Select = ({
           placeholder={placeholder}
           readOnly
           onClick={toggle}
-          onBlur={() => setIsOpen(false)}
         />
         <FaAngleDown className={styles.arrowIcon} size={20} onClick={toggle} />
       </div>

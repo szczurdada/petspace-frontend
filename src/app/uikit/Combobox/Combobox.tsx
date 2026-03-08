@@ -22,6 +22,9 @@ export const Combobox = ({
 
   return (
     <div className={styles.wrapper}>
+      {open && (
+        <div className={styles.overlay} onClick={() => setOpen(false)} />
+      )}
       <div className={styles.inputWrapper}>
         <Input
           appearance="wide"
@@ -33,7 +36,6 @@ export const Combobox = ({
             setOpen(true);
           }}
           onFocus={() => setOpen(true)}
-          onBlur={() => setOpen(false)}
         />
         <FaAngleDown
           className={styles.arrowIcon}
@@ -41,24 +43,24 @@ export const Combobox = ({
           onClick={() => setOpen(!open)}
         />
       </div>
-        {open && (
-          <ul className={styles.dropdown}>
-            {options
-              .filter((o) => o.toLowerCase().includes(value.toLowerCase()))
-              .map((o) => (
-                <li
-                  key={o}
-                  className={styles.option}
-                  onMouseDown={() => {
-                    onChange(o);
-                    setOpen(false);
-                  }}
-                >
-                  {o}
-                </li>
-              ))}
-          </ul>
-        )}
+      {open && (
+        <ul className={styles.dropdown}>
+          {options
+            .filter((o) => o.toLowerCase().includes(value.toLowerCase()))
+            .map((o) => (
+              <li
+                key={o}
+                className={styles.option}
+                onClick={() => {
+                  onChange(o);
+                  setOpen(false);
+                }}
+              >
+                {o}
+              </li>
+            ))}
+        </ul>
+      )}
     </div>
   );
 };

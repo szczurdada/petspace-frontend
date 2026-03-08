@@ -2,10 +2,13 @@
   "common": {
     "save": "Save",
     "continue": "Continue",
+    "saveAndContinue": "Save & continue",
     "skip": "Skip",
+    "back": "Back",
     "cancel": "Cancel",
+    "close": "Close",
     "or": "or"
-  },
+},
   "gender": {
     "male": "Male",
     "female": "Female"
@@ -111,7 +114,12 @@
   "avatarEdit": {
     "open": "Open photo",
     "change": "Change photo",
-    "delete": "Delete photo"
+    "delete": "Delete photo",
+    "modalTitle": "Upload new photo",
+    "modalDescription": "Show the pack who you are!",
+    "modalFormats": "Supported formats: JPG, PNG, GIF, WEBP.",
+    "deleteModalTitle": "Delete photo",
+    "deleteModalDescription": "Are you sure you want to delete your photo?"
   },
   "validations": {
     "minLength": "Must be at least {min} characters",
