@@ -1,3 +1,13 @@
+.wrapper {
+  position: relative;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: calc(var(--z-dropdown) - 1);
+}
+
 .picker {
   --rdp-accent-color: var(--color-primary);
 }
@@ -5,6 +15,7 @@
 .picker :global(.rdp-month_caption) {
   padding-left: var(--padding-s);
 }
+
 .dropdown {
   position: absolute;
   z-index: var(--z-dropdown);

@@ -2,8 +2,11 @@
   "common": {
     "save": "Zapisz",
     "continue": "Kontynuuj",
+    "saveAndContinue": "Zapisz i kontynuuj",
     "skip": "Pomiń",
+    "back": "Wróć",
     "cancel": "Anuluj",
+    "close": "Zamknij",
     "or": "lub"
   },
   "gender": {
@@ -16,7 +19,7 @@
   },
   "signin": {
     "title": "Petspace",
-    "subtitle": "Welcome back to the pack",
+    "subtitle": "Witaj z powrotem w sforze",
     "email": "E-mail",
     "password": "Hasło",
     "submit": "Zaloguj się",
@@ -104,7 +107,7 @@
     "crimes": "Moje zbrodnie:",
     "habits": "Winne nawyki:",
     "humans": "Moi ludzie:"
-},
+  },
   "profileInformation": {
     "profile": "Profil",
     "interests": "Zainteresowania"
@@ -112,7 +115,12 @@
   "avatarEdit": {
     "open": "Otwórz zdjęcie",
     "change": "Zmień zdjęcie",
-    "delete": "Usuń zdjęcie"
+    "delete": "Usuń zdjęcie",
+    "modalTitle": "Prześlij nowe zdjęcie",
+    "modalDescription": "Pokaż sforze kim jesteś!",
+    "modalFormats": "Obsługiwane formaty: JPG, PNG, GIF, WEBP.",
+    "deleteModalTitle": "Usuń zdjęcie",
+    "deleteModalDescription": "Czy na pewno chcesz usunąć swoje zdjęcie?"
   },
   "validations": {
     "minLength": "Musi zawierać co najmniej {min} znaków",

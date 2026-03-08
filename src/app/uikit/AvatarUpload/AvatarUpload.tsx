@@ -14,6 +14,12 @@ interface AvatarUploadProps {
 export const AvatarUpload = ({ size = 120, onChange }: AvatarUploadProps) => {
   const [preview, setPreview] = useState<string>();
   const { getRootProps, getInputProps } = useDropzone({
+    accept: {
+      "image/jpeg": [],
+      "image/png": [],
+      "image/gif": [],
+      "image/webp": [],
+    },
     onDrop: (files) => {
       const file = files[0];
       const fileUrl = URL.createObjectURL(file);

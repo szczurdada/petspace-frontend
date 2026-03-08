@@ -15,6 +15,12 @@
   cursor: pointer;
 }
 
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: calc(var(--z-dropdown) - 1);
+}
+
 .dropdown {
   position: absolute;
   top: calc(100% + var(--gap-xs));

@@ -1,6 +1,6 @@
 import { DayPicker } from "react-day-picker";
 import styles from "./DatePicker.module.scss";
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { Input } from "../Input/Input";
 import "react-day-picker/style.css";
 import dayjs from "dayjs";
@@ -20,28 +20,21 @@ export const DatePicker = ({
   toYear = 2026,
 }: DatePickerProps) => {
   const [isOpen, setIsOpen] = useState(false);
-  const isMouseDownOnDropdown = useRef(false);
 
   return (
-    <div>
+    <div className={styles.wrapper}>
+      {isOpen && (
+        <div className={styles.overlay} onClick={() => setIsOpen(false)} />
+      )}
       <Input
         appearance="wide"
         placeholder="mm/dd/yyyy"
         readOnly
         value={value ? value.format("MM/DD/YYYY") : ""}
         onClick={() => setIsOpen(!isOpen)}
-        onBlur={() => {
-          if (!isMouseDownOnDropdown.current) setIsOpen(false);
-          isMouseDownOnDropdown.current = false;
-        }}
       />
       {isOpen && (
-        <div
-          className={styles.dropdown}
-          onMouseDown={() => {
-            isMouseDownOnDropdown.current = true;
-          }}
-        >
+        <div className={styles.dropdown}>
           <DayPicker
             className={styles.picker}
             mode="single"

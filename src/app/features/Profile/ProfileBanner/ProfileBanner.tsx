@@ -64,7 +64,9 @@ export const ProfileBanner = ({
               {gender === "male" && <FaMars size={16} />}
             </div>
             <div className={styles.breed}>{breed}</div>
-            <div className={styles.age}>{age} {t('profileBanner.age')}</div>
+            <div className={styles.age}>
+              {age} {t("profileBanner.age")}
+            </div>
             <div className={styles.city}>{city}</div>
           </div>
         </div>

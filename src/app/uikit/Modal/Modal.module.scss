@@ -1,0 +1,29 @@
+.container {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: var(--z-modal);
+  cursor: default;
+}
+
+.close {
+  position: absolute;
+  top: var(--padding-s);
+  right: var(--padding-s);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-secondary);
+  padding: 0;
+}
+
+.modal {
+  position: relative;
+  background: var(--bg-card);
+  min-width: 350px;
+  padding: var(--padding-l);
+  border-radius: var(--radius-sm);
+}
