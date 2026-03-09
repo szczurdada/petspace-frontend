@@ -10,11 +10,11 @@ import { DatePicker } from "@/app/uikit/DatePicker/DatePicker";
 import { AvatarEdit } from "@/app/uikit/AvatarEdit/AvatarEdit";
 import { toast } from "react-toastify";
 import axios from "axios";
-import { Textarea } from "@/app/uikit/Textarea/Textarea";
 import { Select } from "@/app/uikit/Select/Select";
 import { useForm, Controller, useWatch } from "react-hook-form";
 import dayjs from "dayjs";
 import type { Dayjs } from "dayjs";
+import { Textarea } from "@/app/uikit/Textarea/Textarea";
 
 interface ProfileEditorProps {
   avatar?: string | StaticImageData;
