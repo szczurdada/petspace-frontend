@@ -28,9 +28,9 @@ export const DatePicker = ({
       )}
       <Input
         appearance="wide"
-        placeholder="mm/dd/yyyy"
+        placeholder="D MMMM YYYY"
         readOnly
-        value={value ? value.format("MM/DD/YYYY") : ""}
+        value={value ? value.format("D MMMM YYYY") : ""}
         onClick={() => setIsOpen(!isOpen)}
       />
       {isOpen && (

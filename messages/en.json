@@ -71,12 +71,14 @@
     "text": "Regular walks are essential for your pet's physical and mental health. Aim for at least 30 minutes of activity daily to keep them happy, healthy, and well-behaved. Don't forget to bring water and treats!"
   },
   "profileBanner": {
-    "age": "years",
+    "info": "More info",
     "friends": "friends",
     "photos": "photos",
     "places": "places",
     "achievements": "Achievements",
-    "editProfile": "Edit profile"
+    "editProfile": "Edit profile",
+    "modalTitle": "My info", 
+    "modalInterests": "Interests"
   },
   "profilePhotos": {
     "photos": "Photos"

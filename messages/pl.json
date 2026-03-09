@@ -71,12 +71,14 @@
     "text": "Regularne spacery są niezbędne dla fizycznego i psychicznego zdrowia Twojego pupila. Staraj się zapewnić co najmniej 30 minut aktywności dziennie, aby był szczęśliwy, zdrowy i dobrze wychowany. Nie zapomnij zabrać wody i smakołyków!"
   },
   "profileBanner": {
-    "age": "years",
+    "info": "Więcej info",
     "friends": "znajomi",
     "photos": "zdjęcia",
     "places": "miejsca",
     "achievements": "Osiągnięcia",
-    "editProfile": "Edytuj profil"
+    "editProfile": "Edytuj profil",
+    "modalTitle": "Moje info",
+    "modalInterests": "Zainteresowania"
   },
   "profilePhotos": {
     "photos": "Zdjęcia"
@@ -100,7 +102,6 @@
   },
   "profileInterests": {
     "title": "Edytuj zainteresowania",
-    "edit": "Edytuj zainteresowania:",
     "toys": "Moje ulubione zabawki:",
     "treats": "Moje ulubione przysmaki:",
     "activities": "Moje ulubione aktywności:",
