@@ -3,17 +3,16 @@
 import { useTranslations } from "next-intl";
 import { Button } from "../../../uikit/Button/Button";
 import styles from "./ProfileBanner.module.scss";
-import { FaBirthdayCake, FaPaw } from "react-icons/fa";
-import { FaCamera, FaMars, FaVenus } from "react-icons/fa6";
+import { FaPaw } from "react-icons/fa";
+import { FaCamera } from "react-icons/fa6";
 import { ROUTES } from "@/app/uikit/constants/routes";
 import { Link } from "../../../uikit/Link/Link";
 import { StaticImageData } from "next/image";
 import { useRouter } from "next/navigation";
 import { AvatarEdit } from "@/app/uikit/AvatarEdit/AvatarEdit";
-import dayjs from "dayjs";
 import { useState } from "react";
-import { Modal } from "@/app/uikit/Modal/Modal";
 import { MdPlace } from "react-icons/md";
+import { ProfileInfoModal } from "../ProfileInfoModal/ProfileInfoModal";
 
 interface ProfileBannerProps {
   avatar?: string | StaticImageData;
@@ -24,6 +23,14 @@ interface ProfileBannerProps {
   gender?: string;
   city?: string;
   bio?: string;
+  interests?: {
+    favoriteToys?: string;
+    favoriteTreats?: string;
+    favoriteActivities?: string;
+    crimes?: string;
+    guiltyHabits?: string;
+    humans?: string;
+  };
   friendsCount?: number;
   photosCount?: number;
 }
@@ -37,6 +44,7 @@ export const ProfileBanner = ({
   gender,
   city,
   bio,
+  interests,
   friendsCount = 0,
   photosCount = 0,
 }: ProfileBannerProps) => {
@@ -53,7 +61,7 @@ export const ProfileBanner = ({
       <div className={styles.avatarWrapper}>
         <AvatarEdit src={avatar} size={140} />
       </div>
-      <div className={styles.content}>
+      <div className={styles.container}>
         <div className={styles.info}>
           <div className={styles.nameWrapper}>
             <div className={styles.name}>{name}</div>
@@ -107,40 +115,15 @@ export const ProfileBanner = ({
         </Button>
       </div>
 
-      <Modal isOpen={isInfoOpen} onClose={() => setIsInfoOpen(false)}>
-        <h3 className={styles.modalTitle}>{t("profileBanner.modalTitle")}</h3>
-        <div className={styles.modalContainer}>
-          {bio && <div className={styles.modalBio}>{bio}</div>}
-          <div className={styles.modalRows}>
-            {birthDate && (
-              <div className={styles.modalRow}>
-                <FaBirthdayCake size={16} className={styles.modalRowIcon} />
-                <span>{dayjs(birthDate).format("D MMMM YYYY")}</span>
-              </div>
-            )}
-            {gender === "female" && (
-              <div className={styles.modalRow}>
-                <FaVenus size={16} className={styles.modalRowIcon} />
-                <span>{t("gender.female")}</span>
-              </div>
-            )}
-
-            {gender === "male" && (
-              <div className={styles.modalRow}>
-                <FaMars size={16} className={styles.modalRowIcon} />
-                <span>{t("gender.male")}</span>
-              </div>
-            )}
-
-            {breed && (
-              <div className={styles.modalRow}>
-                <FaPaw size={16} className={styles.modalRowIcon} />
-                <span>{breed}</span>
-              </div>
-            )}
-          </div>
-        </div>
-      </Modal>
+      <ProfileInfoModal
+        isOpen={isInfoOpen}
+        onClose={() => setIsInfoOpen(false)}
+        bio={bio}
+        birthDate={birthDate}
+        gender={gender}
+        breed={breed}
+        interests={interests}
+      />
     </div>
   );
 };

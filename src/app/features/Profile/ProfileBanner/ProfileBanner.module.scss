@@ -8,8 +8,9 @@
   gap: var(--gap-xxl);
 }
 
-.content {
+.container {
   flex: 1;
+  min-width: 0;
   display: flex;
   flex-direction: column;
   gap: var(--gap-l);
@@ -75,6 +76,7 @@
 .bio {
   font-size: var(--font-base);
   color: var(--text-secondary);
+  overflow-wrap: break-word;
 }
 .stats {
   display: flex;
@@ -97,37 +99,4 @@
 
 .statLabel {
   color: var(--text-secondary);
-}
-
-.modalTitle {
-  margin: 0 0 var(--gap-s) 0;
-}
-
-.modalContainer {
-  display: flex;
-  flex-direction: column;
-  gap: var(--gap-m);
-}
-
-.modalBio {
-  font-size: var(--font-m);
-  color: var(--text-secondary);
-}
-
-.modalRows {
-  display: flex;
-  flex-direction: column;
-  gap: var(--gap-s);
-}
-
-.modalRow {
-  display: flex;
-  align-items: center;
-  gap: var(--gap-s);
-  font-size: var(--font-m);
-  color: var(--text-secondary);
-}
-
-.modalRowIcon {
-  flex-shrink: 0;
 }

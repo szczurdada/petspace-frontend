@@ -11,8 +11,6 @@
 
 .avatarWrapper {
   border-radius: var(--radius-full);
-  padding: 3px;
-  background: var(--primary-light);
 
   img {
     border-radius: var(--radius-full);
@@ -51,7 +49,7 @@
 }
 
 .title {
-  margin: 0 0 var(--gap-s);
+  margin: 0 0 var(--gap-xs) 0;
 }
 .description {
   font-size: var(--font-m);

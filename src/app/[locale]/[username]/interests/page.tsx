@@ -1,15 +1,6 @@
 import { Header } from "@/app/components/Header/Header";
 import { ProfileInterestsLayout } from "@/app/features/Profile/ProfileInterestsLayout/ProfileInterestsLayout";
-import axios from "axios";
-
-const getUser = async (username: string) => {
-  try {
-    const { data } = await axios.get(`http://localhost:3005/user/${username}`);
-    return data;
-  } catch (e) {
-    console.log(e);
-  }
-};
+import { getUser } from "@/app/api/user";
 
 interface ProfileInterestsPageProps {
   params: Promise<{ username: string }>;
@@ -22,7 +13,10 @@ const ProfileInterestsPage = async ({ params }: ProfileInterestsPageProps) => {
   return (
     <>
       <Header username={userData.username} />
-      <ProfileInterestsLayout username={userData.username}></ProfileInterestsLayout>
+      <ProfileInterestsLayout
+        username={userData.username}
+        interests={userData.interests}
+      ></ProfileInterestsLayout>
     </>
   );
 };

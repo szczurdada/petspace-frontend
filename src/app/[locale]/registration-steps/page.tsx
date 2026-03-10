@@ -2,8 +2,12 @@
 
 import RegistrationSteps from "@/app/features/RegistrationSteps/RegistrationSteps";
 
-const RegistrationStepsPage = () => {
-  return <RegistrationSteps></RegistrationSteps>;
+interface RegistrationStepsPageProps {
+  username: string;
 }
+
+const RegistrationStepsPage = ({ username }: RegistrationStepsPageProps) => {
+  return <RegistrationSteps username={username}></RegistrationSteps>;
+};
 
 export default RegistrationStepsPage;
