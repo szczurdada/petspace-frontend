@@ -53,7 +53,7 @@ export const ProfileEditor = ({
   const [cities, setCities] = useState([]);
   const [countries, setCountries] = useState([]);
 
-  const { handleSubmit, control} = useForm<ProfileForm>({
+  const { handleSubmit, control } = useForm<ProfileForm>({
     defaultValues: {
       bio: bio ?? "",
       gender: gender ?? "",
@@ -68,7 +68,6 @@ export const ProfileEditor = ({
 
   const onSubmit = async (data: ProfileForm) => {
     try {
-      //TODO toasts
       const token = localStorage.getItem("token");
       await axios.put(
         `http://localhost:3005/user/${username}`,
@@ -80,10 +79,10 @@ export const ProfileEditor = ({
           headers: { Authorization: token },
         },
       );
-      toast.success(t("profileEditor.toastSave"));
+      toast.success(t("toasts.saved"));
     } catch (e) {
       console.log(e);
-      toast.error(t("profileEditor.toastError"));
+      toast.error(t("toasts.error"));
     }
   };
 
@@ -126,7 +125,7 @@ export const ProfileEditor = ({
               name="bio"
               control={control}
               render={({ field }) => (
-                <Textarea appearance="primary" {...field} />
+                <Textarea appearance="primary" {...field} maxLength={150} />
               )}
             />
           </div>
@@ -152,8 +151,8 @@ export const ProfileEditor = ({
                   value={field.value}
                   onChange={field.onChange}
                   options={[
-                    { label: t("gender.male"), value: "male" },
-                    { label: t("gender.female"), value: "female" },
+                    { value: "male", label: t("gender.male") },
+                    { value: "female", label: t("gender.female") },
                   ]}
                   placeholder={t("placeholder.noneSelected")}
                 />
@@ -208,8 +207,12 @@ export const ProfileEditor = ({
           </div>
         </div>
         <div className={styles.actions}>
-          <Button appearance="primary" type="submit">{t("common.save")}</Button>
-          <Button appearance="secondary" type="button">{t("common.cancel")}</Button>
+          <Button appearance="primary" type="submit">
+            {t("common.save")}
+          </Button>
+          <Button appearance="secondary" type="button">
+            {t("common.cancel")}
+          </Button>
         </div>
       </div>
     </form>

@@ -4,6 +4,8 @@ import { useState } from "react";
 import { Input } from "../Input/Input";
 import "react-day-picker/style.css";
 import dayjs from "dayjs";
+import "dayjs/locale/pl";
+import { pl } from "date-fns/locale";
 import type { Dayjs } from "dayjs";
 
 interface DatePickerProps {
@@ -12,6 +14,8 @@ interface DatePickerProps {
   fromYear?: number;
   toYear?: number;
 }
+
+dayjs.locale("pl");
 
 export const DatePicker = ({
   value,
@@ -46,6 +50,7 @@ export const DatePicker = ({
             captionLayout="dropdown"
             fromYear={fromYear}
             toYear={toYear}
+            locale={pl}
           />
         </div>
       )}

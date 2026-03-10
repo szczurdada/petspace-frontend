@@ -17,6 +17,10 @@
     "noneSelected": "Nie wybrano",
     "chose": "Wybierz"
   },
+  "toasts": {
+    "saved": "Zmiany zostały zapisane pomyślnie",
+    "error": "Błąd"
+  },
   "signin": {
     "title": "Petspace",
     "subtitle": "Witaj z powrotem w sforze",
@@ -80,6 +84,10 @@
     "modalTitle": "Moje info",
     "modalInterests": "Zainteresowania"
   },
+  "profileInfoModal": {
+    "title": "Moje informacje",
+    "interestsTitle": "Moje zainteresowania"
+  },
   "profilePhotos": {
     "photos": "Zdjęcia"
   },
@@ -96,9 +104,7 @@
     "gender": "Płeć:",
     "country": "Kraj",
     "city": "Miasto:",
-    "breed": "Rasa:",
-    "toastSave": "Zmiany zostały zapisane",
-    "toastError": "Błąd"
+    "breed": "Rasa:"
   },
   "profileInterests": {
     "title": "Edytuj zainteresowania",

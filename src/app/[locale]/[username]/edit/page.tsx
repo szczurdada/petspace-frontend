@@ -1,15 +1,6 @@
 import { Header } from "@/app/components/Header/Header";
 import { ProfileEditorLayout } from "@/app/features/Profile/ProfileEditorLayout/ProfileEditorLayout";
-import axios from "axios";
-
-const getUser = async (username: string) => {
-  try {
-    const { data } = await axios.get(`http://localhost:3005/user/${username}`);
-    return data;
-  } catch (e) {
-    console.log(e);
-  }
-};
+import { getUser } from "@/app/api/user";
 
 interface EditPageProps {
   params: Promise<{ username: string }>;
@@ -25,6 +16,8 @@ const EditPage = async ({ params }: EditPageProps) => {
       <ProfileEditorLayout
         name={userData.name}
         username={userData.username}
+        birthDate={userData.birthDate}
+        gender={userData.gender}
         breed={userData.breed}
         country={userData.country}
         city={userData.city}

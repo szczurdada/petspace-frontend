@@ -49,6 +49,7 @@ interface ProfileLayoutProps {
     gender?: string;
     city?: string;
     bio?: string;
+    interests?: string;
   };
 }
 

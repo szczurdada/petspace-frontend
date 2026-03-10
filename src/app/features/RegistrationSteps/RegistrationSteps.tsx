@@ -106,8 +106,8 @@ const RegistrationSteps = ({
             value={genderValue}
             onChange={setGenderValue}
             options={[
-              { value: "male", label: "Male" },
-              { value: "female", label: "Female" },
+              { value: "male", label: t("gender.male") },
+              { value: "female", label: t("gender.female") },
             ]}
             placeholder={t("placeholder.noneSelected")}
           ></Select>

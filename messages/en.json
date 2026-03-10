@@ -17,6 +17,10 @@
     "noneSelected": "None selected",
     "chose": "Chose a"
   },
+  "toasts": {
+  "saved": "Changes saved successfully",
+  "error": "Error"
+  },
   "signin": {
     "title": "Petspace",
     "subtitle": "Welcome back to the pack",
@@ -80,6 +84,10 @@
     "modalTitle": "My info", 
     "modalInterests": "Interests"
   },
+  "profileInfoModal": {
+    "title": "My info",
+    "interestsTitle": "My interests"
+  },
   "profilePhotos": {
     "photos": "Photos"
   },
@@ -96,9 +104,7 @@
     "gender": "Gender:",
     "country": "Country:",
     "city": "City:",
-    "breed": "Breed:",
-    "toastSave": "Changes saved successfully",
-    "toastError": "Error"
+    "breed": "Breed:"
   },
   "profileInterests": {
     "title": "Edit interests",

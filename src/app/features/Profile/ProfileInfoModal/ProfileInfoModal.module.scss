@@ -1,0 +1,61 @@
+.title {
+  margin: 0 0 var(--gap-m) 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-m);
+}
+
+.bio {
+  font-size: var(--font-m);
+  color: var(--text-secondary);
+  overflow-wrap: break-word;
+}
+
+.rows {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-s);
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-s);
+  font-size: var(--font-m);
+  color: var(--text-secondary);
+}
+
+.icon {
+  flex-shrink: 0;
+}
+
+.interestsTitle {
+  margin: var(--gap-m) 0 0 0;
+}
+
+.interests {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-m);
+}
+
+.interestItem {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.interestLabel {
+  font-size: var(--font-m);
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.interestValue {
+  font-size: var(--font-m);
+  color: var(--text-secondary);
+  overflow-wrap: break-word;
+}
