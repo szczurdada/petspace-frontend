@@ -33,9 +33,9 @@ export const Combobox = ({
           placeholder={placeholder}
           onChange={(e) => {
             onChange(e.target.value);
-            setOpen(true);
+            setOpen(e.target.value.length > 0);
           }}
-          onFocus={() => setOpen(true)}
+          onFocus={() => setOpen(value?.length > 0)}
         />
         <FaAngleDown
           className={styles.arrowIcon}

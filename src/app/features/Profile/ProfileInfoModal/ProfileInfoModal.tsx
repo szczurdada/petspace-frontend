@@ -1,8 +1,9 @@
 import { Modal } from "@/app/uikit/Modal/Modal";
 import styles from "./ProfileInfoModal.module.scss";
 import { FaBirthdayCake, FaMars, FaPaw, FaVenus } from "react-icons/fa";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import dayjs from "dayjs";
+import "dayjs/locale/pl";
 
 interface ProfileInfoModalProps {
   isOpen: boolean;
@@ -31,6 +32,8 @@ export const ProfileInfoModal = ({
   interests,
 }: ProfileInfoModalProps) => {
   const t = useTranslations();
+  const hasInterests = interests && Object.values(interests).some(Boolean);
+  const locale = useLocale();
 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
@@ -41,7 +44,7 @@ export const ProfileInfoModal = ({
           {birthDate && (
             <div className={styles.row}>
               <FaBirthdayCake size={16} className={styles.icon} />
-              <span>{dayjs(birthDate).format("D MMMM YYYY")}</span>
+              <span>{dayjs(birthDate).locale(locale).format("D MMMM YYYY")}</span>
             </div>
           )}
           {gender === "female" && (
@@ -65,7 +68,7 @@ export const ProfileInfoModal = ({
             </div>
           )}
 
-          {interests && (
+          {hasInterests && (
             <div className={styles.interests}>
               <h3 className={styles.interestsTitle}>{t("profileInfoModal.interestsTitle")}</h3>
               {interests.favoriteToys && (
