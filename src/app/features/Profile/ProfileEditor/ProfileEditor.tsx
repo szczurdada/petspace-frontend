@@ -53,7 +53,7 @@ export const ProfileEditor = ({
   const [cities, setCities] = useState([]);
   const [countries, setCountries] = useState([]);
 
-  const { handleSubmit, control } = useForm<ProfileForm>({
+  const { handleSubmit, control, setValue  } = useForm<ProfileForm>({
     defaultValues: {
       bio: bio ?? "",
       gender: gender ?? "",
@@ -167,7 +167,10 @@ export const ProfileEditor = ({
               render={({ field }) => (
                 <Combobox
                   value={field.value}
-                  onChange={field.onChange}
+                  onChange={(value) => {
+                    field.onChange(value);
+                    setValue("city", "")
+                  }}
                   options={countries}
                   placeholder={t("placeholder.noneSelected")}
                 />

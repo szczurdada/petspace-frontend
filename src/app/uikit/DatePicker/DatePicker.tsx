@@ -5,8 +5,11 @@ import { Input } from "../Input/Input";
 import "react-day-picker/style.css";
 import dayjs from "dayjs";
 import "dayjs/locale/pl";
-import { pl } from "date-fns/locale";
+import "dayjs/locale/en";
 import type { Dayjs } from "dayjs";
+import { pl, enUS } from "date-fns/locale";
+import type { Locale } from "date-fns";
+import { useLocale } from "next-intl";
 
 interface DatePickerProps {
   value: Dayjs | undefined;
@@ -15,7 +18,7 @@ interface DatePickerProps {
   toYear?: number;
 }
 
-dayjs.locale("pl");
+const localeMap: Record<string, Locale> = { pl, en: enUS };
 
 export const DatePicker = ({
   value,
@@ -24,6 +27,8 @@ export const DatePicker = ({
   toYear = 2026,
 }: DatePickerProps) => {
   const [isOpen, setIsOpen] = useState(false);
+  const localeCode = useLocale();
+  const locale = localeMap[localeCode] ?? pl;
 
   return (
     <div className={styles.wrapper}>
@@ -34,7 +39,7 @@ export const DatePicker = ({
         appearance="wide"
         placeholder="D MMMM YYYY"
         readOnly
-        value={value ? value.format("D MMMM YYYY") : ""}
+        value={value ? value.locale(localeCode).format("D MMMM YYYY") : ""}
         onClick={() => setIsOpen(!isOpen)}
       />
       {isOpen && (
@@ -50,7 +55,7 @@ export const DatePicker = ({
             captionLayout="dropdown"
             fromYear={fromYear}
             toYear={toYear}
-            locale={pl}
+            locale={locale}
           />
         </div>
       )}
