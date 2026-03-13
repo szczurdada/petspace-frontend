@@ -10,7 +10,7 @@ export const ROUTES = {
   about: "/about",
   feed: "/feed",
   friends: "/friends",
-  photos: "/photos",
+  photos: (username: string) => `/${username}/photos`,
   favorites: "/favorites",
   places: "/places",
   notifications: "/notifications",

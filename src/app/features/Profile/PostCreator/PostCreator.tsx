@@ -10,9 +10,10 @@ import { StaticImageData } from "next/image";
 
 interface PostCreatorProps {
   avatar?: string | StaticImageData;
+  username: string;
 }
 
-export const PostCreator = ({avatar}: PostCreatorProps) => {
+export const PostCreator = ({avatar, username}: PostCreatorProps) => {
   const t = useTranslations();
 
   return (
@@ -27,7 +28,7 @@ export const PostCreator = ({avatar}: PostCreatorProps) => {
       </div>
       <div className={styles.actions}>
         <div className={styles.attachments}>
-          <Link href={ROUTES.photos} className={styles.attachmentItem}>
+          <Link href={ROUTES.photos(username)} className={styles.attachmentItem}>
             <FaCamera size={16} />
             {t("postCreator.photo")}
           </Link>
