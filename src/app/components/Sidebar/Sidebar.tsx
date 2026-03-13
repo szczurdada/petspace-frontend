@@ -39,7 +39,7 @@ export const Sidebar = ({ username }: { username: string }) => {
             {t("sidebar.friends")}
           </Button>
         </Link>
-        <Link href={ROUTES.photos}>
+        <Link href={ROUTES.photos(username)}>
           <Button appearance="secondary">
             <FaCamera size={20} />
             {t("sidebar.photos")}

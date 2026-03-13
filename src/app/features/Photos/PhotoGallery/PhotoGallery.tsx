@@ -1,10 +1,7 @@
-import { ROUTES } from "@/app/uikit/constants/routes";
-import styles from "./ProfilePhotos.module.scss";
+import styles from "./PhotoGallery.module.scss";
 import Image, { StaticImageData } from "next/image";
-import { Link } from "@/app/uikit/Link/Link";
-import { useTranslations } from "next-intl";
 
-interface ProfilePhotosProps {
+interface PhotoGalleryProps  {
   photos: {
     img1: string | StaticImageData;
     img2: string | StaticImageData;
@@ -13,17 +10,12 @@ interface ProfilePhotosProps {
     img5: string | StaticImageData;
     img6: string | StaticImageData;
   };
-  username: string;
 }
 
-export const ProfilePhotos = ({ photos, username }: ProfilePhotosProps) => {
-  const t = useTranslations();
-
+export const PhotoGallery = ({photos}: PhotoGalleryProps) => {
   return (
     <div className={styles.container}>
-      <Link href={ROUTES.photos(username)} className={styles.titleLink}>
-        <h3 className={styles.title}>{t("profilePhotos.photos")}</h3>
-      </Link>
+      <h3 className={styles.title}>My photos</h3>
       <div className={styles.gallery}>
         <div className={styles.photo}>
           <Image src={photos.img1} alt="Photo" fill />

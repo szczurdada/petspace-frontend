@@ -49,7 +49,14 @@ interface ProfileLayoutProps {
     gender?: string;
     city?: string;
     bio?: string;
-    interests?: string;
+    interests?: {
+      favoriteToys?: string;
+      favoriteTreats?: string;
+      favoriteActivities?: string;
+      crimes?: string;
+      guiltyHabits?: string;
+      humans?: string;
+    };
   };
 }
 
@@ -63,11 +70,11 @@ export const ProfileLayout = ({ bannerInfo }: ProfileLayoutProps) => {
         <ProfileBanner {...bannerInfo} />
       </div>
       <div className={styles.feedContainer}>
-        <PostCreator />
+        <PostCreator username={bannerInfo.username} />
         <Feed posts={posts} />
       </div>
       <div className={styles.photos}>
-        <ProfilePhotos photos={MOCK_PHOTOS} />
+        <ProfilePhotos username={bannerInfo.username} photos={MOCK_PHOTOS} />
       </div>
       <div className={styles.friends}>
         <ProfileFriends />

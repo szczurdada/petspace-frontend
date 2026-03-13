@@ -92,7 +92,7 @@ export const ProfileBanner = ({
             </Link>
           </div>
           <div className={styles.stat}>
-            <Link href={ROUTES.photos} appearance="secondary">
+            <Link href={ROUTES.photos(username)} appearance="secondary">
               <FaCamera size={18} />
               <span className={styles.statValue}>{photosCount}</span>
               <span className={styles.statLabel}>
