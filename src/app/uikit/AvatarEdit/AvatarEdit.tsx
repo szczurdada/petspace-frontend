@@ -10,6 +10,7 @@ import { Avatar } from "../Avatar/Avatar";
 import { useState } from "react";
 import { Modal } from "../Modal/Modal";
 import { AvatarUpload } from "../AvatarUpload/AvatarUpload";
+import axios from "axios";
 
 interface AvatarEditProps {
   src?: string | StaticImageData;
@@ -21,10 +22,22 @@ export const AvatarEdit = ({ src, size }: AvatarEditProps) => {
   const [file, setFile] = useState<File | null>(null);
   const [isChangeOpen, setIsChangeOpen] = useState(false);
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
+  const [avatarUrl, setAvatarUrl] = useState<string | undefined>(src as string);
 
   const savePhoto = async () => {
     try {
       if (!file) return;
+
+      const formData = new FormData();
+      formData.append("image", file);
+
+      const { data } = await axios.post(
+        "http://localhost:3005/api/upload/avatar",
+        formData,
+        { headers: { Authorization: localStorage.getItem("token") } },
+      );
+
+      setAvatarUrl(data.data.url);
       setIsChangeOpen(false);
     } catch (e) {
       console.error(e);
@@ -34,7 +47,7 @@ export const AvatarEdit = ({ src, size }: AvatarEditProps) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.avatarWrapper}>
-        <Avatar src={src ?? defaultAvatar} size={size} />
+        <Avatar src={avatarUrl ?? defaultAvatar} size={size} />
       </div>
       <div className={styles.overlay}>
         <Button appearance="secondary">

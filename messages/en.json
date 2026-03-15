@@ -5,6 +5,7 @@
     "saveAndContinue": "Save & continue",
     "skip": "Skip",
     "back": "Back",
+    "upload": "Upload",
     "cancel": "Cancel",
     "close": "Close",
     "or": "or"
@@ -90,6 +91,10 @@
   },
   "profilePhotos": {
     "photos": "Photos"
+  },
+  "photoGallery": {
+    "title": "My photos",
+    "addPhoto": "Add photo"
   },
   "postCreator": {
     "photo": "Photo",

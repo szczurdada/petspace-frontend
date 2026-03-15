@@ -5,6 +5,7 @@
     "saveAndContinue": "Zapisz i kontynuuj",
     "skip": "Pomiń",
     "back": "Wróć",
+    "upload": "Prześlij",
     "cancel": "Anuluj",
     "close": "Zamknij",
     "or": "lub"
@@ -96,6 +97,10 @@
     "place": "Miejsce",
     "publish": "Opublikuj post",
     "placeholder": "Podziel się czymś..."
+  },
+  "photoGallery": {
+    "title": "Moje zdjęcia",
+    "addPhoto": "Dodaj zdjęcie"
   },
   "profileEditor": {
     "title": "Edytuj profil",
