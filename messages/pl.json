@@ -89,6 +89,10 @@
     "title": "Moje informacje",
     "interestsTitle": "Moje zainteresowania"
   },
+  "photoModal":{
+    "delete": "Usuń",
+    "makeProfilePhoto": "Ustaw jako zdjęcie profilowe"
+  },
   "profilePhotos": {
     "photos": "Zdjęcia"
   },

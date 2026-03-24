@@ -24,7 +24,9 @@
   position: relative;
   background: var(--bg-card);
   min-width: 350px;
-    max-width: 450px;
+  max-width: 90vw;
+  max-height: 90vh;
   padding: var(--padding-l);
   border-radius: var(--radius-sm);
+  overflow: hidden;
 }
