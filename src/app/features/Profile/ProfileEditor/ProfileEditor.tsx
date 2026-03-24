@@ -80,8 +80,7 @@ export const ProfileEditor = ({
         },
       );
       toast.success(t("toasts.saved"));
-    } catch (e) {
-      console.log(e);
+    } catch {
       toast.error(t("toasts.error"));
     }
   };

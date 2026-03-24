@@ -10,7 +10,6 @@ interface ProfilePageProps {
 const ProfilePage = async ({ params }: ProfilePageProps) => {
   const awaitedParams = await params;
   const userData = await getUser(awaitedParams.username);
-  console.log(userData);
 
   if (!userData) {
     notFound();

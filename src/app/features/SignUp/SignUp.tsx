@@ -48,7 +48,6 @@ export const SignUp = () => {
     } catch (e) {
       if (axios.isAxiosError(e)) {
         const type = e.response?.data?.type;
-        console.log(e);
         if (type === "EMAIL_ALREADY_EXISTS") {
           toast.error(t("errors.EMAIL_ALREADY_EXISTS"));
         } else if (type === "USERNAME_ALREADY_EXISTS") {

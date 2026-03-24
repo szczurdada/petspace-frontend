@@ -11,6 +11,7 @@ import { Photo } from "@/types";
 import { useTranslations } from "next-intl";
 import { PhotoModal } from "../PhotoModal/PhotoModal";
 import { CLOUD_NAME, API_URL } from "@/config/env";
+import { toast } from "react-toastify";
 
 interface PhotoGalleryProps {
   photos: Photo[];
@@ -41,8 +42,8 @@ export const PhotoGallery = ({ photos }: PhotoGalleryProps) => {
       ]);
       setIsOpen(false);
       setFile(null);
-    } catch (e) {
-      console.error(e);
+    } catch {
+      toast.error(t("toast.error"));
     }
   };
 
