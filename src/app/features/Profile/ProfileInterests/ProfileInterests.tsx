@@ -64,8 +64,7 @@ export const ProfileInterests = ({
         { headers: { Authorization: token } },
       );
       toast.success(t("toasts.saved"));
-    } catch (e) {
-      console.log(e);
+    } catch {
       toast.error(t("toasts.error"));
     }
   };

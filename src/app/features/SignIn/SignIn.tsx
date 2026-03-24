@@ -46,8 +46,7 @@ export const SignIn = () => {
         return;
       }
       router.push(ROUTES.profile(username));
-    } catch (e) {
-      console.error(e);
+    } catch {
       toast.error(t("errors.INVALID_CREDENTIALS"));
     }
   };

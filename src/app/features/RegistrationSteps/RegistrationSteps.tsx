@@ -10,6 +10,7 @@ import { Select } from "@/app/uikit/Select/Select";
 import { DatePicker } from "@/app/uikit/DatePicker/DatePicker";
 import dayjs from "dayjs";
 import type { Dayjs } from "dayjs";
+import { toast } from "react-toastify";
 
 interface RegistrationStepsProps {
   username: string;
@@ -82,8 +83,8 @@ const RegistrationSteps = ({
         },
       );
       router.push(ROUTES.registrationStepsAvatar);
-    } catch (e) {
-      console.log(e);
+    } catch {
+      toast.error(t("toast.error"));
     }
   };
 

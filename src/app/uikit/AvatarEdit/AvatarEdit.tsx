@@ -11,6 +11,7 @@ import { useState } from "react";
 import { Modal } from "../Modal/Modal";
 import { AvatarUpload } from "../AvatarUpload/AvatarUpload";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 interface AvatarEditProps {
   src?: string | StaticImageData;
@@ -39,8 +40,8 @@ export const AvatarEdit = ({ src, size }: AvatarEditProps) => {
 
       setAvatarUrl(data.data.url);
       setIsChangeOpen(false);
-    } catch (e) {
-      console.error(e);
+    } catch {
+      toast.error(t("toast.error"));
     }
   };
 

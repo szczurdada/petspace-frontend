@@ -19,8 +19,8 @@
     "chose": "Chose a"
   },
   "toasts": {
-  "saved": "Changes saved successfully",
-  "error": "Error"
+    "saved": "Changes saved successfully",
+    "error": "Error"
   },
   "signin": {
     "title": "Petspace",
