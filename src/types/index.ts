@@ -6,13 +6,17 @@ export interface User {
 export interface Photo {
   _id: string;
   publicId: string;
+  likes?: number;
+  comments?: number;
+  reposts?: number;
 }
 
 export interface Post {
   id: string;
   author: User;
   content: string;
-  likes: number;
-  comments: number;
+  likes?: number;
+  comments?: number;
+  reposts?: number;
   createdAt: Date;
 }

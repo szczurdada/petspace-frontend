@@ -9,6 +9,8 @@ import { AvatarUpload } from "@/app/uikit/AvatarUpload/AvatarUpload";
 import axios from "axios";
 import { Photo } from "@/types";
 import { useTranslations } from "next-intl";
+import { PhotoModal } from "../PhotoModal/PhotoModal";
+import { CLOUD_NAME, API_URL } from "@/config/env";
 
 interface PhotoGalleryProps {
   photos: Photo[];
@@ -16,9 +18,9 @@ interface PhotoGalleryProps {
 
 export const PhotoGallery = ({ photos }: PhotoGalleryProps) => {
   const t = useTranslations();
-  const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
 
   const [isOpen, setIsOpen] = useState(false);
+  const [selectedPhoto, setSelectedPhoto] = useState<Photo | null>(null);
   const [file, setFile] = useState<File | null>(null);
   const [localPhotos, setLocalPhotos] = useState<Photo[]>(photos);
 
@@ -29,7 +31,7 @@ export const PhotoGallery = ({ photos }: PhotoGalleryProps) => {
       formData.append("image", file);
       const token = localStorage.getItem("token");
       const { data } = await axios.post(
-        "http://localhost:3005/api/upload/photo",
+        `${API_URL}/api/upload/photo`,
         formData,
         { headers: { Authorization: token } },
       );
@@ -57,13 +59,20 @@ export const PhotoGallery = ({ photos }: PhotoGalleryProps) => {
         {localPhotos.map((photo) => (
           <div key={photo._id} className={styles.photo}>
             <Image
-              src={`https://res.cloudinary.com/${cloudName}/image/upload/${photo.publicId}`}
+              onClick={() => setSelectedPhoto(photo)}
+              src={`https://res.cloudinary.com/${CLOUD_NAME}/image/upload/${photo.publicId}`}
               alt="Photo"
               fill
             />
           </div>
         ))}
       </div>
+
+      <PhotoModal
+        photo={selectedPhoto}
+        cloudName={CLOUD_NAME}
+        onClose={() => setSelectedPhoto(null)}
+      />
 
       <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
         <h3 className={styles.modalTitle}>{t("photoGallery.addPhoto")}</h3>

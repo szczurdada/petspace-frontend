@@ -89,6 +89,10 @@
     "title": "My info",
     "interestsTitle": "My interests"
   },
+  "photoModal":{
+    "delete": "Delete",
+    "makeProfilePhoto": "Make profile photo"
+  },
   "profilePhotos": {
     "photos": "Photos"
   },
