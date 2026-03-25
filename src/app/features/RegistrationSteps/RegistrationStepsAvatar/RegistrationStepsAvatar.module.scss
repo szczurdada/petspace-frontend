@@ -5,7 +5,7 @@
   gap: var(--gap-xxl);
   width: 240px;
   padding: var(--padding-xl) var(--padding-xxl);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-m);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
@@ -18,7 +18,7 @@
   letter-spacing: 0.08em;
   // TODO padding
   padding: 4px var(--padding-xs);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-m);
 }
 
 .title {

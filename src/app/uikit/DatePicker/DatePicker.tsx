@@ -1,3 +1,5 @@
+"use client";
+
 import { DayPicker } from "react-day-picker";
 import styles from "./DatePicker.module.scss";
 import { useState } from "react";

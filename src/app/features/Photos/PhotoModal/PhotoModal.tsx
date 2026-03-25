@@ -27,21 +27,24 @@ export const PhotoModal = ({ photo, cloudName, onClose }: PhotoModalProps) => {
               style={{ objectFit: "contain" }}
             />
           </div>
-
-          <div className={styles.stats}>
-            <div className={styles.stat}>
-              <FaHeart size={16} />
+          <div className={styles.footer}>
+            <div className={styles.stats}>
+              <div className={styles.stat}>
+                <FaHeart size={16} />
+              </div>
+              <div className={styles.stat}>
+                <FaComment size={16} />
+              </div>
+              <div className={styles.stat}>
+                <FaReply size={18} />
+              </div>
             </div>
-            <div className={styles.stat}>
-              <FaComment size={16} />
+            <div className={styles.actions}>
+              <Button appearance="ghost">{t("photoModal.delete")}</Button>
+              <Button appearance="ghost">
+                {t("photoModal.makeProfilePhoto")}
+              </Button>
             </div>
-            <div className={styles.stat}>
-              <FaReply size={18} />
-            </div>
-          </div>
-          <div className={styles.actions}>
-            <Button appearance="ghost">{t("photoModal.delete")}</Button>
-            <Button appearance="ghost">{t("photoModal.makeProfilePhoto")}</Button>
           </div>
         </div>
       )}

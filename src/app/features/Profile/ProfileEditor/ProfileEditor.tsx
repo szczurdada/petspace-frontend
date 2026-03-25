@@ -15,6 +15,7 @@ import { useForm, Controller, useWatch } from "react-hook-form";
 import dayjs from "dayjs";
 import type { Dayjs } from "dayjs";
 import { Textarea } from "@/app/uikit/Textarea/Textarea";
+import { API_URL } from "@/config/env";
 
 interface ProfileEditorProps {
   avatar?: string | StaticImageData;
@@ -70,7 +71,7 @@ export const ProfileEditor = ({
     try {
       const token = localStorage.getItem("token");
       await axios.put(
-        `http://localhost:3005/user/${username}`,
+        `${API_URL}/user/${username}`,
         {
           ...data,
           birthDate: data.birthDate?.valueOf(),
@@ -87,20 +88,20 @@ export const ProfileEditor = ({
 
   useEffect(() => {
     axios
-      .get("http://localhost:3005/breeds")
+      .get(`${API_URL}/breeds`)
       .then((res) => setBreeds(res.data));
   }, []);
 
   useEffect(() => {
     axios
-      .get("http://localhost:3005/countries")
+      .get(`${API_URL}/countries`)
       .then((res) => setCountries(res.data));
   }, []);
 
   useEffect(() => {
     if (!selectedCountry) return;
     axios
-      .get(`http://localhost:3005/countries/cities?country=${selectedCountry}`)
+      .get(`${API_URL}/countries/cities?country=${selectedCountry}`)
       .then((res) => setCities(res.data));
   }, [selectedCountry]);
 

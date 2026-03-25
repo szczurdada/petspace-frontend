@@ -23,10 +23,9 @@
 .modal {
   position: relative;
   background: var(--bg-card);
-  min-width: 350px;
-  max-width: 90vw;
-  max-height: 90vh;
+  width: min(500px, 90vw);
+  max-height: 80vh;
   padding: var(--padding-l);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-s);
   overflow: hidden;
 }
