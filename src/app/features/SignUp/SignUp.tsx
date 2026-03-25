@@ -17,10 +17,11 @@ import {
 } from "@/app/uikit/constants/validations";
 import { useTranslations } from "next-intl";
 import { Input } from "@/app/uikit/Input/Input";
-import { ErrorMessage } from "@/app/uikit/ErrorMessage/ErrorMessage";
 import { Button } from "@/app/uikit/Button/Button";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { API_URL } from "@/config/env";
+import { FormField } from "@/app/uikit/FormField/FormField";
 
 interface FormInputs {
   name: string;
@@ -41,7 +42,7 @@ export const SignUp = () => {
 
   const onSubmit = async (data: FormInputs) => {
     try {
-      const response = await axios.post("http://localhost:3005/signup", data);
+      const response = await axios.post(`${API_URL}/signup`, data);
       localStorage.setItem("token", response.data.token);
       localStorage.setItem("username", response.data.user.username);
       router.push(ROUTES.registrationSteps);
@@ -68,12 +69,12 @@ export const SignUp = () => {
         <p className={styles.subtitle}>{t("signUp.subtitle")}</p>
       </div>
       <div className={styles.fields}>
-        <div className={styles.field}>
-          <div className={styles.fieldWrapper}>
-            <label htmlFor="name">{t("signUp.name")}</label>
-            <small className={styles.hint}>{t("signUp.displayNameHint")}</small>
-          </div>
-
+        <FormField
+          id="name"
+          label={t("signUp.name")}
+          hint={t("signUp.displayNameHint")}
+          error={errors.name?.message}
+        >
           <Input
             {...register("name", {
               required: t(requiredValidation),
@@ -85,20 +86,14 @@ export const SignUp = () => {
             type="text"
             appearance="primary"
           />
+        </FormField>
 
-          {errors.name?.message && (
-            <ErrorMessage message={errors.name?.message} />
-          )}
-        </div>
-
-        <div className={styles.field}>
-          <div className={styles.fieldWrapper}>
-            <label htmlFor="username">{t("signUp.username")}</label>
-            <small className={styles.hint}>
-              {t("signUp.displayUsernameHint")}
-            </small>
-          </div>
-
+        <FormField
+          id="username"
+          label={t("signUp.username")}
+          hint={t("signUp.displayUsernameHint")}
+          error={errors.username?.message}
+        >
           <Input
             {...register("username", {
               required: t(requiredValidation),
@@ -110,15 +105,13 @@ export const SignUp = () => {
             type="text"
             appearance="primary"
           />
+        </FormField>
 
-          {errors.username?.message && (
-            <ErrorMessage message={errors.username?.message} />
-          )}
-        </div>
-
-        <div className={styles.field}>
-          {/* TODO move to separate component */}
-          <label htmlFor="email">{t("signUp.email")}</label>
+        <FormField
+          id="email"
+          label={t("signUp.email")}
+          error={errors.email?.message}
+        >
           <Input
             {...register("email", {
               required: t(requiredValidation),
@@ -129,14 +122,13 @@ export const SignUp = () => {
             type="email"
             appearance="primary"
           />
+        </FormField>
 
-          {errors.email?.message && (
-            <ErrorMessage message={errors.email?.message} />
-          )}
-        </div>
-
-        <div className={styles.field}>
-          <label htmlFor="password">{t("signUp.password")}</label>
+        <FormField
+          id="password"
+          label={t("signUp.password")}
+          error={errors.password?.message}
+        >
           <Input
             {...register("password", {
               required: t(requiredValidation),
@@ -148,10 +140,8 @@ export const SignUp = () => {
             type="password"
             appearance="primary"
           />
-          {errors.password?.message && (
-            <ErrorMessage message={errors.password?.message} />
-          )}
-        </div>
+        </FormField>
+
         <div className={styles.buttons}>
           <Button type="submit" appearance="primary">
             {t("signUp.createAccount")}

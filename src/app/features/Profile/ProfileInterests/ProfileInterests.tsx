@@ -7,6 +7,7 @@ import axios from "axios";
 import { useTranslations } from "next-intl";
 import { toast } from "react-toastify";
 import { useForm } from "react-hook-form";
+import { API_URL } from "@/config/env";
 
 interface ProfileInterestsProps {
   username: string;
@@ -50,7 +51,7 @@ export const ProfileInterests = ({
     try {
       const token = localStorage.getItem("token");
       await axios.put(
-        `http://localhost:3005/user/${username}`,
+        `${API_URL}/user/${username}`,
         {
           interests: {
             favoriteToys: data.toys,

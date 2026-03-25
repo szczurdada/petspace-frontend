@@ -1,3 +1,5 @@
+"use client";
+
 import { Input } from "../Input/Input";
 import { useState } from "react";
 import styles from "./Select.module.scss";

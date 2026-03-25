@@ -1,3 +1,5 @@
+"use client";
+
 import { StaticImageData } from "next/image";
 import styles from "./AvatarEdit.module.scss";
 import { Button } from "../Button/Button";
@@ -12,6 +14,7 @@ import { Modal } from "../Modal/Modal";
 import { AvatarUpload } from "../AvatarUpload/AvatarUpload";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { API_URL } from "@/config/env";
 
 interface AvatarEditProps {
   src?: string | StaticImageData;
@@ -33,7 +36,7 @@ export const AvatarEdit = ({ src, size }: AvatarEditProps) => {
       formData.append("image", file);
 
       const { data } = await axios.post(
-        "http://localhost:3005/api/upload/avatar",
+        `${API_URL}/api/upload/avatar`,
         formData,
         { headers: { Authorization: localStorage.getItem("token") } },
       );

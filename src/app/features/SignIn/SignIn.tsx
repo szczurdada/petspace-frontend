@@ -19,6 +19,7 @@ import { Input } from "@/app/uikit/Input/Input";
 import { Button } from "@/app/uikit/Button/Button";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { API_URL } from "@/config/env";
 
 interface FormInputs {
   email: string;
@@ -38,11 +39,11 @@ export const SignIn = () => {
 
   const onSubmit = async (data: FormInputs) => {
     try {
-      const response = await axios.post("http://localhost:3005/signin", data);
+      const response = await axios.post(`${API_URL}/signin`, data);
       localStorage.setItem("token", response.data.token);
       const username = response.data.user.username;
       if (!username) {
-        toast.error("Username is undefined");
+        toast.error(t("toast.error"));
         return;
       }
       router.push(ROUTES.profile(username));
@@ -52,61 +53,61 @@ export const SignIn = () => {
   };
 
   return (
-      <form className={styles.signInForm} onSubmit={handleSubmit(onSubmit)}>
-        <div>
-          <h1 className={styles.title}>{t("signin.title")}</h1>
-          <p className={styles.subtitle}>{t("signin.subtitle")}</p>
-        </div>
-        <div className={styles.inputsWrapper}>
-          <Input
-            {...register("email", {
-              required: t(requiredValidation),
-              minLength: signInValidationMin(t),
-              maxLength: signInValidationMax(t),
-              pattern: emailValidationPattern(t),
-            })}
-            type="text"
-            appearance="primary"
-            placeholder={t("signin.email")}
-            autoComplete="signin"
-          />
-
-          {errors.email?.message && (
-            <ErrorMessage message={errors.email?.message} />
-          )}
-
-          <Input
-            {...register("password", {
-              required: t(requiredValidation),
-              minLength: passwordValidationMin(t),
-              maxLength: passwordValidationMax(t),
-            })}
-            type="password"
-            appearance="primary"
-            placeholder={t("signin.password")}
-            autoComplete="current-password"
-          />
-          {errors.password?.message && (
-            <ErrorMessage message={errors.password?.message} />
-          )}
-        </div>
-        <Button type="submit" appearance="primary">
-          {t("signin.submit")}
-        </Button>
-        <Link
-          href={ROUTES.forgotPassword}
+    <form className={styles.signInForm} onSubmit={handleSubmit(onSubmit)}>
+      <div>
+        <h1 className={styles.title}>{t("signin.title")}</h1>
+        <p className={styles.subtitle}>{t("signin.subtitle")}</p>
+      </div>
+      <div className={styles.inputsWrapper}>
+        <Input
+          {...register("email", {
+            required: t(requiredValidation),
+            minLength: signInValidationMin(t),
+            maxLength: signInValidationMax(t),
+            pattern: emailValidationPattern(t),
+          })}
+          type="text"
           appearance="primary"
-          className={styles.forgotPassword}
-        >
-          {t("signin.forgotPassword")}
-        </Link>
-        <div className={styles.formDivider}>
-          <span>{t("common.or")}</span>
-        </div>
-        <Button appearance="secondary" onClick={createAccountLink}>
-          {t("signin.createAccount")}
-        </Button>
-      </form>
+          placeholder={t("signin.email")}
+          autoComplete="signin"
+        />
+
+        {errors.email?.message && (
+          <ErrorMessage message={errors.email?.message} />
+        )}
+
+        <Input
+          {...register("password", {
+            required: t(requiredValidation),
+            minLength: passwordValidationMin(t),
+            maxLength: passwordValidationMax(t),
+          })}
+          type="password"
+          appearance="primary"
+          placeholder={t("signin.password")}
+          autoComplete="current-password"
+        />
+        {errors.password?.message && (
+          <ErrorMessage message={errors.password?.message} />
+        )}
+      </div>
+      <Button type="submit" appearance="primary">
+        {t("signin.submit")}
+      </Button>
+      <Link
+        href={ROUTES.forgotPassword}
+        appearance="primary"
+        className={styles.forgotPassword}
+      >
+        {t("signin.forgotPassword")}
+      </Link>
+      <div className={styles.formDivider}>
+        <span>{t("common.or")}</span>
+      </div>
+      <Button appearance="secondary" onClick={createAccountLink}>
+        {t("signin.createAccount")}
+      </Button>
+    </form>
   );
 };
 

@@ -4,8 +4,16 @@
 
 .photo {
   position: relative;
-  width: 40vw;
-  height: 70vh;
+  width: 100%;
+  height: 60vh;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--padding-s);
+  border-top: 1px solid var(--border);
 }
 
 .stats {
@@ -13,7 +21,6 @@
   flex-direction: row;
   gap: var(--gap-l);
   color: var(--text-secondary);
-  font-size: var(--font-m);
 }
 
 .stat {
@@ -28,6 +35,11 @@
   transition: color 0.2s ease;
 
   &:hover {
-    color: var(--text-primary);
+    color: var(--accent);
   }
+}
+
+.actions {
+  display: flex;
+  gap: var(--gap-s);
 }
