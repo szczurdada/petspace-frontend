@@ -5,7 +5,7 @@ import { Button } from "@/app/uikit/Button/Button";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { ROUTES } from "@/app/uikit/constants/routes";
-import { AvatarUpload } from "@/app/uikit/AvatarUpload/AvatarUpload";
+import { AvatarUploadModal } from "@/app/features/Profile/AvatarUploadModal/AvatarUploadModal";
 
 export const RegistrationStepsAvatar = () => {
   const router = useRouter();
@@ -36,7 +36,7 @@ export const RegistrationStepsAvatar = () => {
         <div className={styles.formDivider}></div>
       </div>
       <div className={styles.avatar}>
-        <AvatarUpload size={120}></AvatarUpload>
+        <AvatarUploadModal size={120}></AvatarUploadModal>
       </div>
       <div className={styles.actions}>
         <Button appearance="primary" onClick={saveAvatar}>

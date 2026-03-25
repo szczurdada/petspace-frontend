@@ -54,7 +54,7 @@ export const ProfileEditor = ({
   const [cities, setCities] = useState([]);
   const [countries, setCountries] = useState([]);
 
-  const { handleSubmit, control, setValue  } = useForm<ProfileForm>({
+  const { handleSubmit, control, setValue } = useForm<ProfileForm>({
     defaultValues: {
       bio: bio ?? "",
       gender: gender ?? "",
@@ -87,15 +87,11 @@ export const ProfileEditor = ({
   };
 
   useEffect(() => {
-    axios
-      .get(`${API_URL}/breeds`)
-      .then((res) => setBreeds(res.data));
+    axios.get(`${API_URL}/breeds`).then((res) => setBreeds(res.data));
   }, []);
 
   useEffect(() => {
-    axios
-      .get(`${API_URL}/countries`)
-      .then((res) => setCountries(res.data));
+    axios.get(`${API_URL}/countries`).then((res) => setCountries(res.data));
   }, []);
 
   useEffect(() => {
@@ -169,7 +165,7 @@ export const ProfileEditor = ({
                   value={field.value}
                   onChange={(value) => {
                     field.onChange(value);
-                    setValue("city", "")
+                    setValue("city", "");
                   }}
                   options={countries}
                   placeholder={t("placeholder.noneSelected")}

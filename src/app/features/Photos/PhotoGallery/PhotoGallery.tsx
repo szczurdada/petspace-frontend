@@ -5,13 +5,14 @@ import styles from "./PhotoGallery.module.scss";
 import Image from "next/image";
 import { useState } from "react";
 import { Modal } from "@/app/uikit/Modal/Modal";
-import { AvatarUpload } from "@/app/uikit/AvatarUpload/AvatarUpload";
+import { AvatarUploadModal } from "@/app/features/Profile/AvatarUploadModal/AvatarUploadModal";
 import axios from "axios";
 import { Photo } from "@/types";
 import { useTranslations } from "next-intl";
 import { PhotoModal } from "../PhotoModal/PhotoModal";
 import { CLOUD_NAME, API_URL } from "@/config/env";
 import { toast } from "react-toastify";
+import { usePhotoNavigation } from "@/app/hooks/usePhotoNavigation";
 
 interface PhotoGalleryProps {
   photos: Photo[];
@@ -21,9 +22,11 @@ export const PhotoGallery = ({ photos }: PhotoGalleryProps) => {
   const t = useTranslations();
 
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedPhoto, setSelectedPhoto] = useState<Photo | null>(null);
   const [file, setFile] = useState<File | null>(null);
   const [localPhotos, setLocalPhotos] = useState<Photo[]>(photos);
+
+  const { selectedIndex, setSelectedIndex, handlePrev, handleNext } =
+    usePhotoNavigation(localPhotos);
 
   const addPhoto = async () => {
     try {
@@ -57,10 +60,10 @@ export const PhotoGallery = ({ photos }: PhotoGalleryProps) => {
       </div>
 
       <div className={styles.gallery}>
-        {localPhotos.map((photo) => (
+        {localPhotos.map((photo, index) => (
           <div key={photo._id} className={styles.photo}>
             <Image
-              onClick={() => setSelectedPhoto(photo)}
+              onClick={() => setSelectedIndex(index)}
               src={`https://res.cloudinary.com/${CLOUD_NAME}/image/upload/${photo.publicId}`}
               alt="Photo"
               fill
@@ -70,14 +73,16 @@ export const PhotoGallery = ({ photos }: PhotoGalleryProps) => {
       </div>
 
       <PhotoModal
-        photo={selectedPhoto}
+        photo={selectedIndex !== null ? localPhotos[selectedIndex] : null}
         cloudName={CLOUD_NAME}
-        onClose={() => setSelectedPhoto(null)}
+        onClose={() => setSelectedIndex(null)}
+        onPrev={handlePrev}
+        onNext={handleNext}
       />
 
       <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
         <h3 className={styles.modalTitle}>{t("photoGallery.addPhoto")}</h3>
-        <AvatarUpload onChange={setFile} size={140} />
+        <AvatarUploadModal onChange={setFile} size={140} />
         <Button appearance="primary" onClick={addPhoto}>
           {t("common.upload")}
         </Button>

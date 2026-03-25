@@ -3,29 +3,51 @@ import Image from "next/image";
 import styles from "./PhotoModal.module.scss";
 import { Photo } from "@/types";
 import { Button } from "@/app/uikit/Button/Button";
-import { FaComment, FaHeart, FaReply } from "react-icons/fa";
+import {
+  FaAngleLeft,
+  FaAngleRight,
+  FaComment,
+  FaHeart,
+  FaReply,
+} from "react-icons/fa";
 import { useTranslations } from "next-intl";
 
 interface PhotoModalProps {
   photo: Photo | null;
   cloudName: string | undefined;
   onClose: () => void;
+  onPrev?: () => void;
+  onNext?: () => void;
 }
 
-export const PhotoModal = ({ photo, cloudName, onClose }: PhotoModalProps) => {
+export const PhotoModal = ({
+  photo,
+  cloudName,
+  onClose,
+  onPrev,
+  onNext,
+}: PhotoModalProps) => {
   const t = useTranslations();
 
   return (
-    <Modal isOpen={photo !== null} onClose={onClose}>
+    <Modal isOpen={photo !== null} onClose={onClose} className={styles.modal}>
       {photo && (
         <div className={styles.container}>
-          <div className={styles.photo}>
-            <Image
-              src={`https://res.cloudinary.com/${cloudName}/image/upload/${photo.publicId}`}
-              alt="Photo"
-              fill
-              style={{ objectFit: "contain" }}
-            />
+          <div className={styles.photoWrapper}>
+            <Button className={styles.arrow} appearance="ghost" onClick={onPrev}>
+              <FaAngleLeft size={40} />
+            </Button>
+            <div className={styles.photo}>
+              <Image
+                src={`https://res.cloudinary.com/${cloudName}/image/upload/${photo.publicId}`}
+                alt="Photo"
+                fill
+                style={{ objectFit: "contain" }}
+              />
+            </div>
+            <Button className={styles.arrow} appearance="ghost" onClick={onNext}>
+              <FaAngleRight size={40} />
+            </Button>
           </div>
           <div className={styles.footer}>
             <div className={styles.stats}>

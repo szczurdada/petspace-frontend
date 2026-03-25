@@ -7,14 +7,15 @@ interface ButtonProps extends DetailedHTMLProps<
   HTMLButtonElement
 > {
   appearance: "primary" | "secondary" | "third" | "ghost";
+  className?: string;
 }
 
-export const Button = ({ appearance, children, ...rest }: ButtonProps) => {
+export const Button = ({ appearance, className, children, ...rest }: ButtonProps) => {
   return (
     <button
       type="button"
       {...rest}
-      className={cn(styles.default, {
+      className={cn(styles.default, className, {
         [styles.primary]: appearance === "primary",
         [styles.secondary]: appearance === "secondary",
         [styles.third]: appearance === "third",

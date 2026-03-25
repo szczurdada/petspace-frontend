@@ -46,7 +46,7 @@ export const ProfileBanner = ({
   bio,
   interests,
   friendsCount = 0,
-  photosCount = 0,
+  photosCount,
 }: ProfileBannerProps) => {
   const t = useTranslations();
   const router = useRouter();
@@ -68,12 +68,12 @@ export const ProfileBanner = ({
             <div className={styles.username}>@{username} </div>
           </div>
           <div className={styles.details}>
-            {city && 
+            {city && (
               <div className={styles.city}>
                 <MdPlace size={20} className={styles.detailsIcon} />
                 {city}
               </div>
-            }
+            )}
             <div
               className={styles.moreInfo}
               onClick={() => setIsInfoOpen(true)}
@@ -82,9 +82,8 @@ export const ProfileBanner = ({
             </div>
           </div>
         </div>
-        {bio && (<div className={styles.bio}>{bio}</div>)}
-        <div className={styles.divider}>
-        </div>
+        {bio && <div className={styles.bio}>{bio}</div>}
+        <div className={styles.divider}></div>
         <div className={styles.stats}>
           <div className={styles.stat}>
             <Link href={ROUTES.friends} appearance="secondary">
