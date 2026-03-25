@@ -28,6 +28,7 @@ const ProfilePage = async ({ params }: ProfilePageProps) => {
           city: userData.city,
           bio: userData.bio,
           interests: userData.interests,
+          photos: userData.photos,
         }}
       />
     </>

@@ -11,21 +11,25 @@ import defaultAvatar from "@/public/avatars/default.png";
 import { Avatar } from "../Avatar/Avatar";
 import { useState } from "react";
 import { Modal } from "../Modal/Modal";
-import { AvatarUpload } from "../AvatarUpload/AvatarUpload";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { API_URL } from "@/config/env";
+import { API_URL, CLOUD_NAME } from "@/config/env";
+import { AvatarUploadModal } from "@/app/features/Profile/AvatarUploadModal/AvatarUploadModal";
+import { PhotoModal } from "@/app/features/Photos/PhotoModal/PhotoModal";
+import { Photo } from "@/types";
 
 interface AvatarEditProps {
+  photo?: Photo;
   src?: string | StaticImageData;
   size?: number;
 }
 
-export const AvatarEdit = ({ src, size }: AvatarEditProps) => {
+export const AvatarEdit = ({ photo, src, size }: AvatarEditProps) => {
   const t = useTranslations();
   const [file, setFile] = useState<File | null>(null);
   const [isChangeOpen, setIsChangeOpen] = useState(false);
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
+  const [isPhotoOpen, setisPhotoOpen] = useState(false);
   const [avatarUrl, setAvatarUrl] = useState<string | undefined>(src as string);
 
   const savePhoto = async () => {
@@ -54,7 +58,7 @@ export const AvatarEdit = ({ src, size }: AvatarEditProps) => {
         <Avatar src={avatarUrl ?? defaultAvatar} size={size} />
       </div>
       <div className={styles.overlay}>
-        <Button appearance="secondary">
+        <Button appearance="secondary" onClick={() => setisPhotoOpen(true)}>
           <MdPhotoCamera size={20} />
           {t("avatarEdit.open")}
         </Button>
@@ -68,6 +72,12 @@ export const AvatarEdit = ({ src, size }: AvatarEditProps) => {
         </Button>
       </div>
 
+      <PhotoModal
+        photo={isPhotoOpen && photo ? photo : null}
+        cloudName={CLOUD_NAME}
+        onClose={() => setisPhotoOpen(false)}
+      ></PhotoModal>
+
       <Modal isOpen={isChangeOpen} onClose={() => setIsChangeOpen(false)}>
         <h3 className={styles.title}>{t("avatarEdit.modalTitle")}</h3>
         <p className={styles.description}>
@@ -76,7 +86,7 @@ export const AvatarEdit = ({ src, size }: AvatarEditProps) => {
           {t("avatarEdit.modalFormats")}
         </p>
         <div className={styles.upload}>
-          <AvatarUpload onChange={setFile} />
+          <AvatarUploadModal onChange={setFile} />
         </div>
         <div className={styles.action}>
           <Button appearance="primary" onClick={savePhoto}>

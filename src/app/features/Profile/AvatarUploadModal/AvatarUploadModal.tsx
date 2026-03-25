@@ -2,16 +2,19 @@
 
 import { useDropzone } from "react-dropzone";
 import { useState } from "react";
-import { Avatar } from "../Avatar/Avatar";
+import { Avatar } from "../../../uikit/Avatar/Avatar";
 import { MdPhotoCamera } from "react-icons/md";
-import styles from "./AvatarUpload.module.scss";
+import styles from "./AvatarUploadModal.module.scss";
 
-interface AvatarUploadProps {
+interface AvatarUploadModalProps {
   size?: number;
   onChange?: (file: File) => void;
 }
 
-export const AvatarUpload = ({ size = 120, onChange }: AvatarUploadProps) => {
+export const AvatarUploadModal = ({
+  size = 120,
+  onChange,
+}: AvatarUploadModalProps) => {
   const [preview, setPreview] = useState<string>();
   const { getRootProps, getInputProps } = useDropzone({
     accept: {

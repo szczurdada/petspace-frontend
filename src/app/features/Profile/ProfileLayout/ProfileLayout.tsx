@@ -5,7 +5,6 @@ import { ProfileFriends } from "../ProfileFriends/ProfileFriends";
 import { PostCreator } from "../../../features/Profile/PostCreator/PostCreator";
 import { ProfileBanner } from "../../../features/Profile/ProfileBanner/ProfileBanner";
 import styles from "./ProfileLayout.module.scss";
-import { MOCK_PHOTOS } from "@/app/uikit/constants/profile";
 import { Sidebar } from "@/app/components/Sidebar/Sidebar";
 import { ProfilePhotos } from "../ProfilePhotos/ProfilePhotos";
 import Avatar from "@/public/avatar.jpg";
@@ -14,6 +13,7 @@ import postImage from "@/public/postImage.jpg";
 import dayjs from "dayjs";
 import { Post } from "@/app/components/Post/Post";
 import { StaticImageData } from "next/image";
+import { Photo } from "@/types";
 
 const posts: Post[] = [
   {
@@ -57,6 +57,7 @@ interface ProfileLayoutProps {
       guiltyHabits?: string;
       humans?: string;
     };
+    photos?: Photo[];
   };
 }
 
@@ -67,14 +68,20 @@ export const ProfileLayout = ({ bannerInfo }: ProfileLayoutProps) => {
         <Sidebar username={bannerInfo.username} />
       </div>
       <div className={styles.profileBanner}>
-        <ProfileBanner {...bannerInfo} />
+        <ProfileBanner
+          {...bannerInfo}
+          photosCount={bannerInfo.photos?.length ?? 0}
+        />
       </div>
       <div className={styles.feedContainer}>
         <PostCreator username={bannerInfo.username} />
         <Feed posts={posts} />
       </div>
       <div className={styles.photos}>
-        <ProfilePhotos username={bannerInfo.username} photos={MOCK_PHOTOS} />
+        <ProfilePhotos
+          username={bannerInfo.username}
+          photos={bannerInfo.photos ?? []}
+        />
       </div>
       <div className={styles.friends}>
         <ProfileFriends />
