@@ -21,7 +21,7 @@ export const ProfileFriends = ({ username, friends }: ProfileFriendsProps) => {
       <div className={styles.friends}>
         {friends.slice(0, 3).map((friend) => (
           <div key={friend.id} className={styles.friend}>
-            <Avatar src={friend.avatar} size={38}></Avatar>
+            <Avatar src={friend.avatar} isOnline={friend.isOnline}></Avatar>
             <div className={styles.info}>
               <div className={styles.name}>{friend.name}</div>
               <div className={styles.breed}>{friend.breed}</div>
