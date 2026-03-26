@@ -86,7 +86,7 @@ export const ProfileBanner = ({
         <div className={styles.divider}></div>
         <div className={styles.stats}>
           <div className={styles.stat}>
-            <Link href={ROUTES.friends} appearance="secondary">
+            <Link href={ROUTES.friends(username)} appearance="secondary">
               <FaPaw size={18} />
               <span className={styles.statValue}>{friendsCount}</span>
               <span className={styles.statLabel}>

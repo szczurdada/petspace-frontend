@@ -9,7 +9,7 @@ export const ROUTES = {
   editInterests: (username: string) => `/${username}/interests`,
   about: "/about",
   feed: "/feed",
-  friends: "/friends",
+  friends: (username: string) => `/${username}/friends`,
   photos: (username: string) => `/${username}/photos`,
   favorites: "/favorites",
   places: "/places",
