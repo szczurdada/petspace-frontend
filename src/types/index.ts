@@ -7,6 +7,7 @@ export interface User {
   avatar?: string | StaticImageData;
   city?: string;
   breed?: string;
+  isOnline?: boolean;
 }
 
 export type Friend = User;

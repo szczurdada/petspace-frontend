@@ -39,6 +39,7 @@ export const MOCK_FRIENDS: Friend[] = [
     name: "Barney",
     username: "fff",
     breed: "Affenpinscher",
+    isOnline: true,
   },
   {
     id: "13",
@@ -46,6 +47,7 @@ export const MOCK_FRIENDS: Friend[] = [
     name: "Bob",
     username: "fddff",
     breed: "Dachshund",
+    isOnline: true,
   },
   {
     id: "16",
@@ -53,6 +55,7 @@ export const MOCK_FRIENDS: Friend[] = [
     name: "Tom",
     username: "ffddf",
     breed: "Dachshund",
+    isOnline: false,
   },
 ];
 

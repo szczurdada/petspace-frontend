@@ -1,10 +1,22 @@
 .avatar {
   position: relative;
   border-radius: var(--radius-full);
-  overflow: hidden;
+  overflow: visible;
   background: var(--button-ghost-hover);
 
   .image {
     object-fit: cover;
+    border-radius: var(--radius-full);
   }
+}
+
+.online {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 8px;
+  height: 8px;
+  background: var(--color-online);
+  border-radius: var(--radius-full);
+  border: 1px solid var(--bg-card);
 }

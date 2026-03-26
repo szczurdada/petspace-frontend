@@ -5,12 +5,14 @@ import defaultAvatar from "@/public/avatars/default.png";
 interface AvatarProps {
   src?: string | StaticImageData;
   size?: number;
+  isOnline?: boolean;
 }
 
-export const Avatar = ({ src, size = 40 }: AvatarProps) => {
+export const Avatar = ({ src, size = 40, isOnline }: AvatarProps) => {
   return (
     <div className={styles.avatar} style={{ width: size, height: size }}>
       <Image src={src ?? defaultAvatar} fill alt="Avatar" className={styles.image} />
+      {isOnline && <span className={styles.online} />}
     </div>
   );
 };
