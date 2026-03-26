@@ -1,22 +1,12 @@
 import { Avatar } from "@/app/uikit/Avatar/Avatar";
 import styles from "./Post.module.scss";
-import Image, { StaticImageData } from "next/image";
-import { FaComment, FaHeart, FaReply} from "react-icons/fa";
-
-export interface Post {
-  id: string;
-  avatar: string | StaticImageData;
-  username: string;
-  time: string;
-  text?: string;
-  img?: string | StaticImageData;
-  likes: number;
-  comments: number;
-  reposts: number;
-}
+import Image from "next/image";
+import { FaComment, FaHeart, FaReply } from "react-icons/fa";
+import { Post as PostType } from "@/types";
+import dayjs from "dayjs";
 
 export interface PostProps {
-  post: Post;
+  post: PostType;
 }
 
 export const Post = ({ post }: PostProps) => {
@@ -24,19 +14,22 @@ export const Post = ({ post }: PostProps) => {
     <div>
       <div className={styles.wrapper}>
         <div className={styles.avatarWrapper}>
-          <Avatar src={post.avatar} />
+          <Avatar src={post.author.avatar} />
         </div>
         <div className={styles.info}>
-          <div className={styles.username}>{post.username}</div>
-          <div className={styles.time}>{post.time}</div>
+          <div className={styles.name}>{post.author.name}</div>
+          <div className={styles.time}>
+            {" "}
+            {dayjs(post.createdAt).format("DD.MM.YYYY")}
+          </div>
         </div>
       </div>
       <div className={styles.contentWrapper}>
-        <div className={styles.content}>{post.text}</div>
-        {post.img && (
+        <div className={styles.content}>{post.content}</div>
+        {post.image && (
           <div className={styles.mediaContent}>
             <Image
-              src={post.img}
+              src={post.image}
               alt="Post image"
               width={"100%"}
               height={400}

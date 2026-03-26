@@ -21,7 +21,7 @@ export const ProfilePhotos = ({ photos, username }: ProfilePhotosProps) => {
   return (
     <div className={styles.container}>
       <Link href={ROUTES.photos(username)} className={styles.titleLink}>
-        <h3 className={styles.title}>{t("profilePhotos.photos")}</h3>
+        <h3 className={styles.title}>{t("profilePhotos.title")}</h3>
       </Link>
       <div className={styles.gallery}>
         {photos.slice(0, 6).map((photo, index) => (

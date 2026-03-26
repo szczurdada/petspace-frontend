@@ -85,6 +85,10 @@
     "modalTitle": "Moje info",
     "modalInterests": "Zainteresowania"
   },
+  "profileFriends": {
+    "title": "Znajomi",
+    "showFriends": "Pokaż wszystkich znajomych"
+  },
   "profileInfoModal": {
     "title": "Moje informacje",
     "interestsTitle": "Moje zainteresowania"
@@ -94,7 +98,7 @@
     "makeProfilePhoto": "Ustaw jako zdjęcie profilowe"
   },
   "profilePhotos": {
-    "photos": "Zdjęcia"
+    "title": "Zdjęcia"
   },
   "postCreator": {
     "photo": "Zdjęcie",

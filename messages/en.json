@@ -85,6 +85,10 @@
     "modalTitle": "My info", 
     "modalInterests": "Interests"
   },
+  "profileFriends": {
+    "title": "Friends",
+    "showFriends": "Show all friends"
+  },
   "profileInfoModal": {
     "title": "My info",
     "interestsTitle": "My interests"
@@ -94,7 +98,7 @@
     "makeProfilePhoto": "Make profile photo"
   },
   "profilePhotos": {
-    "photos": "Photos"
+    "title": "Photos"
   },
   "photoGallery": {
     "title": "My photos",

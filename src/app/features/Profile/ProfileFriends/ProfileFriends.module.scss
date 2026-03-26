@@ -1,0 +1,71 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-m);
+  background: var(--bg-card);
+  padding: var(--padding-xl);
+  border-radius: var(--radius-m);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.titleLink {
+  color: var(--color-primary);
+  width: fit-content;
+  text-decoration: none;
+}
+
+.title {
+  margin: 0;
+  font-size: var(--font-l);
+  font-weight: 700;
+}
+
+.friends {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-s);
+}
+
+.friend {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-s);
+  cursor: pointer;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.name {
+  font-weight: 500;
+  font-size: var(--font-base);
+}
+
+.breed {
+  font-size: var(--font-m);
+  color: var(--text-secondary);
+  font-size: var(--font-s);
+}
+
+.action {
+  border-top: 1px solid var(--border-color);
+  padding-top: var(--gap-s);
+}
+
+.showFriends {
+  width: 100%;
+  background: transparent;
+  border: none;
+  font-size: var(--font-m);
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.2s;
+
+  &:hover {
+    color: var(--color-primary);
+  }
+}

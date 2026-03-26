@@ -7,58 +7,11 @@ import { ProfileBanner } from "../../../features/Profile/ProfileBanner/ProfileBa
 import styles from "./ProfileLayout.module.scss";
 import { Sidebar } from "@/app/components/Sidebar/Sidebar";
 import { ProfilePhotos } from "../ProfilePhotos/ProfilePhotos";
-import Avatar from "@/public/avatar.jpg";
-import Avatar2 from "@/public/avatar2.jpg";
-import postImage from "@/public/postImage.jpg";
-import dayjs from "dayjs";
-import { Post } from "@/app/components/Post/Post";
-import { StaticImageData } from "next/image";
-import { Photo } from "@/types";
-
-const posts: Post[] = [
-  {
-    id: "1",
-    avatar: Avatar,
-    username: "Vova",
-    time: dayjs().format("DD.MM.YYYY"),
-    text: "I hate Natasha",
-    likes: 2174,
-    comments: 5,
-    reposts: 1,
-  },
-  {
-    id: "2",
-    avatar: Avatar2,
-    username: "Natasha",
-    time: dayjs().add(-5, "day").format("DD.MM.YYYY"),
-    text: "I lova Vova",
-    img: postImage,
-    likes: 10,
-    comments: 2,
-    reposts: 4,
-  },
-];
+import { BannerInfo} from "@/types";
+import { MOCK_FRIENDS, MOCK_POSTS } from "@/app/uikit/constants/profile";
 
 interface ProfileLayoutProps {
-  bannerInfo: {
-    username: string;
-    name: string;
-    avatar?: string | StaticImageData;
-    breed?: string;
-    birthDate?: number;
-    gender?: string;
-    city?: string;
-    bio?: string;
-    interests?: {
-      favoriteToys?: string;
-      favoriteTreats?: string;
-      favoriteActivities?: string;
-      crimes?: string;
-      guiltyHabits?: string;
-      humans?: string;
-    };
-    photos?: Photo[];
-  };
+  bannerInfo: BannerInfo;
 }
 
 export const ProfileLayout = ({ bannerInfo }: ProfileLayoutProps) => {
@@ -75,16 +28,21 @@ export const ProfileLayout = ({ bannerInfo }: ProfileLayoutProps) => {
       </div>
       <div className={styles.feedContainer}>
         <PostCreator username={bannerInfo.username} />
-        <Feed posts={posts} />
+        <Feed posts={MOCK_POSTS} />
       </div>
-      <div className={styles.photos}>
-        <ProfilePhotos
-          username={bannerInfo.username}
-          photos={bannerInfo.photos ?? []}
-        />
-      </div>
-      <div className={styles.friends}>
-        <ProfileFriends />
+      <div className={styles.rightColumn}>
+        <div className={styles.photos}>
+          <ProfilePhotos
+            username={bannerInfo.username}
+            photos={bannerInfo.photos ?? []}
+          />
+        </div>
+        <div className={styles.friends}>
+          <ProfileFriends
+            username={bannerInfo.username}
+            friends={bannerInfo.friends ?? MOCK_FRIENDS}
+          />
+        </div>
       </div>
     </div>
   );
