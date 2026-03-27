@@ -11,9 +11,10 @@ import { StaticImageData } from "next/image";
 interface PostCreatorProps {
   avatar?: string | StaticImageData;
   username: string;
+  name: string;
 }
 
-export const PostCreator = ({avatar, username}: PostCreatorProps) => {
+export const PostCreator = ({avatar, username, name}: PostCreatorProps) => {
   const t = useTranslations();
 
   return (
@@ -23,7 +24,7 @@ export const PostCreator = ({avatar, username}: PostCreatorProps) => {
           <Avatar src={avatar} />
         </div>
         <div className={styles.inputWrapper}>
-          <Input appearance="primary" placeholder={t("postCreator.placeholder")} />
+          <Input appearance="primary" placeholder={t("postCreator.placeholder") + name + "?"} />
         </div>
       </div>
       <div className={styles.actions}>

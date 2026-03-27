@@ -95,7 +95,8 @@
   },
   "photoModal":{
     "delete": "Usuń",
-    "makeProfilePhoto": "Ustaw jako zdjęcie profilowe"
+    "makeProfilePhoto": "Ustaw jako zdjęcie profilowe",
+    "counter": "Zdjęcia {current} z {total}"
   },
   "profilePhotos": {
     "title": "Zdjęcia"
@@ -104,7 +105,7 @@
     "photo": "Zdjęcie",
     "place": "Miejsce",
     "publish": "Opublikuj post",
-    "placeholder": "Podziel się czymś..."
+    "placeholder": "Co nowego, "
   },
   "photoGallery": {
     "title": "Moje zdjęcia",

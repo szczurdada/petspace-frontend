@@ -15,6 +15,7 @@ export type Friend = User;
 export interface Photo {
   id: string;
   publicId: string;
+  createdAt: string;
   likes?: number;
   comments?: number;
   reposts?: number;

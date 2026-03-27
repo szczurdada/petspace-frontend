@@ -14,6 +14,8 @@ import { useTranslations } from "next-intl";
 
 interface PhotoModalProps {
   photo: Photo | null;
+  photosCount: number;
+  currentIndex: number;
   cloudName: string | undefined;
   onClose: () => void;
   onPrev?: () => void;
@@ -22,6 +24,8 @@ interface PhotoModalProps {
 
 export const PhotoModal = ({
   photo,
+  photosCount,
+  currentIndex,
   cloudName,
   onClose,
   onPrev,
@@ -34,7 +38,11 @@ export const PhotoModal = ({
       {photo && (
         <div className={styles.container}>
           <div className={styles.photoWrapper}>
-            <Button className={styles.arrow} appearance="ghost" onClick={onPrev}>
+            <Button
+              className={styles.arrow}
+              appearance="ghost"
+              onClick={onPrev}
+            >
               <FaAngleLeft size={40} />
             </Button>
             <div className={styles.photo}>
@@ -45,7 +53,11 @@ export const PhotoModal = ({
                 style={{ objectFit: "contain" }}
               />
             </div>
-            <Button className={styles.arrow} appearance="ghost" onClick={onNext}>
+            <Button
+              className={styles.arrow}
+              appearance="ghost"
+              onClick={onNext}
+            >
               <FaAngleRight size={40} />
             </Button>
           </div>
@@ -60,8 +72,29 @@ export const PhotoModal = ({
               <div className={styles.stat}>
                 <FaReply size={18} />
               </div>
+              <div className={styles.createdAt}>
+                {photo.createdAt
+                  ? new Date(photo.createdAt).toLocaleDateString("en-US", {
+                      day: "numeric",
+                      month: "short",
+                    }) +
+                    " at " +
+                    new Date(photo.createdAt).toLocaleTimeString("en-US", {
+                      hour: "numeric",
+                      minute: "2-digit",
+                      hour12: true,
+                    })
+                  : ""}
+              </div>
             </div>
             <div className={styles.actions}>
+              <Button appearance="ghost">
+                {t("photoModal.counter", {
+                  current: currentIndex + 1,
+                  total: photosCount,
+                })}
+              </Button>
+
               <Button appearance="ghost">{t("photoModal.delete")}</Button>
               <Button appearance="ghost">
                 {t("photoModal.makeProfilePhoto")}

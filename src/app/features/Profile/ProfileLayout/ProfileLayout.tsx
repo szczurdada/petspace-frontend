@@ -7,7 +7,7 @@ import { ProfileBanner } from "../../../features/Profile/ProfileBanner/ProfileBa
 import styles from "./ProfileLayout.module.scss";
 import { Sidebar } from "@/app/components/Sidebar/Sidebar";
 import { ProfilePhotos } from "../ProfilePhotos/ProfilePhotos";
-import { BannerInfo} from "@/types";
+import { BannerInfo } from "@/types";
 import { MOCK_FRIENDS, MOCK_POSTS } from "@/app/uikit/constants/profile";
 
 interface ProfileLayoutProps {
@@ -27,7 +27,7 @@ export const ProfileLayout = ({ bannerInfo }: ProfileLayoutProps) => {
         />
       </div>
       <div className={styles.feedContainer}>
-        <PostCreator username={bannerInfo.username} />
+        <PostCreator username={bannerInfo.username} name={bannerInfo.name} />
         <Feed posts={MOCK_POSTS} />
       </div>
       <div className={styles.rightColumn}>

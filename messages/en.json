@@ -95,7 +95,8 @@
   },
   "photoModal":{
     "delete": "Delete",
-    "makeProfilePhoto": "Make profile photo"
+    "makeProfilePhoto": "Make profile photo", 
+    "counter": "Photos {current} of {total}"
   },
   "profilePhotos": {
     "title": "Photos"
@@ -108,7 +109,7 @@
     "photo": "Photo",
     "place": "Place",
     "publish": "Add post",
-    "placeholder": "Share something..."
+    "placeholder": "What's new, "
   },
   "profileEditor": {
     "title": "Edit profile",
