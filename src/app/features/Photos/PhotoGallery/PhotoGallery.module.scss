@@ -8,8 +8,19 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
+.titleWrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-xs);
+}
+
 .title {
   margin: 0;
+}
+
+.photosCount {
+  color: var(--text-secondary);
+  font-size: var(--font-m);
 }
 
 .galleryHeader {

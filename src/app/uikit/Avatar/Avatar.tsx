@@ -8,7 +8,7 @@ interface AvatarProps {
   isOnline?: boolean;
 }
 
-export const Avatar = ({ src, size = 40, isOnline }: AvatarProps) => {
+export const Avatar = ({ src, size = 45, isOnline }: AvatarProps) => {
   return (
     <div className={styles.avatar} style={{ width: size, height: size }}>
       <Image src={src ?? defaultAvatar} fill alt="Avatar" className={styles.image} />

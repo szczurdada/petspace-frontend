@@ -41,7 +41,11 @@ export const PhotoGallery = ({ photos }: PhotoGalleryProps) => {
       );
       setLocalPhotos((prev) => [
         ...prev,
-        { _id: data.data._id, publicId: data.data.public_id },
+        {
+          id: data.data._id,
+          publicId: data.data.public_id,
+          createdAt: data.data.createdAt,
+        },
       ]);
       setIsOpen(false);
       setFile(null);
@@ -53,7 +57,11 @@ export const PhotoGallery = ({ photos }: PhotoGalleryProps) => {
   return (
     <div className={styles.container}>
       <div className={styles.galleryHeader}>
-        <h3 className={styles.title}>{t("photoGallery.title")}</h3>
+        <div className={styles.titleWrapper}>
+          <h3 className={styles.title}>{t("photoGallery.title")}</h3>
+          <div className={styles.photosCount}>{localPhotos.length}</div>
+        </div>
+
         <Button appearance="primary" onClick={() => setIsOpen(true)}>
           {t("photoGallery.addPhoto")}
         </Button>
@@ -61,7 +69,7 @@ export const PhotoGallery = ({ photos }: PhotoGalleryProps) => {
 
       <div className={styles.gallery}>
         {localPhotos.map((photo, index) => (
-          <div key={photo._id} className={styles.photo}>
+          <div key={photo.publicId} className={styles.photo}>
             <Image
               onClick={() => setSelectedIndex(index)}
               src={`https://res.cloudinary.com/${CLOUD_NAME}/image/upload/${photo.publicId}`}
@@ -75,6 +83,8 @@ export const PhotoGallery = ({ photos }: PhotoGalleryProps) => {
       <PhotoModal
         photo={selectedIndex !== null ? localPhotos[selectedIndex] : null}
         cloudName={CLOUD_NAME}
+        currentIndex={selectedIndex ?? 0}
+        photosCount={localPhotos.length}
         onClose={() => setSelectedIndex(null)}
         onPrev={handlePrev}
         onNext={handleNext}

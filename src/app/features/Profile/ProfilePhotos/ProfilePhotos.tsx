@@ -37,6 +37,8 @@ export const ProfilePhotos = ({ photos, username }: ProfilePhotosProps) => {
         <PhotoModal
           photo={selectedIndex !== null ? photos[selectedIndex] : null}
           cloudName={CLOUD_NAME}
+          currentIndex={selectedIndex ?? 0}
+          photosCount={photos.length}
           onClose={() => setSelectedIndex(null)}
           onPrev={handlePrev}
           onNext={handleNext}
