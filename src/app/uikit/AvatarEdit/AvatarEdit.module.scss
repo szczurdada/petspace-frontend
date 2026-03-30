@@ -49,18 +49,32 @@
 }
 
 .title {
-  margin: 0 0 var(--gap-xs) 0;
+  margin: 0 0 var(--gap-s) 0;
 }
+
 .description {
   font-size: var(--font-m);
   text-align: center;
-  margin: 0;
-  padding: var(--padding-s);
+  margin: 0 0 var(--gap-xs) 0;
+}
+
+.deleteDescription {
+  font-size: var(--font-m);
+  text-align: center;
+  margin: var(--gap-xs) 0 0;
 }
 
 .upload {
   display: flex;
   justify-content: center;
+  margin: var(--gap-xs) 0;
+}
+
+.hint {
+  font-size: var(--font-s);
+  color: var(--text-tertiary);
+  margin: 0;
+  text-align: center;
 }
 
 .action {

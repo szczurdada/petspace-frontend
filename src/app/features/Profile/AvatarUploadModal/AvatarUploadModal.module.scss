@@ -3,6 +3,10 @@
   cursor: pointer;
   border-radius: var(--radius-full);
   overflow: hidden;
+
+  &:hover .overlay {
+    opacity: 1;
+  }
 }
 
 .overlay {
@@ -14,4 +18,6 @@
   background: rgba(0, 0, 0, 0.35);
   color: white;
   border-radius: var(--radius-full);
+  opacity: 0;
+  transition: opacity 0.2s ease;
 }

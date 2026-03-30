@@ -80,14 +80,12 @@ export const AvatarEdit = ({ photo, src, size }: AvatarEditProps) => {
 
       <Modal isOpen={isChangeOpen} onClose={() => setIsChangeOpen(false)}>
         <h3 className={styles.title}>{t("avatarEdit.modalTitle")}</h3>
-        <p className={styles.description}>
-          {t("avatarEdit.modalDescription")}
-          <br />
-          {t("avatarEdit.modalFormats")}
-        </p>
+        <p className={styles.description}>{t("avatarEdit.modalDescription")}</p>
+        <p className={styles.hint}>{t("avatarEdit.modalFormats")}</p>
         <div className={styles.upload}>
           <AvatarUploadModal onChange={setFile} />
         </div>
+        <p className={styles.hint}>{t("avatarEdit.choosePhoto")}</p>
         <div className={styles.action}>
           <Button appearance="primary" onClick={savePhoto}>
             {t("common.saveAndContinue")}
@@ -97,7 +95,7 @@ export const AvatarEdit = ({ photo, src, size }: AvatarEditProps) => {
 
       <Modal isOpen={isDeleteOpen} onClose={() => setIsDeleteOpen(false)}>
         <h3 className={styles.title}>{t("avatarEdit.deleteModalTitle")}</h3>
-        <p className={styles.description}>
+        <p className={styles.deleteDescription}>
           {t("avatarEdit.deleteModalDescription")}
         </p>
         <div className={styles.action}>
