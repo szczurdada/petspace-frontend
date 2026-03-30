@@ -139,7 +139,8 @@
     "delete": "Delete photo",
     "modalTitle": "Upload new photo",
     "modalDescription": "Show the pack who you are!",
-    "modalFormats": "Supported formats: JPG, PNG, GIF, WEBP.",
+    "modalFormats": "JPG, PNG, GIF, WEBP",
+    "choosePhoto": "Click to choose a photo",
     "deleteModalTitle": "Delete photo",
     "deleteModalDescription": "Are you sure you want to delete your photo?"
   },

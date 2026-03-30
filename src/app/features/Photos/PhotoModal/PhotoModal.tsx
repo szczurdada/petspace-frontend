@@ -14,8 +14,8 @@ import { useTranslations } from "next-intl";
 
 interface PhotoModalProps {
   photo: Photo | null;
-  photosCount: number;
-  currentIndex: number;
+  photosCount?: number;
+  currentIndex?: number;
   cloudName: string | undefined;
   onClose: () => void;
   onPrev?: () => void;
@@ -36,7 +36,18 @@ export const PhotoModal = ({
   return (
     <Modal isOpen={photo !== null} onClose={onClose} className={styles.modal}>
       {photo && (
-        <div className={styles.container}>
+        <div
+          className={styles.container}
+          onKeyDown={(e) => {
+            if (e.key === "ArrowLeft") onPrev?.();
+            if (e.key === "ArrowRight") onNext?.();
+          }}
+          tabIndex={0}
+          autoFocus
+        >
+          <Button appearance="ghost" className={styles.button}>
+            {(currentIndex ?? 0) + 1} / {photosCount}
+          </Button>
           <div className={styles.photoWrapper}>
             <Button
               className={styles.arrow}
@@ -63,42 +74,35 @@ export const PhotoModal = ({
           </div>
           <div className={styles.footer}>
             <div className={styles.stats}>
-              <div className={styles.stat}>
+              <Button appearance="ghost" className={styles.stat}>
                 <FaHeart size={16} />
-              </div>
-              <div className={styles.stat}>
+              </Button>
+              <Button appearance="ghost" className={styles.stat}>
                 <FaComment size={16} />
-              </div>
-              <div className={styles.stat}>
+              </Button>
+              <Button appearance="ghost" className={styles.stat}>
                 <FaReply size={18} />
-              </div>
+              </Button>
               <div className={styles.createdAt}>
                 {photo.createdAt
                   ? new Date(photo.createdAt).toLocaleDateString("en-US", {
                       day: "numeric",
                       month: "short",
                     }) +
-                    " at " +
+                    " · " +
                     new Date(photo.createdAt).toLocaleTimeString("en-US", {
                       hour: "numeric",
                       minute: "2-digit",
-                      hour12: true,
+                      hour12: false,
                     })
                   : ""}
               </div>
             </div>
             <div className={styles.actions}>
               <Button appearance="ghost">
-                {t("photoModal.counter", {
-                  current: currentIndex + 1,
-                  total: photosCount,
-                })}
-              </Button>
-
-              <Button appearance="ghost">{t("photoModal.delete")}</Button>
-              <Button appearance="ghost">
                 {t("photoModal.makeProfilePhoto")}
               </Button>
+              <Button appearance="ghost">{t("photoModal.delete")}</Button>
             </div>
           </div>
         </div>

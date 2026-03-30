@@ -13,6 +13,8 @@ interface ProfilePhotosProps {
   username: string;
 }
 
+const MAX_VISIBLE_PHOTOS = 6;
+
 export const ProfilePhotos = ({ photos, username }: ProfilePhotosProps) => {
   const t = useTranslations();
   const { selectedIndex, setSelectedIndex, handlePrev, handleNext } =
@@ -24,7 +26,7 @@ export const ProfilePhotos = ({ photos, username }: ProfilePhotosProps) => {
         <h3 className={styles.title}>{t("profilePhotos.title")}</h3>
       </Link>
       <div className={styles.gallery}>
-        {photos.slice(0, 6).map((photo, index) => (
+        {photos.slice(0, MAX_VISIBLE_PHOTOS).map((photo, index) => (
           <div key={photo.publicId} className={styles.photo}>
             <Image
               onClick={() => setSelectedIndex(index)}
