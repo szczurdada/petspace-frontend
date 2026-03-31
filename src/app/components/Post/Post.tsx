@@ -19,7 +19,6 @@ export const Post = ({ post }: PostProps) => {
         <div className={styles.info}>
           <div className={styles.name}>{post.author.name}</div>
           <div className={styles.time}>
-            {" "}
             {dayjs(post.createdAt).format("DD.MM.YYYY")}
           </div>
         </div>
