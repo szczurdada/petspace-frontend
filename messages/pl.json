@@ -111,6 +111,11 @@
     "title": "Moje zdjęcia",
     "addPhoto": "Dodaj zdjęcie"
   },
+  "photoUploadModal": {
+    "addPhoto": "Dodaj nowe zdjęcie",
+    "dragAndDrop": "Przeciągnij i upuść lub kliknij tutaj",
+    "modalFormats": "JPG, PNG, GIF, WEBP"
+},
   "profileEditor": {
     "title": "Edytuj profil",
     "bio": "Bio:",
@@ -140,6 +145,7 @@
     "modalTitle": "Prześlij nowe zdjęcie",
     "modalDescription": "Pokaż sforze kim jesteś!",
     "modalFormats": "JPG, PNG, GIF, WEBP",
+    "choosePhoto": "Kliknij, aby wybrać zdjęcie",
     "deleteModalTitle": "Usuń zdjęcie",
     "deleteModalDescription": "Czy na pewno chcesz usunąć swoje zdjęcie?"
   },

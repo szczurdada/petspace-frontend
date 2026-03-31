@@ -98,12 +98,17 @@
     "makeProfilePhoto": "Make profile photo", 
     "counter": "Photos {current} of {total}"
   },
+  "photoUploadModal": {
+    "addPhoto": "Add new photo",
+    "dragAndDrop": "Drag & drop or click here",
+    "modalFormats": "JPG, PNG, GIF, WEBP"
+  },
   "profilePhotos": {
     "title": "Photos"
   },
   "photoGallery": {
     "title": "My photos",
-    "addPhoto": "Add photo"
+    "addPhoto": "Add new photo"
   },
   "postCreator": {
     "photo": "Photo",

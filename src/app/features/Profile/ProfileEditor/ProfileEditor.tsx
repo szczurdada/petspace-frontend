@@ -107,7 +107,7 @@ export const ProfileEditor = ({
         <h3 className={styles.title}>{t("profileEditor.title")}</h3>
         <div className={styles.profileContent}>
           <div className={styles.avatarSection}>
-            <AvatarEdit src={avatar} size={100} />
+            <AvatarEdit src={avatar} size={120} />
           </div>
           <div className={styles.userInfo}>
             <h4 className={styles.name}>{name}</h4>
