@@ -1,11 +1,8 @@
 "use client";
 
-import { StaticImageData } from "next/image";
 import styles from "./AvatarEdit.module.scss";
 import { Button } from "../Button/Button";
-import { MdDeleteSweep } from "react-icons/md";
-import { MdModeEdit } from "react-icons/md";
-import { MdPhotoCamera } from "react-icons/md";
+import { MdDeleteSweep, MdModeEdit, MdPhotoCamera } from "react-icons/md";
 import { useTranslations } from "next-intl";
 import defaultAvatar from "@/public/avatars/default.png";
 import { Avatar } from "../Avatar/Avatar";
@@ -20,45 +17,42 @@ import { Photo } from "@/types";
 
 interface AvatarEditProps {
   photo?: Photo;
-  src?: string | StaticImageData;
+  src?: string;
   size?: number;
+  onAvatarChange?: (url: string) => void;
 }
 
-export const AvatarEdit = ({ photo, src, size }: AvatarEditProps) => {
+export const AvatarEdit = ({ photo, src, size, onAvatarChange }: AvatarEditProps) => {
   const t = useTranslations();
   const [file, setFile] = useState<File | null>(null);
   const [isChangeOpen, setIsChangeOpen] = useState(false);
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
-  const [isPhotoOpen, setisPhotoOpen] = useState(false);
-  const [avatarUrl, setAvatarUrl] = useState<string | undefined>(src as string);
+  const [isPhotoOpen, setIsPhotoOpen] = useState(false);
 
   const savePhoto = async () => {
     try {
       if (!file) return;
-
       const formData = new FormData();
       formData.append("image", file);
 
-      const { data } = await axios.post(
-        `${API_URL}/api/upload/avatar`,
-        formData,
-        { headers: { Authorization: localStorage.getItem("token") } },
-      );
+      const { data } = await axios.post(`${API_URL}/api/upload/avatar`, formData, {
+        headers: { Authorization: localStorage.getItem("token") },
+      });
 
-      setAvatarUrl(data.data.url);
+      onAvatarChange?.(data.data.url);
       setIsChangeOpen(false);
     } catch {
-      toast.error(t("toast.error"));
+      toast.error(t("toasts.error"));
     }
   };
 
   return (
     <div className={styles.wrapper}>
       <div className={styles.avatarWrapper}>
-        <Avatar src={avatarUrl ?? defaultAvatar} size={size} />
+        <Avatar src={src ?? defaultAvatar} size={size}/>
       </div>
       <div className={styles.overlay}>
-        <Button appearance="secondary" onClick={() => setisPhotoOpen(true)}>
+        <Button appearance="secondary" onClick={() => setIsPhotoOpen(true)}>
           <MdPhotoCamera size={20} />
           {t("avatarEdit.open")}
         </Button>
@@ -75,15 +69,15 @@ export const AvatarEdit = ({ photo, src, size }: AvatarEditProps) => {
       <PhotoModal
         photo={isPhotoOpen && photo ? photo : null}
         cloudName={CLOUD_NAME}
-        onClose={() => setisPhotoOpen(false)}
-      ></PhotoModal>
+        onClose={() => setIsPhotoOpen(false)}
+      />
 
       <Modal isOpen={isChangeOpen} onClose={() => setIsChangeOpen(false)}>
         <h3 className={styles.title}>{t("avatarEdit.modalTitle")}</h3>
         <p className={styles.description}>{t("avatarEdit.modalDescription")}</p>
         <p className={styles.hint}>{t("avatarEdit.modalFormats")}</p>
         <div className={styles.upload}>
-          <AvatarUploadModal onChange={setFile} />
+          <AvatarUploadModal onChange={setFile} profileAvatar={src} />
         </div>
         <p className={styles.hint}>{t("avatarEdit.choosePhoto")}</p>
         <div className={styles.action}>

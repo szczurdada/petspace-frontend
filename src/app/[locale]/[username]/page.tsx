@@ -22,6 +22,7 @@ const ProfilePage = async ({ params }: ProfilePageProps) => {
         bannerInfo={{
           name: userData.name,
           username: userData.username,
+          avatar: userData.avatar,
           gender: userData.gender,
           breed: userData.breed,
           birthDate: userData.birthDate,

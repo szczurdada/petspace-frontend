@@ -44,7 +44,7 @@ export interface Interests {
 export interface BannerInfo {
   username: string;
   name: string;
-  avatar?: string | StaticImageData;
+  avatar?: string;
   breed?: string;
   birthDate?: number;
   gender?: string;

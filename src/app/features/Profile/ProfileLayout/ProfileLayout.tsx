@@ -27,7 +27,11 @@ export const ProfileLayout = ({ bannerInfo }: ProfileLayoutProps) => {
         />
       </div>
       <div className={styles.feedContainer}>
-        <PostCreator username={bannerInfo.username} name={bannerInfo.name} />
+        <PostCreator
+          username={bannerInfo.username}
+          name={bannerInfo.name}
+          avatar={bannerInfo.avatar}
+        />
         <Feed posts={MOCK_POSTS} />
       </div>
       <div className={styles.rightColumn}>

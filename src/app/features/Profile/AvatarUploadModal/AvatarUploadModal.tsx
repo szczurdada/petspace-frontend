@@ -9,13 +9,15 @@ import styles from "./AvatarUploadModal.module.scss";
 interface AvatarUploadModalProps {
   size?: number;
   onChange?: (file: File) => void;
+  profileAvatar?: string;
 }
 
 export const AvatarUploadModal = ({
   size = 120,
   onChange,
+  profileAvatar,
 }: AvatarUploadModalProps) => {
-  const [preview, setPreview] = useState<string>();
+  const [preview, setPreview] = useState(profileAvatar);
   const { getRootProps, getInputProps } = useDropzone({
     accept: {
       "image/jpeg": [],

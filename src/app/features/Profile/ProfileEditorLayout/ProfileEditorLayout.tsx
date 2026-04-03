@@ -3,10 +3,9 @@ import { ProfileEditor } from "../ProfileEditor/ProfileEditor";
 import styles from "./ProfileEditorLayout.module.scss";
 import { Sidebar } from "@/app/components/Sidebar/Sidebar";
 import ProfileInformation from "../ProfileInformation/ProfileInformation";
-import { StaticImageData } from "next/image";
 
 interface ProfileEditorLayoutProps {
-  avatar?: string | StaticImageData;
+  avatar?: string;
   name: string;
   username: string;
   bio?: string;
