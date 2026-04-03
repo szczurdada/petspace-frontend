@@ -1,7 +1,6 @@
 "use client";
 
 import styles from "./ProfileEditor.module.scss";
-import { StaticImageData } from "next/image";
 import { Button } from "@/app/uikit/Button/Button";
 import { useTranslations } from "use-intl";
 import { useEffect, useState } from "react";
@@ -18,7 +17,7 @@ import { Textarea } from "@/app/uikit/Textarea/Textarea";
 import { API_URL } from "@/config/env";
 
 interface ProfileEditorProps {
-  avatar?: string | StaticImageData;
+  avatar?: string;
   name: string;
   username: string;
   bio?: string;

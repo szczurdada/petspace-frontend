@@ -7,7 +7,6 @@ import { FaPaw } from "react-icons/fa";
 import { FaCamera } from "react-icons/fa6";
 import { ROUTES } from "@/app/uikit/constants/routes";
 import { Link } from "../../../uikit/Link/Link";
-import { StaticImageData } from "next/image";
 import { useRouter } from "next/navigation";
 import { AvatarEdit } from "@/app/uikit/AvatarEdit/AvatarEdit";
 import { useState } from "react";
@@ -15,7 +14,7 @@ import { MdPlace } from "react-icons/md";
 import { ProfileInfoModal } from "../ProfileInfoModal/ProfileInfoModal";
 
 interface ProfileBannerProps {
-  avatar?: string | StaticImageData;
+  avatar?: string;
   username: string;
   name: string;
   breed?: string;
@@ -51,6 +50,7 @@ export const ProfileBanner = ({
   const t = useTranslations();
   const router = useRouter();
   const [isInfoOpen, setIsInfoOpen] = useState(false);
+  const [avatarUrl, setAvatarUrl] = useState<string | undefined>(avatar);
 
   const editProfile = () => {
     router.push(ROUTES.editProfile(username));
@@ -59,7 +59,11 @@ export const ProfileBanner = ({
   return (
     <div className={styles.banner}>
       <div className={styles.avatarWrapper}>
-        <AvatarEdit src={avatar} size={140} />
+        <AvatarEdit
+          src={avatarUrl}
+          size={140}
+          onAvatarChange={(url) => setAvatarUrl(url)}
+        />
       </div>
       <div className={styles.container}>
         <div className={styles.info}>
