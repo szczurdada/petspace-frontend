@@ -2,7 +2,8 @@
   position: fixed;
   top: 0;
   background: var(--bg-card);
-  width: 100%;
+  left: 0;
+  right: 0;
   height: 50px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
   z-index: var(--z-modal);
