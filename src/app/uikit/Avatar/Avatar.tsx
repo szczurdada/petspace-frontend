@@ -11,7 +11,13 @@ interface AvatarProps {
 export const Avatar = ({ src, size = 45, isOnline }: AvatarProps) => {
   return (
     <div className={styles.avatar} style={{ width: size, height: size }}>
-      <Image src={src ?? defaultAvatar} fill alt="Avatar" className={styles.image} />
+      <Image
+        src={src ?? defaultAvatar}
+        fill
+        alt="Avatar"
+        className={styles.image}
+        sizes={`${size}px`}
+      />
       {isOnline && <span className={styles.online} />}
     </div>
   );
