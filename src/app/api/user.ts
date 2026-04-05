@@ -6,6 +6,6 @@ export const getUser = async (username: string) => {
     const { data } = await axios.get(`${API_URL}/user/${username}`);
     return data;
   } catch (e) {
-    throw e;
+    return null;
   }
 };

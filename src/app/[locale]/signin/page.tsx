@@ -2,10 +2,12 @@
 
 import SignIn from "@/app/features/SignIn/SignIn";
 import styles from "./page.module.scss";
+import { Header } from "@/app/components/Header/Header";
 
 export default function SignInPage() {
   return (
     <div className={styles.page}>
+      <Header></Header>
       <SignIn />
     </div>
   );
