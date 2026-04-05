@@ -149,6 +149,11 @@
     "deleteModalTitle": "Usuń zdjęcie",
     "deleteModalDescription": "Czy na pewno chcesz usunąć swoje zdjęcie?"
   },
+  "notFound": {
+    "text": "Ups! Jamnik poszedł kopać sobie norkę...",
+    "description": "Ta strona zaginęła gdzieś w ogrodzie. Jamnik jej szuka, ale jak dotąd bez powodzenia.",
+    "goBack": "Wróć wstecz"
+  },
   "validations": {
     "minLength": "Musi zawierać co najmniej {min} znaków",
     "maxLength": "Nie może przekraczać {max} znaków",

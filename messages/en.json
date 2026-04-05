@@ -149,6 +149,11 @@
     "deleteModalTitle": "Delete photo",
     "deleteModalDescription": "Are you sure you want to delete your photo?"
   },
+  "notFound": {
+    "text": "Oops! The dachshund went to dig a little burrow...",
+    "description": "This page got lost somewhere deep in the garden.\nThe dachshund is looking for it, but so far without success.",
+    "goBack": "Go Back"
+  },
   "validations": {
     "minLength": "Must be at least {min} characters",
     "maxLength": "Must not exceed {max} characters",
