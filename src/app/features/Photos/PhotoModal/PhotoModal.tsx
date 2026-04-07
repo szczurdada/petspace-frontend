@@ -20,6 +20,7 @@ interface PhotoModalProps {
   onClose: () => void;
   onPrev?: () => void;
   onNext?: () => void;
+  onDelete?: () => void;
 }
 
 export const PhotoModal = ({
@@ -30,6 +31,7 @@ export const PhotoModal = ({
   onClose,
   onPrev,
   onNext,
+  onDelete,
 }: PhotoModalProps) => {
   const t = useTranslations();
 
@@ -102,7 +104,9 @@ export const PhotoModal = ({
               <Button appearance="ghost">
                 {t("photoModal.makeProfilePhoto")}
               </Button>
-              <Button appearance="ghost">{t("photoModal.delete")}</Button>
+              <Button appearance="ghost" onClick={onDelete}>
+                {t("photoModal.delete")}
+              </Button>
             </div>
           </div>
         </div>

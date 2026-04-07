@@ -5,7 +5,7 @@ export const getUser = async (username: string) => {
   try {
     const { data } = await axios.get(`${API_URL}/user/${username}`);
     return data;
-  } catch (e) {
+  } catch {
     return null;
   }
 };
