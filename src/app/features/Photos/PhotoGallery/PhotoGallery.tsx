@@ -26,6 +26,9 @@ export const PhotoGallery = ({ photos }: PhotoGalleryProps) => {
   const { selectedIndex, setSelectedIndex, handlePrev, handleNext } =
     usePhotoNavigation(localPhotos);
 
+  const selectedPhoto =
+    selectedIndex !== null ? localPhotos[selectedIndex] : null;
+
   const addPhoto = async (files: File[]) => {
     try {
       const uploaded = await Promise.all(
@@ -40,7 +43,7 @@ export const PhotoGallery = ({ photos }: PhotoGalleryProps) => {
             },
           );
           return {
-            id: data.data._id,
+            id: data.data.id,
             publicId: data.data.public_id,
             createdAt: data.data.createdAt,
           };
@@ -48,6 +51,18 @@ export const PhotoGallery = ({ photos }: PhotoGalleryProps) => {
       );
       setLocalPhotos((prev) => [...prev, ...uploaded]);
       setIsOpen(false);
+    } catch {
+      toast.error(t("toasts.error"));
+    }
+  };
+
+  const deletePhoto = async (photoId: string) => {
+    try {
+      await axios.delete(`${API_URL}/api/upload/photo/${photoId}`, {
+        headers: { Authorization: localStorage.getItem("token") },
+      });
+      setLocalPhotos((prev) => prev.filter((p) => p.id !== photoId));
+      setSelectedIndex(null);
     } catch {
       toast.error(t("toasts.error"));
     }
@@ -80,13 +95,14 @@ export const PhotoGallery = ({ photos }: PhotoGalleryProps) => {
       </div>
 
       <PhotoModal
-        photo={selectedIndex !== null ? localPhotos[selectedIndex] : null}
+        photo={selectedPhoto}
         cloudName={CLOUD_NAME}
         currentIndex={selectedIndex ?? 0}
         photosCount={localPhotos.length}
         onClose={() => setSelectedIndex(null)}
         onPrev={handlePrev}
         onNext={handleNext}
+        onDelete={() => selectedPhoto && deletePhoto(selectedPhoto.id)}
       />
 
       <PhotoUploadModal
