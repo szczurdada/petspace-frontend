@@ -91,11 +91,7 @@ export const PhotoModal = ({
             </div>
             <div className={styles.actions}>
               {onDelete && (
-                <Button
-                  appearance="third"
-                  className={styles.button}
-                  onClick={onDelete}
-                >
+                <Button appearance="ghost" onClick={onDelete}>
                   {t("photoModal.delete")}
                 </Button>
               )}
