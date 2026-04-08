@@ -25,27 +25,31 @@ export const ProfilePhotos = ({ photos, username }: ProfilePhotosProps) => {
       <Link href={ROUTES.photos(username)} className={styles.titleLink}>
         <h3 className={styles.title}>{t("profilePhotos.title")}</h3>
       </Link>
-      <div className={styles.gallery}>
-        {photos.slice(0, MAX_VISIBLE_PHOTOS).map((photo, index) => (
-          <div key={photo.publicId} className={styles.photo}>
-            <Image
-              onClick={() => setSelectedIndex(index)}
-              src={`https://res.cloudinary.com/${CLOUD_NAME}/image/upload/${photo.publicId}`}
-              alt="Photo"
-              fill
-            />
-          </div>
-        ))}
-        <PhotoModal
-          photo={selectedIndex !== null ? photos[selectedIndex] : null}
-          cloudName={CLOUD_NAME}
-          currentIndex={selectedIndex ?? 0}
-          photosCount={photos.length}
-          onClose={() => setSelectedIndex(null)}
-          onPrev={handlePrev}
-          onNext={handleNext}
-        />
-      </div>
+      {photos.length === 0 ? (
+        <div className={styles.empty}>{t("profilePhotos.empty")}</div>
+      ) : (
+        <div className={styles.gallery}>
+          {photos.slice(0, MAX_VISIBLE_PHOTOS).map((photo, index) => (
+            <div key={photo.publicId} className={styles.photo}>
+              <Image
+                onClick={() => setSelectedIndex(index)}
+                src={`https://res.cloudinary.com/${CLOUD_NAME}/image/upload/${photo.publicId}`}
+                alt="Photo"
+                fill
+              />
+            </div>
+          ))}
+        </div>
+      )}
+      <PhotoModal
+        photo={selectedIndex !== null ? photos[selectedIndex] : null}
+        cloudName={CLOUD_NAME}
+        currentIndex={selectedIndex ?? 0}
+        photosCount={photos.length}
+        onClose={() => setSelectedIndex(null)}
+        onPrev={handlePrev}
+        onNext={handleNext}
+      />
     </div>
   );
 };

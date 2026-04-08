@@ -16,13 +16,17 @@
 .title {
   margin: 0;
   font-size: var(--font-l);
-    font-weight: 700;
+  font-weight: 700;
 }
 
 .gallery {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--gap-s);
+}
+
+.empty {
+  color: var(--text-secondary);
 }
 
 .photo {

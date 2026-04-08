@@ -101,12 +101,11 @@ export const PhotoModal = ({
               </div>
             </div>
             <div className={styles.actions}>
-              <Button appearance="ghost">
-                {t("photoModal.makeProfilePhoto")}
-              </Button>
-              <Button appearance="ghost" onClick={onDelete}>
-                {t("photoModal.delete")}
-              </Button>
+              {onDelete && (
+                <Button appearance="ghost" onClick={onDelete}>
+                  {t("photoModal.delete")}
+                </Button>
+              )}
             </div>
           </div>
         </div>

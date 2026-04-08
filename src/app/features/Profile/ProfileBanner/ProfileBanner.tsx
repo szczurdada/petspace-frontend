@@ -51,6 +51,13 @@ export const ProfileBanner = ({
   const router = useRouter();
   const [isInfoOpen, setIsInfoOpen] = useState(false);
   const [avatarUrl, setAvatarUrl] = useState<string | undefined>(avatar);
+  const hasMoreInfo = !!(
+    breed ||
+    birthDate ||
+    gender ||
+    bio ||
+    (interests && Object.values(interests).some(Boolean))
+  );
 
   const editProfile = () => {
     router.push(ROUTES.editProfile(username));
@@ -71,20 +78,24 @@ export const ProfileBanner = ({
             <div className={styles.name}>{name}</div>
             <div className={styles.username}>@{username} </div>
           </div>
-          <div className={styles.details}>
-            {city && (
-              <div className={styles.city}>
-                <MdPlace size={20} className={styles.detailsIcon} />
-                {city}
-              </div>
-            )}
-            <div
-              className={styles.moreInfo}
-              onClick={() => setIsInfoOpen(true)}
-            >
-              {t("profileBanner.info")}
+          {(city || hasMoreInfo) && (
+            <div className={styles.details}>
+              {city && (
+                <div className={styles.city}>
+                  <MdPlace size={20} className={styles.detailsIcon} />
+                  {city}
+                </div>
+              )}
+              {hasMoreInfo && (
+                <div
+                  className={styles.moreInfo}
+                  onClick={() => setIsInfoOpen(true)}
+                >
+                  {t("profileBanner.info")}
+                </div>
+              )}
             </div>
-          </div>
+          )}
         </div>
         {bio && <div className={styles.bio}>{bio}</div>}
         <div className={styles.divider}></div>
