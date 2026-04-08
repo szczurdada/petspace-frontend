@@ -16,7 +16,7 @@
   },
   "placeholder": {
     "noneSelected": "Nie wybrano",
-    "chose": "Wybierz"
+    "chooseDate": "Wybierz datę"
   },
   "toasts": {
     "saved": "Zmiany zostały zapisane pomyślnie",
