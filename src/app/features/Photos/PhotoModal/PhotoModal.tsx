@@ -75,30 +75,19 @@ export const PhotoModal = ({
             </Button>
           </div>
           <div className={styles.footer}>
-            <div className={styles.stats}>
-              <Button appearance="ghost" className={styles.stat}>
-                <FaHeart size={16} />
-              </Button>
-              <Button appearance="ghost" className={styles.stat}>
-                <FaComment size={16} />
-              </Button>
-              <Button appearance="ghost" className={styles.stat}>
-                <FaReply size={18} />
-              </Button>
-              <div className={styles.createdAt}>
-                {photo.createdAt
-                  ? new Date(photo.createdAt).toLocaleDateString("en-US", {
-                      day: "numeric",
-                      month: "short",
-                    }) +
-                    " · " +
-                    new Date(photo.createdAt).toLocaleTimeString("en-US", {
-                      hour: "numeric",
-                      minute: "2-digit",
-                      hour12: false,
-                    })
-                  : ""}
-              </div>
+            <div className={styles.createdAt}>
+              {photo.createdAt
+                ? new Date(photo.createdAt).toLocaleDateString("en-US", {
+                    day: "numeric",
+                    month: "short",
+                  }) +
+                  " · " +
+                  new Date(photo.createdAt).toLocaleTimeString("en-US", {
+                    hour: "numeric",
+                    minute: "2-digit",
+                    hour12: false,
+                  })
+                : ""}
             </div>
             <div className={styles.actions}>
               {onDelete && (
