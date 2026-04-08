@@ -39,6 +39,17 @@ export const Select = ({
       </div>
       {isOpen && (
         <ul className={styles.dropdown}>
+          {placeholder && (
+            <li
+              className={styles.option}
+              onClick={() => {
+                onChange("");
+                setIsOpen(false);
+              }}
+            >
+              {placeholder}
+            </li>
+          )}
           {options.map((o) => (
             <li
               className={styles.option}

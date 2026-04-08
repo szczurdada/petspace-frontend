@@ -16,7 +16,7 @@
   },
   "placeholder": {
     "noneSelected": "None selected",
-    "chose": "Chose a"
+    "chooseDate": "Chose a date"
   },
   "toasts": {
     "saved": "Changes saved successfully",
@@ -104,7 +104,8 @@
     "modalFormats": "JPG, PNG, GIF, WEBP"
   },
   "profilePhotos": {
-    "title": "Photos"
+    "title": "Photos",
+    "empty": "No photos yet"
   },
   "photoGallery": {
     "title": "My photos",

@@ -11,13 +11,12 @@ import "dayjs/locale/en";
 import type { Dayjs } from "dayjs";
 import { pl, enUS } from "date-fns/locale";
 import type { Locale } from "date-fns";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 interface DatePickerProps {
   value: Dayjs | undefined;
   onChange: (date: Dayjs | undefined) => void;
   fromYear?: number;
-  toYear?: number;
 }
 
 const localeMap: Record<string, Locale> = { pl, en: enUS };
@@ -26,8 +25,8 @@ export const DatePicker = ({
   value,
   onChange,
   fromYear = 1924,
-  toYear = 2026,
 }: DatePickerProps) => {
+  const t = useTranslations();
   const [isOpen, setIsOpen] = useState(false);
   const localeCode = useLocale();
   const locale = localeMap[localeCode] ?? pl;
@@ -39,7 +38,7 @@ export const DatePicker = ({
       )}
       <Input
         appearance="wide"
-        placeholder="D MMMM YYYY"
+        placeholder={t("placeholder.chooseDate")}
         readOnly
         value={value ? value.locale(localeCode).format("D MMMM YYYY") : ""}
         onClick={() => setIsOpen(!isOpen)}
@@ -56,7 +55,8 @@ export const DatePicker = ({
             }}
             captionLayout="dropdown"
             fromYear={fromYear}
-            toYear={toYear}
+            toYear={new Date().getFullYear()}
+            disabled={{ after: new Date() }}
             locale={locale}
           />
         </div>
