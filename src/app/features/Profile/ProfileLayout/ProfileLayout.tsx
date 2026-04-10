@@ -1,6 +1,6 @@
 "use client";
 
-import { Feed } from "../../../features/Profile/Feed/Feed";
+import { Feed } from "../Postwall/Postwall";
 import { ProfileFriends } from "../ProfileFriends/ProfileFriends";
 import { PostCreator } from "../../../features/Profile/PostCreator/PostCreator";
 import { ProfileBanner } from "../../../features/Profile/ProfileBanner/ProfileBanner";
@@ -8,7 +8,7 @@ import styles from "./ProfileLayout.module.scss";
 import { Sidebar } from "@/app/components/Sidebar/Sidebar";
 import { ProfilePhotos } from "../ProfilePhotos/ProfilePhotos";
 import { BannerInfo } from "@/types";
-import { MOCK_FRIENDS, MOCK_POSTS } from "@/app/uikit/constants/profile";
+import { MOCK_FRIENDS } from "@/app/uikit/constants/profile";
 
 interface ProfileLayoutProps {
   bannerInfo: BannerInfo;
@@ -31,8 +31,9 @@ export const ProfileLayout = ({ bannerInfo }: ProfileLayoutProps) => {
           username={bannerInfo.username}
           name={bannerInfo.name}
           avatar={bannerInfo.avatar}
+          postwallId={bannerInfo.postwallId ?? ""}
         />
-        <Feed posts={MOCK_POSTS} />
+        <Feed posts={bannerInfo.posts ?? []} />
       </div>
       <div className={styles.rightColumn}>
         <div className={styles.photos}>

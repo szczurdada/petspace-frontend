@@ -6,9 +6,6 @@ import { Button } from "@/app/uikit/Button/Button";
 import {
   FaAngleLeft,
   FaAngleRight,
-  FaComment,
-  FaHeart,
-  FaReply,
 } from "react-icons/fa";
 import { useTranslations } from "next-intl";
 

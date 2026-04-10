@@ -23,7 +23,7 @@ export interface Photo {
 
 export interface Post {
   id: string;
-  author: User;
+  user: User;
   content: string;
   image?: StaticImageData | string;
   likes?: number;
@@ -53,4 +53,6 @@ export interface BannerInfo {
   interests?: Interests;
   photos?: Photo[];
   friends?: Friend[];
+  postwallId?: string;
+  posts?: Post[];
 }

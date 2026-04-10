@@ -14,10 +14,10 @@ export const Post = ({ post }: PostProps) => {
     <div>
       <div className={styles.wrapper}>
         <div className={styles.avatarWrapper}>
-          <Avatar src={post.author.avatar} />
+          <Avatar src={post.user.avatar} />
         </div>
         <div className={styles.info}>
-          <div className={styles.name}>{post.author.name}</div>
+          <div className={styles.name}>{post.user.name}</div>
           <div className={styles.time}>
             {dayjs(post.createdAt).format("DD.MM.YYYY")}
           </div>
