@@ -1,0 +1,29 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-l);
+  background: var(--bg-card);
+  padding: var(--padding-xl);
+  border-radius: var(--radius-m);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.emptyFeed {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-l);
+  text-align: center;
+  padding: 55px 0;
+}
+
+.title {
+  margin: 0;
+  font-weight: 600;
+  font-size: var(--font-l);
+}
+
+.text {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: var(--font-m);
+}
