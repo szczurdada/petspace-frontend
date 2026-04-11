@@ -4,12 +4,26 @@ import Image from "next/image";
 import { FaComment, FaHeart, FaReply } from "react-icons/fa";
 import { Post as PostType } from "@/types";
 import dayjs from "dayjs";
+import { FaDeleteLeft } from "react-icons/fa6";
+import { Button } from "@/app/uikit/Button/Button";
+import { useRouter } from "next/navigation";
+import { API_URL } from "@/config/env";
+import axios from "axios";
 
 export interface PostProps {
   post: PostType;
 }
 
 export const Post = ({ post }: PostProps) => {
+  const router = useRouter();
+
+  const deletePost = async () => {
+      await axios.delete(`${API_URL}/posts/${post.id}`, {
+        headers: { Authorization: localStorage.getItem("token") },
+      });
+      router.refresh();
+  };
+
   return (
     <div>
       <div className={styles.wrapper}>
@@ -21,6 +35,15 @@ export const Post = ({ post }: PostProps) => {
           <div className={styles.time}>
             {dayjs(post.createdAt).format("DD.MM.YYYY")}
           </div>
+        </div>
+        <div className={styles.delete}>
+          <Button
+            appearance="ghost"
+            className={styles.deleteButton}
+            onClick={deletePost}
+          >
+            <FaDeleteLeft size={16} />
+          </Button>
         </div>
       </div>
       <div className={styles.contentWrapper}>

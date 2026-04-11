@@ -28,9 +28,25 @@
   color: var(--text-secondary);
 }
 
+.delete {
+  margin-left: auto;
+}
+
+.deleteButton {
+  padding: 0 !important;
+  color: var(--text-secondary);
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: var(--text-primary);
+  }
+}
+
 .content {
   font-weight: 500;
   color: var(--text-primary);
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .imageWrapper {
