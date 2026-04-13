@@ -60,10 +60,10 @@
   gap: var(--gap-xs);
 }
 
-.createdAt {
+.time {
   display: flex;
   align-items: center;
-  font-size: var(--font-s);
+  font-size: var(--font-m);
   color: var(--text-secondary);
 }
 
@@ -80,4 +80,10 @@
 
 .button {
   padding: 0 !important;
+}
+
+.comments {
+  display: flex;
+  flex-direction: column;
+  margin: var(--gap-s);
 }

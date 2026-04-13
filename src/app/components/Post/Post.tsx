@@ -4,11 +4,13 @@ import Image from "next/image";
 import { FaComment, FaHeart, FaReply } from "react-icons/fa";
 import { Post as PostType } from "@/types";
 import dayjs from "dayjs";
-import { FaDeleteLeft } from "react-icons/fa6";
 import { Button } from "@/app/uikit/Button/Button";
 import { useRouter } from "next/navigation";
 import { API_URL } from "@/config/env";
 import axios from "axios";
+import { Comment } from "@/app/features/Profile/CommentCreator/Comment";
+import { MOCK_COMMENTS } from "@/app/uikit/constants/profile";
+import { MdOutlineMoreHoriz } from "react-icons/md";
 
 export interface PostProps {
   post: PostType;
@@ -18,22 +20,22 @@ export const Post = ({ post }: PostProps) => {
   const router = useRouter();
 
   const deletePost = async () => {
-      await axios.delete(`${API_URL}/posts/${post.id}`, {
-        headers: { Authorization: localStorage.getItem("token") },
-      });
-      router.refresh();
+    await axios.delete(`${API_URL}/posts/${post.id}`, {
+      headers: { Authorization: localStorage.getItem("token") },
+    });
+    router.refresh();
   };
 
   return (
     <div>
       <div className={styles.wrapper}>
-        <div className={styles.avatarWrapper}>
+        <div className={styles.avatar}>
           <Avatar src={post.user.avatar} />
         </div>
         <div className={styles.info}>
           <div className={styles.name}>{post.user.name}</div>
           <div className={styles.time}>
-            {dayjs(post.createdAt).format("DD.MM.YYYY")}
+            {dayjs(post.createdAt).format("D MMM YYYY")}
           </div>
         </div>
         <div className={styles.delete}>
@@ -42,7 +44,7 @@ export const Post = ({ post }: PostProps) => {
             className={styles.deleteButton}
             onClick={deletePost}
           >
-            <FaDeleteLeft size={16} />
+            <MdOutlineMoreHoriz size={25} />
           </Button>
         </div>
       </div>
@@ -72,6 +74,11 @@ export const Post = ({ post }: PostProps) => {
           <FaReply size={18} />
           <span>{post.reposts}</span>
         </div>
+      </div>
+      <div className={styles.comments}>
+        {MOCK_COMMENTS.map((comment) => (
+          <Comment key={comment.id} comment={comment} />
+        ))}
       </div>
     </div>
   );
