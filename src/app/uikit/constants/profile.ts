@@ -4,11 +4,7 @@ import Img2 from "@/public/img2.jpg";
 import Img3 from "@/public/img3.jpg";
 import Img4 from "@/public/img4.jpg";
 import Img5 from "@/public/img5.jpg";
-import Avatar from "@/public/avatar.jpg";
-import Avatar2 from "@/public/avatar2.jpg";
-import dayjs from "dayjs";
-import postImage from "@/public/postImage.jpg";
-import { Friend, Post } from "@/types";
+import { Comment, Friend } from "@/types";
 
 export const MOCK_PROFILE = {
   avatar: AvatarImg,
@@ -59,26 +55,29 @@ export const MOCK_FRIENDS: Friend[] = [
   },
 ];
 
-export const MOCK_POSTS: Post[] = [
+export const MOCK_COMMENTS: Comment[] = [
   {
     id: "1",
-    author: { id: "1", username: "ddd", name: "Vova", avatar: Avatar },
-    content: "I hate Natasha",
-    createdAt: dayjs().toDate(),
-    likes: 2174,
-    comments: 5,
-    reposts: 1,
+    user: {
+      id: "1",
+      name: "Vova",
+      username: "dog11",
+      avatar: AvatarImg,
+    },
+    content: "hello",
+    likes: 2,
+    createdAt: new Date(),
   },
-  {
-    id: "2",
-    author: { id: "2", username: "ddd", name: "Natasha", avatar: Avatar2 },
-    content: "I love Vova",
-    image: postImage,
-    createdAt: dayjs().subtract(5, "day").toDate(),
-    likes: 10,
-    comments: 2,
-    reposts: 4,
-  },
+  { id: "2",
+    user: {
+      id: "1",
+      name: "Vova",
+      username: "dog11",
+      avatar: AvatarImg,
+    },
+    content: "hello",
+    likes: 2,
+    createdAt: new Date(),}
 ];
 
 //url params

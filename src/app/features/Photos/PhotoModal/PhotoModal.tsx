@@ -3,11 +3,10 @@ import Image from "next/image";
 import styles from "./PhotoModal.module.scss";
 import { Photo } from "@/types";
 import { Button } from "@/app/uikit/Button/Button";
-import {
-  FaAngleLeft,
-  FaAngleRight,
-} from "react-icons/fa";
+import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 import { useTranslations } from "next-intl";
+import { Comment } from "../../Profile/CommentCreator/Comment";
+import { MOCK_COMMENTS } from "@/app/uikit/constants/profile";
 
 interface PhotoModalProps {
   photo: Photo | null;
@@ -31,16 +30,17 @@ export const PhotoModal = ({
   onDelete,
 }: PhotoModalProps) => {
   const t = useTranslations();
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "ArrowLeft") onPrev?.();
+    if (e.key === "ArrowRight") onNext?.();
+  };
 
   return (
     <Modal isOpen={photo !== null} onClose={onClose} className={styles.modal}>
       {photo && (
         <div
           className={styles.container}
-          onKeyDown={(e) => {
-            if (e.key === "ArrowLeft") onPrev?.();
-            if (e.key === "ArrowRight") onNext?.();
-          }}
+          onKeyDown={handleKeyDown}
           tabIndex={0}
           autoFocus
         >
@@ -72,7 +72,7 @@ export const PhotoModal = ({
             </Button>
           </div>
           <div className={styles.footer}>
-            <div className={styles.createdAt}>
+            <div className={styles.time}>
               {photo.createdAt
                 ? new Date(photo.createdAt).toLocaleDateString("en-US", {
                     day: "numeric",
@@ -93,6 +93,11 @@ export const PhotoModal = ({
                 </Button>
               )}
             </div>
+          </div>
+          <div className={styles.comments}>
+            {MOCK_COMMENTS.map((comment) => (
+              <Comment key={comment.id} comment={comment} />
+            ))}
           </div>
         </div>
       )}

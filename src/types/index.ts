@@ -25,10 +25,19 @@ export interface Post {
   id: string;
   user: User;
   content: string;
-  image?: StaticImageData | string;
-  likes?: number;
+  image?: string;
+  likes: number;
   comments?: number;
   reposts?: number;
+  createdAt: Date;
+}
+
+export interface Comment {
+  id: string;
+  user: User;
+  content: string;
+  image?: string;
+  likes: number;
   createdAt: Date;
 }
 
