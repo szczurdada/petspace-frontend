@@ -5,7 +5,7 @@ import { Photo } from "@/types";
 import { Button } from "@/app/uikit/Button/Button";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 import { useTranslations } from "next-intl";
-import { Comment } from "../../Profile/CommentCreator/Comment";
+import { Comment } from "../../Profile/feed/Comment/Comment";
 import { MOCK_COMMENTS } from "@/app/uikit/constants/profile";
 
 interface PhotoModalProps {

@@ -11,7 +11,7 @@ import { Modal } from "../Modal/Modal";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { API_URL, CLOUD_NAME } from "@/config/env";
-import { AvatarUploadModal } from "@/app/features/Profile/AvatarUploadModal/AvatarUploadModal";
+import { AvatarUploadModal } from "@/app/features/Profile/modals/AvatarUploadModal/AvatarUploadModal";
 import { PhotoModal } from "@/app/features/Photos/PhotoModal/PhotoModal";
 import { Photo } from "@/types";
 
@@ -22,7 +22,12 @@ interface AvatarEditProps {
   onAvatarChange?: (url: string) => void;
 }
 
-export const AvatarEdit = ({ photo, src, size, onAvatarChange }: AvatarEditProps) => {
+export const AvatarEdit = ({
+  photo,
+  src,
+  size,
+  onAvatarChange,
+}: AvatarEditProps) => {
   const t = useTranslations();
   const [file, setFile] = useState<File | null>(null);
   const [isChangeOpen, setIsChangeOpen] = useState(false);
@@ -35,9 +40,13 @@ export const AvatarEdit = ({ photo, src, size, onAvatarChange }: AvatarEditProps
       const formData = new FormData();
       formData.append("image", file);
 
-      const { data } = await axios.post(`${API_URL}/api/upload/avatar`, formData, {
-        headers: { Authorization: localStorage.getItem("token") },
-      });
+      const { data } = await axios.post(
+        `${API_URL}/api/upload/avatar`,
+        formData,
+        {
+          headers: { Authorization: localStorage.getItem("token") },
+        },
+      );
 
       onAvatarChange?.(data.data.url);
       setIsChangeOpen(false);
@@ -49,7 +58,7 @@ export const AvatarEdit = ({ photo, src, size, onAvatarChange }: AvatarEditProps
   return (
     <div className={styles.wrapper}>
       <div className={styles.avatarWrapper}>
-        <Avatar src={src ?? defaultAvatar} size={size}/>
+        <Avatar src={src ?? defaultAvatar} size={size} />
       </div>
       <div className={styles.overlay}>
         <Button appearance="secondary" onClick={() => setIsPhotoOpen(true)}>

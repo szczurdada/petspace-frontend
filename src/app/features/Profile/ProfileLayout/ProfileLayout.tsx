@@ -1,14 +1,14 @@
 "use client";
 
-import { Feed } from "../Postwall/Postwall";
+import { Feed } from "../feed/Postwall/Postwall";
 import { ProfileFriends } from "../ProfileFriends/ProfileFriends";
-import { PostCreator } from "../../../features/Profile/PostCreator/PostCreator";
-import { ProfileBanner } from "../../../features/Profile/ProfileBanner/ProfileBanner";
+import { PostCreator } from "../feed/PostCreator/PostCreator";
+import { ProfileBanner } from "../info/ProfileBanner/ProfileBanner";
 import styles from "./ProfileLayout.module.scss";
 import { Sidebar } from "@/app/components/Sidebar/Sidebar";
-import { ProfilePhotos } from "../ProfilePhotos/ProfilePhotos";
 import { BannerInfo } from "@/types";
 import { MOCK_FRIENDS } from "@/app/uikit/constants/profile";
+import { ProfilePhotos } from "../photos/ProfilePhotos/ProfilePhotos";
 
 interface ProfileLayoutProps {
   bannerInfo: BannerInfo;
