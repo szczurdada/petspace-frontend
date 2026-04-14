@@ -8,9 +8,10 @@ import { Button } from "@/app/uikit/Button/Button";
 import { useRouter } from "next/navigation";
 import { API_URL } from "@/config/env";
 import axios from "axios";
-import { Comment } from "@/app/features/Profile/CommentCreator/Comment";
+import { Comment } from "@/app/features/Profile/feed/Comment/Comment";
 import { MOCK_COMMENTS } from "@/app/uikit/constants/profile";
 import { MdOutlineMoreHoriz } from "react-icons/md";
+import { CommentCreator } from "../CommentCreator/CommentCreator";
 
 export interface PostProps {
   post: PostType;
@@ -79,6 +80,9 @@ export const Post = ({ post }: PostProps) => {
         {MOCK_COMMENTS.map((comment) => (
           <Comment key={comment.id} comment={comment} />
         ))}
+      </div>
+      <div>
+        <CommentCreator></CommentCreator>
       </div>
     </div>
   );

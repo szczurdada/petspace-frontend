@@ -5,7 +5,7 @@ import { Button } from "@/app/uikit/Button/Button";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { ROUTES } from "@/app/uikit/constants/routes";
-import { AvatarUploadModal } from "@/app/features/Profile/AvatarUploadModal/AvatarUploadModal";
+import { AvatarUploadModal } from "@/app/features/Profile/modals/AvatarUploadModal/AvatarUploadModal";
 
 export const RegistrationStepsAvatar = () => {
   const router = useRouter();

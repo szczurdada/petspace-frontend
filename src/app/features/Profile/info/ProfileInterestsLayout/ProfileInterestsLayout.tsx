@@ -2,8 +2,8 @@
 
 import { Sidebar } from "@/app/components/Sidebar/Sidebar";
 import styles from "./ProfileInterestsLayout.module.scss";
-import ProfileInformation from "../ProfileInformation/ProfileInformation";
-import { ProfileInterests } from "../ProfileInterests/ProfileInterests";
+import ProfileInformation from "../info/ProfileInformation/ProfileInformation";
+import { ProfileInterests } from "../info/ProfileInterests/ProfileInterests";
 
 interface ProfileInterestLayout {
   username: string;

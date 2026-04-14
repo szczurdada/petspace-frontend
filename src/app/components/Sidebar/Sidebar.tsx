@@ -1,6 +1,6 @@
 import { useTranslations } from "next-intl";
 import { BiSolidMessage } from "react-icons/bi";
-import { FaHeart, FaMapMarkerAlt, FaPaw, FaBone } from "react-icons/fa";
+import { FaMapMarkerAlt, FaPaw, FaBone } from "react-icons/fa";
 import { FaCamera } from "react-icons/fa6";
 import styles from "./Sidebar.module.scss";
 import { ROUTES } from "@/app/uikit/constants/routes";
@@ -43,12 +43,6 @@ export const Sidebar = ({ username }: { username: string }) => {
           <Button appearance="secondary">
             <FaCamera size={20} />
             {t("sidebar.photos")}
-          </Button>
-        </Link>
-        <Link href={ROUTES.favorites}>
-          <Button appearance="secondary">
-            <FaHeart size={20} />
-            {t("sidebar.favorites")}
           </Button>
         </Link>
         <Link href={ROUTES.places}>

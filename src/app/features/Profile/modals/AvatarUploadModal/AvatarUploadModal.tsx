@@ -2,7 +2,7 @@
 
 import { useDropzone } from "react-dropzone";
 import { useState } from "react";
-import { Avatar } from "../../../uikit/Avatar/Avatar";
+import { Avatar } from "../../../../uikit/Avatar/Avatar";
 import { MdPhotoCamera } from "react-icons/md";
 import styles from "./AvatarUploadModal.module.scss";
 

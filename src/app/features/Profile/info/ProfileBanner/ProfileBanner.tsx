@@ -1,17 +1,17 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { Button } from "../../../uikit/Button/Button";
+import { Button } from "../../../../uikit/Button/Button";
 import styles from "./ProfileBanner.module.scss";
 import { FaPaw } from "react-icons/fa";
 import { FaCamera } from "react-icons/fa6";
 import { ROUTES } from "@/app/uikit/constants/routes";
-import { Link } from "../../../uikit/Link/Link";
+import { Link } from "../../../../uikit/Link/Link";
 import { useRouter } from "next/navigation";
 import { AvatarEdit } from "@/app/uikit/AvatarEdit/AvatarEdit";
 import { useState } from "react";
 import { MdPlace } from "react-icons/md";
-import { ProfileInfoModal } from "../ProfileInfoModal/ProfileInfoModal";
+import { ProfileInfoModal } from "../../modals/ProfileInfoModal/ProfileInfoModal";
 
 interface ProfileBannerProps {
   avatar?: string;

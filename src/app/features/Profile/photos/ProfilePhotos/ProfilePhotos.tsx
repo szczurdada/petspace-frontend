@@ -5,8 +5,8 @@ import { Link } from "@/app/uikit/Link/Link";
 import { useTranslations } from "next-intl";
 import { Photo } from "@/types";
 import { CLOUD_NAME } from "@/config/env";
-import { PhotoModal } from "../../Photos/PhotoModal/PhotoModal";
 import { usePhotoNavigation } from "@/app/hooks/usePhotoNavigation";
+import { PhotoModal } from "@/app/features/Photos/PhotoModal/PhotoModal";
 
 interface ProfilePhotosProps {
   photos: Photo[];
