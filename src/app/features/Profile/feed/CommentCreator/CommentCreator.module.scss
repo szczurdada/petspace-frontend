@@ -1,0 +1,36 @@
+.container {
+  width: 100%;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-m);
+}
+
+.avatarWrapper {
+  flex-shrink: 0;
+}
+
+.inputWrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+
+  input {
+    width: 100%;
+  }
+}
+
+.arrow {
+  display: flex;
+  align-items: center;
+  padding-left: 5px;
+  cursor: pointer;
+  color: var(--text-secondary);
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: var(--text-primary);
+  }
+}
