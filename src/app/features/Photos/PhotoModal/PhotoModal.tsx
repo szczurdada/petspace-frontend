@@ -7,6 +7,7 @@ import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 import { useTranslations } from "next-intl";
 import { Comment } from "../../Profile/feed/Comment/Comment";
 import { MOCK_COMMENTS } from "@/app/uikit/constants/profile";
+import { CommentCreator } from "../../Profile/feed/CommentCreator/CommentCreator";
 
 interface PhotoModalProps {
   photo: Photo | null;
@@ -98,6 +99,9 @@ export const PhotoModal = ({
             {MOCK_COMMENTS.map((comment) => (
               <Comment key={comment.id} comment={comment} />
             ))}
+            <div>
+              <CommentCreator></CommentCreator>
+            </div>
           </div>
         </div>
       )}

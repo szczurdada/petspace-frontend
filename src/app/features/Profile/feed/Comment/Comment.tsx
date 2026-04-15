@@ -13,7 +13,7 @@ interface CommentProps {
 export const Comment = ({ comment }: CommentProps) => {
   return (
     <div className={styles.container}>
-      <Avatar size={42} src={comment.user.avatar} />
+      <Avatar size={40} src={comment.user.avatar} />
       <div className={styles.info}>
         <div className={styles.header}>
           <span className={styles.name}>{comment.user.name}</span>

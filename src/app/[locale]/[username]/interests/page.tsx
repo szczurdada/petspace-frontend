@@ -1,6 +1,6 @@
 import { Header } from "@/app/components/Header/Header";
-import { ProfileInterestsLayout } from "@/app/features/Profile/ProfileInterestsLayout/ProfileInterestsLayout";
 import { getUser } from "@/app/api/user";
+import { ProfileInterestsLayout } from "@/app/features/Profile/info/ProfileInterestsLayout/ProfileInterestsLayout";
 
 interface ProfileInterestsPageProps {
   params: Promise<{ username: string }>;
