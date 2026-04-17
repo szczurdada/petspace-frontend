@@ -40,6 +40,7 @@ export const ProfileLayout = ({ bannerInfo }: ProfileLayoutProps) => {
           <ProfilePhotos
             username={bannerInfo.username}
             photos={bannerInfo.photos ?? []}
+            avatar={bannerInfo.avatar}
           />
         </div>
         <div className={styles.friends}>

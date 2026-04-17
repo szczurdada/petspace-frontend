@@ -111,6 +111,12 @@
     "publish": "Opublikuj post",
     "placeholder": "Co nowego, "
   },
+  "comment": {
+    "reply": "Odpowiedz"
+  },
+  "commentCreator": {
+    "placeholder": "Zostaw swój ślad łapy..."
+  },
   "photoGallery": {
     "title": "Moje zdjęcia",
     "addPhoto": "Dodaj zdjęcie"

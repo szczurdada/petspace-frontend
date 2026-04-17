@@ -1,5 +1,6 @@
 .container {
   width: 100%;
+  padding: var(--padding-xs) 0;
 }
 
 .wrapper {
@@ -12,18 +13,18 @@
   flex-shrink: 0;
 }
 
-.inputWrapper {
+.textareaWrapper {
   flex: 1;
   display: flex;
   align-items: center;
 
-  input {
+  textarea {
     width: 100%;
+    box-sizing: border-box;
   }
 }
 
 .arrow {
-  display: flex;
   align-items: center;
   padding-left: 5px;
   cursor: pointer;

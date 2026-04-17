@@ -4,12 +4,22 @@
   cursor: text;
   outline: none;
   border-radius: var(--radius-m);
-  height: 70px;
   resize: none;
+
+  &::placeholder {
+    color: var(--text-placeholder);
+  }
 }
 
 .primary {
   background: var(--bg-input);
   color: var(--text-placeholder);
   width: 250px;
+  height: 70px;
+}
+
+.secondary {
+  background: var(--bg-input);
+  color: var(--text-placeholder);
+  height: 40px;
 }

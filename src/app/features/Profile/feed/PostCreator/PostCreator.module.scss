@@ -14,11 +14,12 @@
   align-items: center;
 }
 
-.inputWrapper {
+.textareaWrapper {
   flex: 1;
-  min-width: 0;
+  display: flex;
+  align-items: center;
 
-  input {
+  textarea {
     width: 100%;
     box-sizing: border-box;
   }

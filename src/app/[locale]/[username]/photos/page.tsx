@@ -16,6 +16,7 @@ const PhotosPage = async ({ params }: PhotosPageProps) => {
       <PhotoGalleryLayout
         username={userData.username}
         photos={userData.photos ?? []}
+        avatar={userData.avatar}
       />
     </>
   );

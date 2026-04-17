@@ -11,11 +11,16 @@ import { PhotoModal } from "@/app/features/Photos/PhotoModal/PhotoModal";
 interface ProfilePhotosProps {
   photos: Photo[];
   username: string;
+  avatar?: string;
 }
 
 const MAX_VISIBLE_PHOTOS = 6;
 
-export const ProfilePhotos = ({ photos, username }: ProfilePhotosProps) => {
+export const ProfilePhotos = ({
+  photos,
+  username,
+  avatar,
+}: ProfilePhotosProps) => {
   const t = useTranslations();
   const { selectedIndex, setSelectedIndex, handlePrev, handleNext } =
     usePhotoNavigation(photos);
@@ -43,6 +48,7 @@ export const ProfilePhotos = ({ photos, username }: ProfilePhotosProps) => {
       )}
       <PhotoModal
         photo={selectedIndex !== null ? photos[selectedIndex] : null}
+        avatar={avatar}
         cloudName={CLOUD_NAME}
         currentIndex={selectedIndex ?? 0}
         photosCount={photos.length}

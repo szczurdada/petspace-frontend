@@ -17,7 +17,7 @@ export interface Photo {
   publicId: string;
   createdAt: string;
   likes?: number;
-  comments?: number;
+  comments?: Comment[];
   reposts?: number;
 }
 
@@ -27,7 +27,7 @@ export interface Post {
   content: string;
   image?: string;
   likes: number;
-  comments?: number;
+  comments?: Comment[];
   reposts?: number;
   createdAt: Date;
 }
