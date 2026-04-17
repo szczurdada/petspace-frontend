@@ -1,4 +1,3 @@
-import { Input } from "@/app/uikit/Input/Input";
 import styles from "./PostCreator.module.scss";
 import { Button } from "@/app/uikit/Button/Button";
 import { Avatar } from "@/app/uikit/Avatar/Avatar";
@@ -10,6 +9,7 @@ import { StaticImageData } from "next/image";
 import { useState } from "react";
 import { createPost } from "@/app/api/post";
 import { useRouter } from "next/navigation";
+import { Textarea } from "@/app/uikit/Textarea/Textarea";
 
 interface PostCreatorProps {
   avatar?: string | StaticImageData;
@@ -35,16 +35,24 @@ export const PostCreator = ({
     router.refresh();
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      handleSubmit();
+    }
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
         <div className={styles.avatarWrapper}>
           <Avatar src={avatar} />
         </div>
-        <div className={styles.inputWrapper}>
-          <Input
-            appearance="primary"
+        <div className={styles.textareaWrapper}>
+          <Textarea
+            appearance="secondary"
             value={content}
+            onKeyDown={handleKeyDown}
             onChange={(e) => setContent(e.target.value)}
             placeholder={t("postCreator.placeholder") + name + "?"}
           />

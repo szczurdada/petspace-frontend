@@ -121,6 +121,12 @@
     "publish": "Add post",
     "placeholder": "What's new, "
   },
+  "comment": {
+    "reply": "Reply"
+  },
+  "commentCreator": {
+    "placeholder": "Leave your paw print..."
+  },
   "profileEditor": {
     "title": "Edit profile",
     "bio": "About:",

@@ -9,9 +9,9 @@ import { useRouter } from "next/navigation";
 import { API_URL } from "@/config/env";
 import axios from "axios";
 import { Comment } from "@/app/features/Profile/feed/Comment/Comment";
-import { MOCK_COMMENTS } from "@/app/uikit/constants/profile";
 import { MdOutlineMoreHoriz } from "react-icons/md";
 import { CommentCreator } from "../CommentCreator/CommentCreator";
+import { useState } from "react";
 
 export interface PostProps {
   post: PostType;
@@ -19,12 +19,24 @@ export interface PostProps {
 
 export const Post = ({ post }: PostProps) => {
   const router = useRouter();
+  const [showCommentCreator, setShowCommentCreator] = useState((post.comments?.length ?? 0) > 0);
 
   const deletePost = async () => {
     await axios.delete(`${API_URL}/posts/${post.id}`, {
       headers: { Authorization: localStorage.getItem("token") },
     });
     router.refresh();
+  };
+
+  const deleteComment = async (commentId: string) => {
+    await axios.delete(`${API_URL}/comments/${commentId}`, {
+      headers: { Authorization: localStorage.getItem("token") },
+    });
+    router.refresh();
+  };
+
+  const writeComment = () => {
+    setShowCommentCreator((prev) => !prev);
   };
 
   return (
@@ -67,9 +79,9 @@ export const Post = ({ post }: PostProps) => {
           <FaHeart size={16} />
           <span>{post.likes}</span>
         </div>
-        <div className={styles.stat}>
+        <div className={styles.stat} onClick={writeComment}>
           <FaComment size={16} />
-          <span>{post.comments}</span>
+          <span>{post.comments?.length || null}</span>
         </div>
         <div className={styles.stat}>
           <FaReply size={18} />
@@ -77,12 +89,21 @@ export const Post = ({ post }: PostProps) => {
         </div>
       </div>
       <div className={styles.comments}>
-        {MOCK_COMMENTS.map((comment) => (
-          <Comment key={comment.id} comment={comment} />
+        {(post.comments ?? []).map((comment) => (
+          <Comment
+            key={comment.id}
+            comment={comment}
+            onDelete={() => deleteComment(comment.id)}
+          />
         ))}
       </div>
       <div>
-        <CommentCreator></CommentCreator>
+        {showCommentCreator && (
+          <CommentCreator
+            postId={post.id}
+            avatar={post.user.avatar}
+          ></CommentCreator>
+        )}
       </div>
     </div>
   );

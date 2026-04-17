@@ -1,16 +1,19 @@
 import { Modal } from "@/app/uikit/Modal/Modal";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import styles from "./PhotoModal.module.scss";
 import { Photo } from "@/types";
 import { Button } from "@/app/uikit/Button/Button";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 import { useTranslations } from "next-intl";
 import { Comment } from "../../Profile/feed/Comment/Comment";
-import { MOCK_COMMENTS } from "@/app/uikit/constants/profile";
 import { CommentCreator } from "../../Profile/feed/CommentCreator/CommentCreator";
+import axios from "axios";
+import { API_URL } from "@/config/env";
+import { useRouter } from "next/navigation";
 
 interface PhotoModalProps {
   photo: Photo | null;
+  avatar?: string | StaticImageData;
   photosCount?: number;
   currentIndex?: number;
   cloudName: string | undefined;
@@ -22,6 +25,7 @@ interface PhotoModalProps {
 
 export const PhotoModal = ({
   photo,
+  avatar,
   photosCount,
   currentIndex,
   cloudName,
@@ -31,9 +35,17 @@ export const PhotoModal = ({
   onDelete,
 }: PhotoModalProps) => {
   const t = useTranslations();
+  const router = useRouter();
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "ArrowLeft") onPrev?.();
     if (e.key === "ArrowRight") onNext?.();
+  };
+
+  const deleteComment = async (commentId: string) => {
+    await axios.delete(`${API_URL}/comments/${commentId}`, {
+      headers: { Authorization: localStorage.getItem("token") },
+    });
+    router.refresh();
   };
 
   return (
@@ -96,12 +108,16 @@ export const PhotoModal = ({
             </div>
           </div>
           <div className={styles.comments}>
-            {MOCK_COMMENTS.map((comment) => (
-              <Comment key={comment.id} comment={comment} />
+            {(photo.comments ?? []).map((comment) => (
+              <Comment
+                key={comment.id}
+                comment={comment}
+                onDelete={() => deleteComment(comment.id)}
+              />
             ))}
-            <div>
-              <CommentCreator></CommentCreator>
-            </div>
+          </div>
+          <div>
+            <CommentCreator photoId={photo.id} avatar={avatar}></CommentCreator>
           </div>
         </div>
       )}

@@ -14,6 +14,7 @@ import { API_URL, CLOUD_NAME } from "@/config/env";
 import { AvatarUploadModal } from "@/app/features/Profile/modals/AvatarUploadModal/AvatarUploadModal";
 import { PhotoModal } from "@/app/features/Photos/PhotoModal/PhotoModal";
 import { Photo } from "@/types";
+import { useRouter } from "next/navigation";
 
 interface AvatarEditProps {
   photo?: Photo;
@@ -29,6 +30,7 @@ export const AvatarEdit = ({
   onAvatarChange,
 }: AvatarEditProps) => {
   const t = useTranslations();
+  const router = useRouter();
   const [file, setFile] = useState<File | null>(null);
   const [isChangeOpen, setIsChangeOpen] = useState(false);
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
@@ -50,6 +52,7 @@ export const AvatarEdit = ({
 
       onAvatarChange?.(data.data.url);
       setIsChangeOpen(false);
+      router.refresh()
     } catch {
       toast.error(t("toasts.error"));
     }
