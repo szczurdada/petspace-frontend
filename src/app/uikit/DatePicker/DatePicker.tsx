@@ -24,7 +24,7 @@ const localeMap: Record<string, Locale> = { pl, en: enUS };
 export const DatePicker = ({
   value,
   onChange,
-  fromYear = 1924,
+  fromYear = 2000,
 }: DatePickerProps) => {
   const t = useTranslations();
   const [isOpen, setIsOpen] = useState(false);

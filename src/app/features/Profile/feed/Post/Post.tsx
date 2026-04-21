@@ -19,7 +19,9 @@ export interface PostProps {
 
 export const Post = ({ post }: PostProps) => {
   const router = useRouter();
-  const [showCommentCreator, setShowCommentCreator] = useState((post.comments?.length ?? 0) > 0);
+  const [showCommentCreator, setShowCommentCreator] = useState(
+    (post.comments?.length ?? 0) > 0,
+  );
 
   const deletePost = async () => {
     await axios.delete(`${API_URL}/posts/${post.id}`, {

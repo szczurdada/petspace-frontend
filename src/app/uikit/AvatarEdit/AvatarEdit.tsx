@@ -17,14 +17,14 @@ import { Photo } from "@/types";
 import { useRouter } from "next/navigation";
 
 interface AvatarEditProps {
-  photo?: Photo;
+  avatarPhotos?: Photo[];
   src?: string;
   size?: number;
-  onAvatarChange?: (url: string) => void;
+  onAvatarChange?: (url: string | undefined) => void;
 }
 
 export const AvatarEdit = ({
-  photo,
+  avatarPhotos,
   src,
   size,
   onAvatarChange,
@@ -35,6 +35,13 @@ export const AvatarEdit = ({
   const [isChangeOpen, setIsChangeOpen] = useState(false);
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
   const [isPhotoOpen, setIsPhotoOpen] = useState(false);
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const openPhoto = () => {
+    setCurrentIndex((avatarPhotos?.length ?? 1) - 1);
+    setIsPhotoOpen(true);
+  };
 
   const savePhoto = async () => {
     try {
@@ -51,8 +58,23 @@ export const AvatarEdit = ({
       );
 
       onAvatarChange?.(data.data.url);
+      setFile(null);
       setIsChangeOpen(false);
-      router.refresh()
+      router.refresh();
+    } catch {
+      toast.error(t("toasts.error"));
+    }
+  };
+
+  const deleteAvatar = async () => {
+    try {
+      await axios.delete(`${API_URL}/api/upload/avatar`, {
+        headers: { Authorization: localStorage.getItem("token") },
+      });
+
+      onAvatarChange?.(undefined);
+      setIsDeleteOpen(false);
+      router.refresh();
     } catch {
       toast.error(t("toasts.error"));
     }
@@ -64,24 +86,36 @@ export const AvatarEdit = ({
         <Avatar src={src ?? defaultAvatar} size={size} />
       </div>
       <div className={styles.overlay}>
-        <Button appearance="secondary" onClick={() => setIsPhotoOpen(true)}>
-          <MdPhotoCamera size={20} />
-          {t("avatarEdit.open")}
-        </Button>
+        {src && (
+          <Button appearance="secondary" onClick={openPhoto}>
+            <MdPhotoCamera size={20} />
+            {t("avatarEdit.open")}
+          </Button>
+        )}
         <Button appearance="secondary" onClick={() => setIsChangeOpen(true)}>
           <MdModeEdit size={20} />
           {t("avatarEdit.change")}
         </Button>
-        <Button appearance="secondary" onClick={() => setIsDeleteOpen(true)}>
-          <MdDeleteSweep size={20} />
-          {t("avatarEdit.delete")}
-        </Button>
+        {src && (
+          <Button appearance="secondary" onClick={() => setIsDeleteOpen(true)}>
+            <MdDeleteSweep size={20} />
+            {t("avatarEdit.delete")}
+          </Button>
+        )}
       </div>
 
       <PhotoModal
-        photo={isPhotoOpen && photo ? photo : null}
+        photo={isPhotoOpen ? (avatarPhotos?.[currentIndex] ?? null) : null}
         cloudName={CLOUD_NAME}
+        photosCount={avatarPhotos?.length ?? 0}
+        currentIndex={(avatarPhotos?.length ?? 1) - 1 - currentIndex}
         onClose={() => setIsPhotoOpen(false)}
+        onPrev={() =>
+          setCurrentIndex((i) =>
+            Math.min((avatarPhotos?.length ?? 1) - 1, i + 1),
+          )
+        }
+        onNext={() => setCurrentIndex((i) => Math.max(0, i - 1))}
       />
 
       <Modal isOpen={isChangeOpen} onClose={() => setIsChangeOpen(false)}>
@@ -108,7 +142,9 @@ export const AvatarEdit = ({
           <Button appearance="secondary" onClick={() => setIsDeleteOpen(false)}>
             {t("common.cancel")}
           </Button>
-          <Button appearance="primary">{t("avatarEdit.delete")}</Button>
+          <Button appearance="primary" onClick={deleteAvatar}>
+            {t("avatarEdit.delete")}
+          </Button>
         </div>
       </Modal>
     </div>

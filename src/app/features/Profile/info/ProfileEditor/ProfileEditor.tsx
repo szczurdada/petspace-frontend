@@ -15,9 +15,11 @@ import dayjs from "dayjs";
 import type { Dayjs } from "dayjs";
 import { Textarea } from "@/app/uikit/Textarea/Textarea";
 import { API_URL } from "@/config/env";
+import { Photo } from "@/types";
 
 interface ProfileEditorProps {
   avatar?: string;
+  avatarPhotos?: Photo[];
   name: string;
   username: string;
   bio?: string;
@@ -39,6 +41,7 @@ interface ProfileForm {
 
 export const ProfileEditor = ({
   avatar,
+  avatarPhotos,
   name,
   username,
   bio,
@@ -106,7 +109,7 @@ export const ProfileEditor = ({
         <h3 className={styles.title}>{t("profileEditor.title")}</h3>
         <div className={styles.profileContent}>
           <div className={styles.avatarSection}>
-            <AvatarEdit src={avatar} size={120} />
+            <AvatarEdit src={avatar} size={120} avatarPhotos={avatarPhotos} />
           </div>
           <div className={styles.userInfo}>
             <h4 className={styles.name}>{name}</h4>

@@ -22,8 +22,7 @@ export const ProfileLayout = ({ bannerInfo }: ProfileLayoutProps) => {
       </div>
       <div className={styles.profileBanner}>
         <ProfileBanner
-          {...bannerInfo}
-          photosCount={bannerInfo.photos?.length ?? 0}
+          bannerInfo={bannerInfo}
         />
       </div>
       <div className={styles.feedContainer}>

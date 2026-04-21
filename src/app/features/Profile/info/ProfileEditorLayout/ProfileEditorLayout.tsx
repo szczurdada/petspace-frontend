@@ -3,9 +3,11 @@ import { ProfileEditor } from "../ProfileEditor/ProfileEditor";
 import styles from "./ProfileEditorLayout.module.scss";
 import { Sidebar } from "@/app/components/Sidebar/Sidebar";
 import ProfileInformation from "../ProfileInformation/ProfileInformation";
+import { Photo } from "@/types";
 
 interface ProfileEditorLayoutProps {
   avatar?: string;
+  avatarPhotos?: Photo[];
   name: string;
   username: string;
   bio?: string;
@@ -18,6 +20,7 @@ interface ProfileEditorLayoutProps {
 
 export const ProfileEditorLayout = ({
   avatar,
+  avatarPhotos,
   name,
   username,
   gender,
@@ -35,6 +38,7 @@ export const ProfileEditorLayout = ({
       <div className={styles.main}>
         <ProfileEditor
           avatar={avatar}
+          avatarPhotos={avatarPhotos}
           bio={bio}
           name={name}
           username={username}
