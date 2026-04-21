@@ -57,10 +57,10 @@ export const PhotoModal = ({
           tabIndex={0}
           autoFocus
         >
-          <Button appearance="ghost" className={styles.button}>
-            {(currentIndex ?? 0) + 1} / {photosCount}
-          </Button>
           <div className={styles.photoWrapper}>
+            <span className={styles.counter}>
+              {(currentIndex ?? 0) + 1} / {photosCount}
+            </span>
             <Button
               className={styles.arrow}
               appearance="ghost"
@@ -84,40 +84,43 @@ export const PhotoModal = ({
               <FaAngleRight size={40} />
             </Button>
           </div>
-          <div className={styles.footer}>
-            <div className={styles.time}>
-              {photo.createdAt
-                ? new Date(photo.createdAt).toLocaleDateString("en-US", {
-                    day: "numeric",
-                    month: "short",
-                  }) +
-                  " · " +
-                  new Date(photo.createdAt).toLocaleTimeString("en-US", {
-                    hour: "numeric",
-                    minute: "2-digit",
-                    hour12: false,
-                  })
-                : ""}
-            </div>
-            <div className={styles.actions}>
+
+          <div className={styles.sidebar}>
+            <div className={styles.sidebarHeader}>
               {onDelete && (
                 <Button appearance="ghost" onClick={onDelete}>
                   {t("photoModal.delete")}
                 </Button>
               )}
             </div>
-          </div>
-          <div className={styles.comments}>
-            {(photo.comments ?? []).map((comment) => (
-              <Comment
-                key={comment.id}
-                comment={comment}
-                onDelete={() => deleteComment(comment.id)}
-              />
-            ))}
-          </div>
-          <div>
-            <CommentCreator photoId={photo.id} avatar={avatar}></CommentCreator>
+
+            <div className={styles.comments}>
+              {(photo.comments ?? []).map((comment) => (
+                <Comment
+                  key={comment.id}
+                  comment={comment}
+                  onDelete={() => deleteComment(comment.id)}
+                />
+              ))}
+            </div>
+
+            <div className={styles.sidebarFooter}>
+              <div className={styles.time}>
+                {photo.createdAt
+                  ? new Date(photo.createdAt).toLocaleDateString("en-US", {
+                      day: "numeric",
+                      month: "short",
+                    }) +
+                    " · " +
+                    new Date(photo.createdAt).toLocaleTimeString("en-US", {
+                      hour: "numeric",
+                      minute: "2-digit",
+                      hour12: false,
+                    })
+                  : ""}
+              </div>
+              <CommentCreator photoId={photo.id} avatar={avatar} />
+            </div>
           </div>
         </div>
       )}

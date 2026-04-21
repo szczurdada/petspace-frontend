@@ -12,55 +12,34 @@ import { AvatarEdit } from "@/app/uikit/AvatarEdit/AvatarEdit";
 import { useState } from "react";
 import { MdPlace } from "react-icons/md";
 import { ProfileInfoModal } from "../../modals/ProfileInfoModal/ProfileInfoModal";
+import { BannerInfo } from "@/types";
 
 interface ProfileBannerProps {
-  avatar?: string;
-  username: string;
-  name: string;
-  breed?: string;
-  birthDate?: number;
-  gender?: string;
-  city?: string;
-  bio?: string;
-  interests?: {
-    favoriteToys?: string;
-    favoriteTreats?: string;
-    favoriteActivities?: string;
-    crimes?: string;
-    guiltyHabits?: string;
-    humans?: string;
-  };
-  friendsCount?: number;
-  photosCount?: number;
+  bannerInfo: BannerInfo;
 }
 
-export const ProfileBanner = ({
-  avatar,
-  username,
-  name,
-  breed,
-  birthDate,
-  gender,
-  city,
-  bio,
-  interests,
-  friendsCount = 0,
-  photosCount,
-}: ProfileBannerProps) => {
+export const ProfileBanner = ({ bannerInfo }: ProfileBannerProps) => {
   const t = useTranslations();
   const router = useRouter();
+
+  const friendsCount = bannerInfo.friends?.length ?? 0;
+  const photosCount = bannerInfo.photos?.length ?? 0;
+
   const [isInfoOpen, setIsInfoOpen] = useState(false);
-  const [avatarUrl, setAvatarUrl] = useState<string | undefined>(avatar);
+  const [avatarUrl, setAvatarUrl] = useState<string | undefined>(
+    bannerInfo.avatar,
+  );
+
   const hasMoreInfo = !!(
-    breed ||
-    birthDate ||
-    gender ||
-    bio ||
-    (interests && Object.values(interests).some(Boolean))
+    bannerInfo.breed ||
+    bannerInfo.birthDate ||
+    bannerInfo.gender ||
+    bannerInfo.bio ||
+    (bannerInfo.interests && Object.values(bannerInfo.interests).some(Boolean))
   );
 
   const editProfile = () => {
-    router.push(ROUTES.editProfile(username));
+    router.push(ROUTES.editProfile(bannerInfo.username));
   };
 
   return (
@@ -69,21 +48,22 @@ export const ProfileBanner = ({
         <AvatarEdit
           src={avatarUrl}
           size={140}
+          avatarPhotos={bannerInfo.avatarPhotos}
           onAvatarChange={(url) => setAvatarUrl(url)}
         />
       </div>
       <div className={styles.container}>
         <div className={styles.info}>
           <div className={styles.nameWrapper}>
-            <div className={styles.name}>{name}</div>
-            <div className={styles.username}>@{username} </div>
+            <div className={styles.name}>{bannerInfo.name}</div>
+            <div className={styles.username}>@{bannerInfo.username} </div>
           </div>
-          {(city || hasMoreInfo) && (
+          {(bannerInfo.city || hasMoreInfo) && (
             <div className={styles.details}>
-              {city && (
+              {bannerInfo.city && (
                 <div className={styles.city}>
                   <MdPlace size={20} className={styles.detailsIcon} />
-                  {city}
+                  {bannerInfo.city}
                 </div>
               )}
               {hasMoreInfo && (
@@ -97,11 +77,14 @@ export const ProfileBanner = ({
             </div>
           )}
         </div>
-        {bio && <div className={styles.bio}>{bio}</div>}
+        {bannerInfo.bio && <div className={styles.bio}>{bannerInfo.bio}</div>}
         <div className={styles.divider}></div>
         <div className={styles.stats}>
           <div className={styles.stat}>
-            <Link href={ROUTES.friends(username)} appearance="secondary">
+            <Link
+              href={ROUTES.friends(bannerInfo.username)}
+              appearance="secondary"
+            >
               <FaPaw size={18} />
               <span className={styles.statValue}>{friendsCount}</span>
               <span className={styles.statLabel}>
@@ -110,7 +93,10 @@ export const ProfileBanner = ({
             </Link>
           </div>
           <div className={styles.stat}>
-            <Link href={ROUTES.photos(username)} appearance="secondary">
+            <Link
+              href={ROUTES.photos(bannerInfo.username)}
+              appearance="secondary"
+            >
               <FaCamera size={18} />
               <span className={styles.statValue}>{photosCount}</span>
               <span className={styles.statLabel}>
@@ -136,11 +122,11 @@ export const ProfileBanner = ({
       <ProfileInfoModal
         isOpen={isInfoOpen}
         onClose={() => setIsInfoOpen(false)}
-        bio={bio}
-        birthDate={birthDate}
-        gender={gender}
-        breed={breed}
-        interests={interests}
+        bio={bannerInfo.bio}
+        birthDate={bannerInfo.birthDate}
+        gender={bannerInfo.gender}
+        breed={bannerInfo.breed}
+        interests={bannerInfo.interests}
       />
     </div>
   );

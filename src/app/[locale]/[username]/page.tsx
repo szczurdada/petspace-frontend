@@ -43,6 +43,7 @@ const ProfilePage = async ({ params }: ProfilePageProps) => {
           name: userData.name,
           username: userData.username,
           avatar: userData.avatar,
+          avatarPhotos: userData.avatarPhotos,
           gender: userData.gender,
           breed: userData.breed,
           birthDate: userData.birthDate,

@@ -15,6 +15,7 @@ const EditPage = async ({ params }: EditPageProps) => {
       <Header username={userData.username} />
       <ProfileEditorLayout
         avatar={userData.avatar}
+        avatarPhotos={userData.avatarPhotos}
         name={userData.name}
         username={userData.username}
         birthDate={userData.birthDate}

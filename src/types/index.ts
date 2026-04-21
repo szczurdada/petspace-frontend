@@ -54,6 +54,7 @@ export interface BannerInfo {
   username: string;
   name: string;
   avatar?: string;
+  avatarPhotos?: Photo[];
   breed?: string;
   birthDate?: number;
   gender?: string;
