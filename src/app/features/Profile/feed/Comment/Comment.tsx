@@ -4,8 +4,10 @@ import { FaHeart } from "react-icons/fa";
 import { IoCloseSharp } from "react-icons/io5";
 import { Button } from "@/app/uikit/Button/Button";
 import { Comment as CommentType } from "@/types";
+import { useLocale, useTranslations } from "next-intl";
 import dayjs from "dayjs";
-import { useTranslations } from "next-intl";
+import "dayjs/locale/pl";
+import "dayjs/locale/en";
 
 interface CommentProps {
   comment: CommentType;
@@ -14,6 +16,7 @@ interface CommentProps {
 
 export const Comment = ({ comment, onDelete }: CommentProps) => {
   const t = useTranslations();
+  const locale = useLocale();
 
   return (
     <div className={styles.container}>
@@ -22,7 +25,7 @@ export const Comment = ({ comment, onDelete }: CommentProps) => {
         <div className={styles.header}>
           <span className={styles.name}>{comment.user.name}</span>
           <span className={styles.time}>
-            {dayjs(comment.createdAt).format("D MMM YYYY")}
+            {dayjs(comment.createdAt).locale(locale).format("D MMM YYYY")}
           </span>
         </div>
         <div className={styles.content}>{comment.content}</div>
@@ -35,7 +38,11 @@ export const Comment = ({ comment, onDelete }: CommentProps) => {
         </div>
       </div>
       <div className={styles.delete}>
-        <Button appearance="ghost" className={styles.deleteButton} onClick={onDelete}>
+        <Button
+          appearance="ghost"
+          className={styles.deleteButton}
+          onClick={onDelete}
+        >
           <IoCloseSharp size={20} />
         </Button>
       </div>

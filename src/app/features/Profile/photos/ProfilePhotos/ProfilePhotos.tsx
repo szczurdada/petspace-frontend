@@ -12,6 +12,7 @@ interface ProfilePhotosProps {
   photos: Photo[];
   username: string;
   avatar?: string;
+  name: string;
 }
 
 const MAX_VISIBLE_PHOTOS = 6;
@@ -20,6 +21,7 @@ export const ProfilePhotos = ({
   photos,
   username,
   avatar,
+  name
 }: ProfilePhotosProps) => {
   const t = useTranslations();
   const { selectedIndex, setSelectedIndex, handlePrev, handleNext } =
@@ -46,9 +48,11 @@ export const ProfilePhotos = ({
           ))}
         </div>
       )}
+
       <PhotoModal
         photo={selectedIndex !== null ? photos[selectedIndex] : null}
         avatar={avatar}
+        name={name}
         cloudName={CLOUD_NAME}
         currentIndex={selectedIndex ?? 0}
         photosCount={photos.length}

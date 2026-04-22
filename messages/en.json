@@ -100,7 +100,9 @@
   "photoModal":{
     "delete": "Delete",
     "makeProfilePhoto": "Make profile photo", 
-    "counter": "Photos {current} of {total}"
+    "counter": "Photos {current} of {total}",
+    "commentsTitle": "No tail wags yet...",
+    "commentsText": "Be the first!"
   },
   "photoUploadModal": {
     "addPhoto": "Add new photo",

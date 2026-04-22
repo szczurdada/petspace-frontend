@@ -100,7 +100,9 @@
   "photoModal":{
     "delete": "Usuń",
     "makeProfilePhoto": "Ustaw jako zdjęcie profilowe",
-    "counter": "Zdjęcia {current} z {total}"
+    "counter": "Zdjęcia {current} z {total}",
+    "commentsTitle": "Jeszcze żadnych merdań ogonem...",
+    "commentsText": "Bądź pierwszy!"
   },
   "profilePhotos": {
     "title": "Zdjęcia"

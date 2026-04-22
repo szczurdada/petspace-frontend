@@ -47,6 +47,7 @@ export const ProfileBanner = ({ bannerInfo }: ProfileBannerProps) => {
       <div className={styles.avatarWrapper}>
         <AvatarEdit
           src={avatarUrl}
+          name={bannerInfo.name}
           size={140}
           avatarPhotos={bannerInfo.avatarPhotos}
           onAvatarChange={(url) => setAvatarUrl(url)}
@@ -112,7 +113,6 @@ export const ProfileBanner = ({ bannerInfo }: ProfileBannerProps) => {
         </Button>
         <Button
           appearance="secondary"
-          className={styles.editBtn}
           onClick={editProfile}
         >
           {t("profileBanner.editProfile")}

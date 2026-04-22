@@ -1,6 +1,6 @@
 "use client";
 
-import { Feed } from "../feed/Postwall/Postwall";
+import { Postwall } from "../feed/Postwall/Postwall";
 import { ProfileFriends } from "../ProfileFriends/ProfileFriends";
 import { PostCreator } from "../feed/PostCreator/PostCreator";
 import { ProfileBanner } from "../info/ProfileBanner/ProfileBanner";
@@ -21,9 +21,7 @@ export const ProfileLayout = ({ bannerInfo }: ProfileLayoutProps) => {
         <Sidebar username={bannerInfo.username} />
       </div>
       <div className={styles.profileBanner}>
-        <ProfileBanner
-          bannerInfo={bannerInfo}
-        />
+        <ProfileBanner bannerInfo={bannerInfo} />
       </div>
       <div className={styles.feedContainer}>
         <PostCreator
@@ -32,7 +30,7 @@ export const ProfileLayout = ({ bannerInfo }: ProfileLayoutProps) => {
           avatar={bannerInfo.avatar}
           postwallId={bannerInfo.postwallId ?? ""}
         />
-        <Feed posts={bannerInfo.posts ?? []} />
+        <Postwall posts={bannerInfo.posts ?? []} />
       </div>
       <div className={styles.rightColumn}>
         <div className={styles.photos}>
@@ -40,6 +38,7 @@ export const ProfileLayout = ({ bannerInfo }: ProfileLayoutProps) => {
             username={bannerInfo.username}
             photos={bannerInfo.photos ?? []}
             avatar={bannerInfo.avatar}
+            name={bannerInfo.name}
           />
         </div>
         <div className={styles.friends}>

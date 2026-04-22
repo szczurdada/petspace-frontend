@@ -19,6 +19,7 @@ import { useRouter } from "next/navigation";
 interface AvatarEditProps {
   avatarPhotos?: Photo[];
   src?: string;
+  name?: string;
   size?: number;
   onAvatarChange?: (url: string | undefined) => void;
 }
@@ -26,6 +27,7 @@ interface AvatarEditProps {
 export const AvatarEdit = ({
   avatarPhotos,
   src,
+  name,
   size,
   onAvatarChange,
 }: AvatarEditProps) => {
@@ -106,6 +108,8 @@ export const AvatarEdit = ({
 
       <PhotoModal
         photo={isPhotoOpen ? (avatarPhotos?.[currentIndex] ?? null) : null}
+        name={name ?? ""}
+        avatar={src}
         cloudName={CLOUD_NAME}
         photosCount={avatarPhotos?.length ?? 0}
         currentIndex={(avatarPhotos?.length ?? 1) - 1 - currentIndex}

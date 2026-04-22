@@ -4,6 +4,7 @@ import { FaBirthdayCake, FaMars, FaPaw, FaVenus } from "react-icons/fa";
 import { useTranslations, useLocale } from "next-intl";
 import dayjs from "dayjs";
 import "dayjs/locale/pl";
+import "dayjs/locale/en";
 
 interface ProfileInfoModalProps {
   isOpen: boolean;
@@ -44,7 +45,9 @@ export const ProfileInfoModal = ({
           {birthDate && (
             <div className={styles.row}>
               <FaBirthdayCake size={16} className={styles.icon} />
-              <span>{dayjs(birthDate).locale(locale).format("D MMMM YYYY")}</span>
+              <span>
+                {dayjs(birthDate).locale(locale).format("D MMMM YYYY")}
+              </span>
             </div>
           )}
           {gender === "female" && (
@@ -70,7 +73,9 @@ export const ProfileInfoModal = ({
 
           {hasInterests && (
             <div className={styles.interests}>
-              <h3 className={styles.interestsTitle}>{t("profileInfoModal.interestsTitle")}</h3>
+              <h3 className={styles.interestsTitle}>
+                {t("profileInfoModal.interestsTitle")}
+              </h3>
               {interests.favoriteToys && (
                 <div className={styles.interestItem}>
                   <div className={styles.interestLabel}>

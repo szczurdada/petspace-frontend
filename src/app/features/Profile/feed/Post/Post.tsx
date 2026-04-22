@@ -12,6 +12,9 @@ import { Comment } from "@/app/features/Profile/feed/Comment/Comment";
 import { MdOutlineMoreHoriz } from "react-icons/md";
 import { CommentCreator } from "../CommentCreator/CommentCreator";
 import { useState } from "react";
+import { useLocale } from "next-intl";
+import "dayjs/locale/pl";
+import "dayjs/locale/en";
 
 export interface PostProps {
   post: PostType;
@@ -22,6 +25,8 @@ export const Post = ({ post }: PostProps) => {
   const [showCommentCreator, setShowCommentCreator] = useState(
     (post.comments?.length ?? 0) > 0,
   );
+
+  const locale = useLocale();
 
   const deletePost = async () => {
     await axios.delete(`${API_URL}/posts/${post.id}`, {
@@ -50,7 +55,7 @@ export const Post = ({ post }: PostProps) => {
         <div className={styles.info}>
           <div className={styles.name}>{post.user.name}</div>
           <div className={styles.time}>
-            {dayjs(post.createdAt).format("D MMM YYYY")}
+            {dayjs(post.createdAt).locale(locale).format("D MMM YYYY")}
           </div>
         </div>
         <div className={styles.delete}>

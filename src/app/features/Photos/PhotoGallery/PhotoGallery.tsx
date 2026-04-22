@@ -16,9 +16,10 @@ import { PhotoUploadModal } from "../PhotoUploadModal/PhotoUploadModal";
 interface PhotoGalleryProps {
   photos: Photo[];
   avatar?: string;
+  name: string;
 }
 
-export const PhotoGallery = ({ photos, avatar }: PhotoGalleryProps) => {
+export const PhotoGallery = ({ photos, avatar, name }: PhotoGalleryProps) => {
   const t = useTranslations();
 
   const [isOpen, setIsOpen] = useState(false);
@@ -98,6 +99,7 @@ export const PhotoGallery = ({ photos, avatar }: PhotoGalleryProps) => {
       <PhotoModal
         photo={selectedPhoto}
         avatar={avatar}
+        name={name}
         cloudName={CLOUD_NAME}
         currentIndex={selectedIndex ?? 0}
         photosCount={localPhotos.length}
