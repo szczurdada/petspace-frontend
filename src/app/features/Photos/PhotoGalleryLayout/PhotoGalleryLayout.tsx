@@ -7,12 +7,14 @@ interface PhotoGalleryLayoutProps {
   username: string;
   photos: Photo[];
   avatar?: string;
+  name: string;
 }
 
 export const PhotoGalleryLayout = ({
   username,
   photos,
-  avatar
+  avatar,
+  name,
 }: PhotoGalleryLayoutProps) => {
   return (
     <div className={styles.wrapper}>
@@ -20,7 +22,7 @@ export const PhotoGalleryLayout = ({
         <Sidebar username={username} />
       </div>
       <div className={styles.main}>
-        <PhotoGallery photos={photos} avatar={avatar}/>
+        <PhotoGallery photos={photos} avatar={avatar} name={name} />
       </div>
     </div>
   );

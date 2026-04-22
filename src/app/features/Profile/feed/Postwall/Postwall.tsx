@@ -5,11 +5,11 @@ import styles from "./Postwall.module.scss";
 import { Post as PostType } from "@/types";
 import { useTranslations } from "next-intl";
 
-interface FeedProps {
+interface PostwallProps {
   posts: PostType[];
 }
 
-export const Feed = ({ posts }: FeedProps) => {
+export const Postwall = ({ posts }: PostwallProps) => {
   const t = useTranslations();
 
   return (

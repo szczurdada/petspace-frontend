@@ -1,6 +1,5 @@
 import styles from "./Modal.module.scss";
 import { ReactNode } from "react";
-import { IoCloseSharp } from "react-icons/io5";
 
 interface ModalProps {
   className?: string;
@@ -18,9 +17,6 @@ export const Modal = ({ className, isOpen, onClose, children }: ModalProps) => {
         className={`${styles.modal} ${className ?? ""}`}
         onClick={(e) => e.stopPropagation()}
       >
-        <button className={styles.close} onClick={onClose}>
-          <IoCloseSharp size={20} />
-        </button>
         {children}
       </div>
     </div>

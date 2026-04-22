@@ -35,6 +35,13 @@ const ProfilePage = async ({ params }: ProfilePageProps) => {
     })),
   );
 
+  const avatarPhotosWithComments = await Promise.all(
+    (userData.avatarPhotos ?? []).map(async (photo: Photo) => ({
+      ...photo,
+      comments: await getPhotoComments(photo.id),
+    })),
+  );
+
   return (
     <>
       <Header username={userData.username} />
@@ -43,7 +50,7 @@ const ProfilePage = async ({ params }: ProfilePageProps) => {
           name: userData.name,
           username: userData.username,
           avatar: userData.avatar,
-          avatarPhotos: userData.avatarPhotos,
+          avatarPhotos: avatarPhotosWithComments,
           gender: userData.gender,
           breed: userData.breed,
           birthDate: userData.birthDate,
