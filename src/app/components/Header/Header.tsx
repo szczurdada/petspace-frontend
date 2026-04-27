@@ -19,13 +19,12 @@ export const Header = ({ username }: headerProps) => {
         <div className={styles.wrapper}>
           <Link href={ROUTES.feed} className={styles.logo}>
             <Logo />
-            <h1 className={styles.logoTitle}>Petspace</h1>
+            <span className={styles.logoTitle}>Petspace</span>
           </Link>
         </div>
         {username && (
           <>
             <SearchBar />
-
             <nav className={styles.actions}>
               <Link href={ROUTES.notifications}>
                 <Button appearance="ghost">

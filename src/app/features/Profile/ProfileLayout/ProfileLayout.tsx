@@ -7,7 +7,6 @@ import { ProfileBanner } from "../info/ProfileBanner/ProfileBanner";
 import styles from "./ProfileLayout.module.scss";
 import { Sidebar } from "@/app/components/Sidebar/Sidebar";
 import { BannerInfo } from "@/types";
-import { MOCK_FRIENDS } from "@/app/uikit/constants/profile";
 import { ProfilePhotos } from "../photos/ProfilePhotos/ProfilePhotos";
 
 interface ProfileLayoutProps {
@@ -16,7 +15,7 @@ interface ProfileLayoutProps {
 
 export const ProfileLayout = ({ bannerInfo }: ProfileLayoutProps) => {
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.layout}>
       <div className={styles.sidebar}>
         <Sidebar username={bannerInfo.username} />
       </div>
@@ -41,12 +40,14 @@ export const ProfileLayout = ({ bannerInfo }: ProfileLayoutProps) => {
             name={bannerInfo.name}
           />
         </div>
-        <div className={styles.friends}>
-          <ProfileFriends
-            username={bannerInfo.username}
-            friends={bannerInfo.friends ?? MOCK_FRIENDS}
-          />
-        </div>
+        {(bannerInfo.friends ?? []).length > 0 && (
+          <div className={styles.friends}>
+            <ProfileFriends
+              username={bannerInfo.username}
+              friends={bannerInfo.friends ?? []}
+            />
+          </div>
+        )}
       </div>
     </div>
   );

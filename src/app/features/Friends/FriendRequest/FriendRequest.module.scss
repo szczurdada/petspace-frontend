@@ -1,0 +1,58 @@
+.wrapper {
+  background: var(--bg-card);
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-l);
+  padding: var(--padding-xl);
+  border-radius: var(--radius-m);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.title {
+  font-size: var(--font-l);
+  margin: 0;
+  font-weight: 700;
+}
+
+.friendRequest {
+  display: flex;
+  gap: var(--gap-m);
+  align-items: flex-start;
+}
+
+.avatar {
+  border-radius: var(--radius-s);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-s);
+  width: 100%;
+}
+
+.name {
+  font-weight: 600;
+  font-size: var(--font-m);
+  color: var(--text-primary);
+}
+
+.breed,
+.city {
+  font-size: var(--font-s);
+  color: var(--text-secondary);
+}
+
+.mutualFriends {
+  font-size: var(--font-s);
+  color: var(--text-secondary);
+}
+
+.actions {
+  display: flex;
+  gap: var(--gap-s);
+
+  button {
+    flex: 1;
+  }
+}

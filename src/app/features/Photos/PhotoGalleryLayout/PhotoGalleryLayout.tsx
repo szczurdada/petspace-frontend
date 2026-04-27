@@ -17,7 +17,7 @@ export const PhotoGalleryLayout = ({
   name,
 }: PhotoGalleryLayoutProps) => {
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.layout}>
       <div className={styles.sidebar}>
         <Sidebar username={username} />
       </div>

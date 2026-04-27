@@ -21,15 +21,25 @@ export const ProfileFriends = ({ username, friends }: ProfileFriendsProps) => {
         <h3 className={styles.title}>{t("profileFriends.title")}</h3>
       </Link>
       <div className={styles.friends}>
-        {friends.slice(0, MAX_VISIBLE_FRIENDS).map((friend) => (
-          <div key={friend.id} className={styles.friend}>
-            <Avatar src={friend.avatar} size={40} isOnline={friend.isOnline} />
-            <div className={styles.info}>
-              <div className={styles.name}>{friend.name}</div>
-              <div className={styles.breed}>{friend.breed}</div>
+        {friends && friends.length > 0 ? (
+          friends.slice(0, MAX_VISIBLE_FRIENDS).map((friend) => (
+            <div key={friend.id} className={styles.friend}>
+              <Avatar
+                src={friend.avatar}
+                size={40}
+                isOnline={friend.isOnline}
+              />
+              <div className={styles.info}>
+                <div className={styles.name}>{friend.name}</div>
+                <div className={styles.breed}>{friend.breed}</div>
+              </div>
             </div>
+          ))
+        ) : (
+          <div className={styles.emptyFriends}>
+            <p className={styles.text}>{t("profileFriends.empty")}</p>
           </div>
-        ))}
+        )}
       </div>
       <div className={styles.action}>
         <button className={styles.showFriends}>
