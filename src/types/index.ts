@@ -8,6 +8,7 @@ export interface User {
   city?: string;
   breed?: string;
   isOnline?: boolean;
+  friendsCount?: number;
 }
 
 export type Friend = User;

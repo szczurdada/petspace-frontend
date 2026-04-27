@@ -56,7 +56,7 @@ export const ProfileBanner = ({ bannerInfo }: ProfileBannerProps) => {
       <div className={styles.container}>
         <div className={styles.info}>
           <div className={styles.nameWrapper}>
-            <div className={styles.name}>{bannerInfo.name}</div>
+            <h1 className={styles.name}>{bannerInfo.name}</h1>
             <div className={styles.username}>@{bannerInfo.username} </div>
           </div>
           {(bannerInfo.city || hasMoreInfo) && (

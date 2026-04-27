@@ -1,10 +1,11 @@
 import AvatarImg from "@/public/avatar.jpg";
+import FriendImg from "@/public/friend1.jpg";
 import Img1 from "@/public/img1.jpg";
 import Img2 from "@/public/img2.jpg";
 import Img3 from "@/public/img3.jpg";
 import Img4 from "@/public/img4.jpg";
 import Img5 from "@/public/img5.jpg";
-import { Comment, Friend } from "@/types";
+import { Friend } from "@/types";
 
 export const MOCK_PROFILE = {
   avatar: AvatarImg,
@@ -35,49 +36,30 @@ export const MOCK_FRIENDS: Friend[] = [
     name: "Barney",
     username: "fff",
     breed: "Affenpinscher",
+    city: "New York",
     isOnline: true,
+    friendsCount: 45,
   },
   {
     id: "13",
-    avatar: AvatarImg,
+    avatar: FriendImg,
     name: "Bob",
     username: "fddff",
     breed: "Dachshund",
+    city: "Warsaw",
     isOnline: true,
+    friendsCount: 4,
   },
   {
     id: "16",
-    avatar: AvatarImg,
+    avatar: FriendImg,
     name: "Tom",
     username: "ffddf",
     breed: "Dachshund",
+    city: "Warsaw",
     isOnline: false,
+    friendsCount: 89,
   },
-];
-
-export const MOCK_COMMENTS: Comment[] = [
-  {
-    id: "1",
-    user: {
-      id: "1",
-      name: "Vova",
-      username: "dog11",
-      avatar: AvatarImg,
-    },
-    content: "hello",
-    likes: 2,
-    createdAt: new Date(),
-  },
-  { id: "2",
-    user: {
-      id: "1",
-      name: "Vova",
-      username: "dog11",
-      avatar: AvatarImg,
-    },
-    content: "hello",
-    likes: 2,
-    createdAt: new Date(),}
 ];
 
 //url params

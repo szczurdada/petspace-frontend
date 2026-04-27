@@ -117,6 +117,17 @@
     "title": "My photos",
     "addPhoto": "Add new photo"
   },
+  "friends": {
+    "title": "My friends",
+    "message": "Message",
+    "friends": "friends"
+  },
+  "friendRequest": {
+    "title": "Friend Requests",
+    "accept": "Accept",
+    "decline": "Decline",
+    "mutualFriends": "{count} mutual friends"
+  },
   "postCreator": {
     "photo": "Photo",
     "place": "Place",

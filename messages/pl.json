@@ -123,6 +123,17 @@
     "title": "Moje zdjęcia",
     "addPhoto": "Dodaj zdjęcie"
   },
+  "friends": {
+    "title": "Moi znajomi",
+    "message": "Wiadomość",
+    "friends": "znajomych"
+  },
+  "friendRequest": {
+    "title": "Zaproszenia do znajomych",
+    "accept": "Akceptuj",
+    "decline": "Odrzuć",
+    "mutualFriends": "{count} wspólnych znajomych"
+  },
   "photoUploadModal": {
     "addPhoto": "Dodaj nowe zdjęcie",
     "dragAndDrop": "Przeciągnij i upuść lub kliknij tutaj",
