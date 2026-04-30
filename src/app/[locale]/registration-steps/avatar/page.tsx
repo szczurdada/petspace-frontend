@@ -3,9 +3,9 @@ import styles from "./page.module.scss";
 
 const RegistrationStepsAvatarPage = () => {
   return (
-    <div className={styles.page}>
-      <RegistrationStepsAvatar />
-    </div>
+    <main className={styles.page}>
+        <RegistrationStepsAvatar />
+    </main>
   );
 };
 

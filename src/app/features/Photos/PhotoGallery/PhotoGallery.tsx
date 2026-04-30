@@ -4,14 +4,14 @@ import { Button } from "@/app/uikit/Button/Button";
 import styles from "./PhotoGallery.module.scss";
 import Image from "next/image";
 import { useState } from "react";
-import axios from "axios";
 import { Photo } from "@/types";
 import { useTranslations } from "next-intl";
 import { PhotoModal } from "../PhotoModal/PhotoModal";
-import { CLOUD_NAME, API_URL } from "@/config/env";
+import { CLOUD_NAME } from "@/config/env";
 import { toast } from "react-toastify";
 import { usePhotoNavigation } from "@/app/hooks/usePhotoNavigation";
 import { PhotoUploadModal } from "../PhotoUploadModal/PhotoUploadModal";
+import api from "@/config/axios";
 
 interface PhotoGalleryProps {
   photos: Photo[];
@@ -37,13 +37,7 @@ export const PhotoGallery = ({ photos, avatar, name }: PhotoGalleryProps) => {
         files.map(async (file) => {
           const formData = new FormData();
           formData.append("image", file);
-          const { data } = await axios.post(
-            `${API_URL}/api/upload/photo`,
-            formData,
-            {
-              headers: { Authorization: localStorage.getItem("token") },
-            },
-          );
+          const { data } = await api.post("/api/upload/photo", formData);
           return {
             id: data.data.id,
             publicId: data.data.public_id,
@@ -60,9 +54,7 @@ export const PhotoGallery = ({ photos, avatar, name }: PhotoGalleryProps) => {
 
   const deletePhoto = async (photoId: string) => {
     try {
-      await axios.delete(`${API_URL}/api/upload/photo/${photoId}`, {
-        headers: { Authorization: localStorage.getItem("token") },
-      });
+      await api.delete(`/api/upload/photo/${photoId}`);
       setLocalPhotos((prev) => prev.filter((p) => p.id !== photoId));
       setSelectedIndex(null);
     } catch {
@@ -72,29 +64,28 @@ export const PhotoGallery = ({ photos, avatar, name }: PhotoGalleryProps) => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.galleryHeader}>
-        <div className={styles.titleWrapper}>
-          <h3 className={styles.title}>{t("photoGallery.title")}</h3>
-          <div className={styles.photosCount}>{localPhotos.length}</div>
-        </div>
-
+      <div className={styles.header}>
+        <h3 className={styles.title}>
+          {t("photoGallery.title")}
+          <span className={styles.count}>{localPhotos.length}</span>
+        </h3>
         <Button appearance="primary" onClick={() => setIsOpen(true)}>
           {t("photoGallery.addPhoto")}
         </Button>
       </div>
 
-      <div className={styles.gallery}>
+      <ul className={styles.gallery}>
         {localPhotos.map((photo, index) => (
-          <div key={photo.publicId} className={styles.photo}>
+          <li key={photo.publicId} className={styles.photo}>
             <Image
               onClick={() => setSelectedIndex(index)}
               src={`https://res.cloudinary.com/${CLOUD_NAME}/image/upload/${photo.publicId}`}
-              alt="Photo"
+              alt={`${name}'s photo`}
               fill
             />
-          </div>
+          </li>
         ))}
-      </div>
+      </ul>
 
       <PhotoModal
         photo={selectedPhoto}

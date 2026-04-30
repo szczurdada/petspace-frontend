@@ -3,14 +3,13 @@
 import { useTranslations } from "next-intl";
 import { Button } from "../../../../uikit/Button/Button";
 import styles from "./ProfileBanner.module.scss";
-import { FaPaw } from "react-icons/fa";
+import { FaMapMarkerAlt, FaPaw } from "react-icons/fa";
 import { FaCamera } from "react-icons/fa6";
 import { ROUTES } from "@/app/uikit/constants/routes";
 import { Link } from "../../../../uikit/Link/Link";
 import { useRouter } from "next/navigation";
 import { AvatarEdit } from "@/app/uikit/AvatarEdit/AvatarEdit";
 import { useState } from "react";
-import { MdPlace } from "react-icons/md";
 import { ProfileInfoModal } from "../../modals/ProfileInfoModal/ProfileInfoModal";
 import { BannerInfo } from "@/types";
 
@@ -63,7 +62,7 @@ export const ProfileBanner = ({ bannerInfo }: ProfileBannerProps) => {
             <div className={styles.details}>
               {bannerInfo.city && (
                 <div className={styles.city}>
-                  <MdPlace size={20} className={styles.detailsIcon} />
+                  <FaMapMarkerAlt size={18} className={styles.icon} />
                   {bannerInfo.city}
                 </div>
               )}
@@ -111,10 +110,7 @@ export const ProfileBanner = ({ bannerInfo }: ProfileBannerProps) => {
         <Button appearance="primary" className={styles.achievementsBtn}>
           {t("profileBanner.achievements")}
         </Button>
-        <Button
-          appearance="secondary"
-          onClick={editProfile}
-        >
+        <Button appearance="secondary" onClick={editProfile}>
           {t("profileBanner.editProfile")}
         </Button>
       </div>
@@ -123,6 +119,7 @@ export const ProfileBanner = ({ bannerInfo }: ProfileBannerProps) => {
         isOpen={isInfoOpen}
         onClose={() => setIsInfoOpen(false)}
         bio={bannerInfo.bio}
+        city={bannerInfo.city}
         birthDate={bannerInfo.birthDate}
         gender={bannerInfo.gender}
         breed={bannerInfo.breed}

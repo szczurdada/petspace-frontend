@@ -1,4 +1,3 @@
-import { Button } from "../../uikit/Button/Button";
 import { Logo } from "../../uikit/Logo/Logo";
 import styles from "./Header.module.scss";
 import { Link } from "../../uikit/Link/Link";
@@ -8,11 +7,11 @@ import { BsBellFill } from "react-icons/bs";
 import { BiSolidMessage } from "react-icons/bi";
 import { SearchBar } from "../../uikit/SearchBar/SearchBar";
 
-interface headerProps {
+interface HeaderProps {
   username?: string;
 }
 
-export const Header = ({ username }: headerProps) => {
+export const Header = ({ username }: HeaderProps) => {
   return (
     <header className={styles.header}>
       <div className={styles.container}>
@@ -26,20 +25,14 @@ export const Header = ({ username }: headerProps) => {
           <>
             <SearchBar />
             <nav className={styles.actions}>
-              <Link href={ROUTES.notifications}>
-                <Button appearance="ghost">
-                  <BsBellFill size={20} />
-                </Button>
+              <Link href={ROUTES.notifications} className={styles.iconLink}>
+                <BsBellFill size={20} />
               </Link>
-              <Link href={ROUTES.messages}>
-                <Button appearance="ghost">
-                  <BiSolidMessage size={20} />
-                </Button>
+              <Link href={ROUTES.messages} className={styles.iconLink}>
+                <BiSolidMessage size={20} />
               </Link>
-              <Link href={ROUTES.profile(username)}>
-                <Button appearance="ghost">
-                  <IoHomeSharp size={20} />
-                </Button>
+              <Link href={ROUTES.profile(username)} className={styles.iconLink}>
+                <IoHomeSharp size={20} />
               </Link>
             </nav>
           </>

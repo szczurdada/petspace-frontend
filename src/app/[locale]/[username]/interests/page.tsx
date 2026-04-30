@@ -13,10 +13,12 @@ const ProfileInterestsPage = async ({ params }: ProfileInterestsPageProps) => {
   return (
     <>
       <Header username={userData.username} />
-      <ProfileInterestsLayout
-        username={userData.username}
-        interests={userData.interests}
-      ></ProfileInterestsLayout>
+      <main>
+        <ProfileInterestsLayout
+          username={userData.username}
+          interests={userData.interests}
+        ></ProfileInterestsLayout>
+      </main>
     </>
   );
 };

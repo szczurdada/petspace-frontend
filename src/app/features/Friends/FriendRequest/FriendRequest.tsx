@@ -7,7 +7,7 @@ export const FriendRequest = () => {
   const t = useTranslations();
 
   return (
-    <div className={styles.wrapper}>
+    <section className={styles.wrapper}>
       <h2 className={styles.title}>{t("friendRequest.title")}</h2>
       <div className={styles.friendRequest}>
         <div className={styles.avatar}>
@@ -23,10 +23,10 @@ export const FriendRequest = () => {
           </div>
           <div className={styles.actions}>
             <Button appearance="primary">{t("friendRequest.accept")}</Button>
-            <Button appearance="secondary">{t("friendRequest.decline")}</Button>
+            <Button appearance="tertiary">{t("friendRequest.decline")}</Button>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };

@@ -6,11 +6,16 @@ interface ButtonProps extends DetailedHTMLProps<
   ButtonHTMLAttributes<HTMLButtonElement>,
   HTMLButtonElement
 > {
-  appearance: "primary" | "secondary" | "third" | "ghost";
+  appearance: "primary" | "secondary" | "tertiary" | "ghost";
   className?: string;
 }
 
-export const Button = ({ appearance, className, children, ...rest }: ButtonProps) => {
+export const Button = ({
+  appearance,
+  className,
+  children,
+  ...rest
+}: ButtonProps) => {
   return (
     <button
       type="button"
@@ -18,7 +23,7 @@ export const Button = ({ appearance, className, children, ...rest }: ButtonProps
       className={cn(styles.default, className, {
         [styles.primary]: appearance === "primary",
         [styles.secondary]: appearance === "secondary",
-        [styles.third]: appearance === "third",
+        [styles.tertiary]: appearance === "tertiary",
         [styles.ghost]: appearance === "ghost",
       })}
     >

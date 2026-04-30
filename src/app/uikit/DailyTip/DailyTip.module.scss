@@ -14,11 +14,14 @@
 
 .title {
   font-size: var(--font-m);
+  font-weight: 500;
   margin: 0;
+  color: var(--text-primary);
 }
 
 .text {
   margin: 0;
-  font-size: var(--font-m);
+  font-size: var(--font-s);
   color: var(--text-secondary);
+  line-height: 1.5;
 }

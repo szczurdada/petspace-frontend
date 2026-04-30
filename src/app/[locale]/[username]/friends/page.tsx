@@ -13,9 +13,9 @@ const FriendsPage = async ({ params }: FriendsPageProps) => {
   return (
     <>
       <Header username={userData.username} />
-      <FriendsLayout
-        username={userData.username}
-      />
+      <main>
+        <FriendsLayout username={userData.username} />
+      </main>
     </>
   );
 };

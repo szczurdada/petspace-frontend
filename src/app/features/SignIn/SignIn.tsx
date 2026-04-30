@@ -104,7 +104,7 @@ export const SignIn = () => {
       <div className={styles.formDivider}>
         <span>{t("common.or")}</span>
       </div>
-      <Button appearance="secondary" onClick={createAccountLink}>
+      <Button type="button" appearance="secondary" onClick={createAccountLink}>
         {t("signin.createAccount")}
       </Button>
     </form>

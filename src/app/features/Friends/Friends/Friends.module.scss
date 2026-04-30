@@ -15,9 +15,15 @@
 }
 
 .title {
-  font-size: var(--font-xl);
+  font-size: var(--font-l);
   margin: 0;
   font-weight: 700;
+}
+
+.count {
+  color: var(--text-secondary);
+  font-size: var(--font-base);
+  font-weight: 600;
 }
 
 .list {
@@ -26,7 +32,7 @@
   gap: var(--gap-m);
 }
 
-.card {
+.friend {
   display: flex;
   flex-direction: column;
   border-radius: var(--radius-m);
@@ -67,18 +73,16 @@
 .city {
   display: flex;
   align-items: center;
-  gap: 4px;
-  font-size: var(--font-s);
+  gap: 2px;
+  font-size: var(--font-m);
   color: var(--text-secondary);
 }
 
-.detailIcon {
-  color: var(--color-primary);
+.icon {
+  flex-shrink: 0;
 }
 
 .action {
-  padding: 0 var(--padding-m) var(--padding-m);
-
   button {
     width: 100%;
   }

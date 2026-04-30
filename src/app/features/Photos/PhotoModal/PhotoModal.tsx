@@ -110,7 +110,7 @@ export const PhotoModal = ({
           </div>
 
           <div className={styles.sidebar}>
-            <div className={styles.sidebarHeader}>
+            <div className={styles.sidebarWrapper}>
               <div className={styles.author}>
                 <div className={styles.avatar}>
                   <Avatar src={avatar}></Avatar>

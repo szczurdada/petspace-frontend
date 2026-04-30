@@ -8,13 +8,13 @@ import defaultAvatar from "@/public/avatars/default.png";
 import { Avatar } from "../Avatar/Avatar";
 import { useState } from "react";
 import { Modal } from "../Modal/Modal";
-import axios from "axios";
 import { toast } from "react-toastify";
-import { API_URL, CLOUD_NAME } from "@/config/env";
+import { CLOUD_NAME } from "@/config/env";
 import { AvatarUploadModal } from "@/app/features/Profile/modals/AvatarUploadModal/AvatarUploadModal";
 import { PhotoModal } from "@/app/features/Photos/PhotoModal/PhotoModal";
 import { Photo } from "@/types";
 import { useRouter } from "next/navigation";
+import api from "@/config/axios";
 
 interface AvatarEditProps {
   avatarPhotos?: Photo[];
@@ -37,7 +37,6 @@ export const AvatarEdit = ({
   const [isChangeOpen, setIsChangeOpen] = useState(false);
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
   const [isPhotoOpen, setIsPhotoOpen] = useState(false);
-
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const openPhoto = () => {
@@ -51,13 +50,7 @@ export const AvatarEdit = ({
       const formData = new FormData();
       formData.append("image", file);
 
-      const { data } = await axios.post(
-        `${API_URL}/api/upload/avatar`,
-        formData,
-        {
-          headers: { Authorization: localStorage.getItem("token") },
-        },
-      );
+      const { data } = await api.post("/api/upload/avatar", formData);
 
       onAvatarChange?.(data.data.url);
       setFile(null);
@@ -70,9 +63,7 @@ export const AvatarEdit = ({
 
   const deleteAvatar = async () => {
     try {
-      await axios.delete(`${API_URL}/api/upload/avatar`, {
-        headers: { Authorization: localStorage.getItem("token") },
-      });
+      await api.delete("/api/upload/avatar");
 
       onAvatarChange?.(undefined);
       setIsDeleteOpen(false);

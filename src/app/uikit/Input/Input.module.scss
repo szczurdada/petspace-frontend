@@ -4,6 +4,7 @@
   cursor: text;
   outline: none;
   border-radius: var(--radius-m);
+  transition: background 0.2s ease;
 
   &::placeholder {
     color: var(--text-placeholder);
@@ -13,6 +14,10 @@
 .primary {
   background: var(--bg-input);
   color: var(--text-placeholder);
+
+  &:hover {
+    background: var(--button-secondary-hover);
+  }
 }
 
 .search {
@@ -20,6 +25,10 @@
   color: var(--text-primary);
   padding-left: 40px;
   width: 300px;
+
+  &:hover {
+    background: var(--button-secondary-hover);
+  }
 }
 
 .wide {

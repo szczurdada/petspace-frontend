@@ -16,14 +16,14 @@ export const ProfileFriends = ({ username, friends }: ProfileFriendsProps) => {
   const t = useTranslations();
 
   return (
-    <div className={styles.container}>
+    <section className={styles.container}>
       <Link href={ROUTES.friends(username)} className={styles.titleLink}>
         <h3 className={styles.title}>{t("profileFriends.title")}</h3>
       </Link>
-      <div className={styles.friends}>
+      <ul className={styles.friends}>
         {friends && friends.length > 0 ? (
           friends.slice(0, MAX_VISIBLE_FRIENDS).map((friend) => (
-            <div key={friend.id} className={styles.friend}>
+            <li key={friend.id} className={styles.friend}>
               <Avatar
                 src={friend.avatar}
                 size={40}
@@ -33,19 +33,19 @@ export const ProfileFriends = ({ username, friends }: ProfileFriendsProps) => {
                 <div className={styles.name}>{friend.name}</div>
                 <div className={styles.breed}>{friend.breed}</div>
               </div>
-            </div>
+            </li>
           ))
         ) : (
-          <div className={styles.emptyFriends}>
+          <li className={styles.emptyFriends}>
             <p className={styles.text}>{t("profileFriends.empty")}</p>
-          </div>
+          </li>
         )}
-      </div>
+      </ul>
       <div className={styles.action}>
-        <button className={styles.showFriends}>
+        <Link href={ROUTES.friends(username)} className={styles.showFriends}>
           {t("profileFriends.showFriends")}
-        </button>
+        </Link>
       </div>
-    </div>
+    </section>
   );
 };

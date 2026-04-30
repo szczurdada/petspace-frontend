@@ -6,9 +6,9 @@ import { Header } from "@/app/components/Header/Header";
 
 export default function SignInPage() {
   return (
-    <div className={styles.page}>
-      <Header></Header>
-      <SignIn />
-    </div>
+    <main className={styles.page}>
+      <Header />
+        <SignIn />
+    </main>
   );
 }

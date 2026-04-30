@@ -13,18 +13,20 @@ const EditPage = async ({ params }: EditPageProps) => {
   return (
     <>
       <Header username={userData.username} />
-      <ProfileEditorLayout
-        avatar={userData.avatar}
-        avatarPhotos={userData.avatarPhotos}
-        name={userData.name}
-        username={userData.username}
-        birthDate={userData.birthDate}
-        gender={userData.gender}
-        breed={userData.breed}
-        country={userData.country}
-        city={userData.city}
-        bio={userData.bio}
-      />
+      <main>
+        <ProfileEditorLayout
+          avatar={userData.avatar}
+          avatarPhotos={userData.avatarPhotos}
+          name={userData.name}
+          username={userData.username}
+          birthDate={userData.birthDate}
+          gender={userData.gender}
+          breed={userData.breed}
+          country={userData.country}
+          city={userData.city}
+          bio={userData.bio}
+        />
+      </main>
     </>
   );
 };

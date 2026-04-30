@@ -3,30 +3,38 @@
   padding: var(--padding-s) var(--padding-m);
   cursor: pointer;
   border-radius: var(--radius-m);
+  transition: background 0.2s ease;
 }
 
 .primary {
   background: var(--primary);
   color: white;
-  font-weight: 600;
+
+  &:hover {
+    background: var(--primary-hover);
+  }
 }
 
 .secondary {
   background: var(--button-secondary-bg);
   color: var(--text-secondary);
+
+  &:hover {
+    background: var(--bg-page);
+  }
 }
 
-.third {
-  background: none;
-  padding: var(--padding-s);
+.tertiary {
+  background: var(--button-secondary-hover);
+  color: var(--text-secondary);
+
+  &:hover {
+    background: var(--button-tertiary-hover);
+  }
 }
 
 .ghost {
   background: transparent;
   color: var(--text-primary);
   border-radius: var(--radius-full);
-}
-
-.button {
-  padding: 0 !important;
 }

@@ -8,7 +8,7 @@ export const Logo = () => {
       src={logoImage}
       width={40}
       height={40}
-      alt="logo PetSpace"
+      alt=""
       className={styles.logo}
       priority
     />
