@@ -45,9 +45,7 @@ export const PostCreator = ({
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
-        <div className={styles.avatarWrapper}>
-          <Avatar src={avatar} />
-        </div>
+        <Avatar src={avatar} />
         <div className={styles.textareaWrapper}>
           <Textarea
             appearance="secondary"

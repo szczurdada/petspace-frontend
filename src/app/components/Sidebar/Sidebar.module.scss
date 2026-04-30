@@ -1,29 +1,15 @@
-.navigation {
-  background: var(--bg-card);
-  height: 100vh;
-  max-height: 100%;
-  box-shadow: 3px 0 6px rgba(0, 0, 0, 0.08);
-  padding: var(--padding-l);
+.container {
   display: flex;
   flex-direction: column;
   gap: var(--gap-xl);
+  height: 100vh;
+  padding: var(--padding-l);
+  background: var(--bg-card);
+  box-shadow: 3px 0 6px rgba(0, 0, 0, 0.08);
 }
 
-.navigationList {
+.list {
   display: flex;
   flex-direction: column;
   gap: var(--gap-s);
-
-  button {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    gap: var(--gap-m);
-    justify-content: flex-start;
-    transition: color 0.2s ease;
-
-    &:hover {
-      color: var(--text-primary);
-    }
-  }
 }

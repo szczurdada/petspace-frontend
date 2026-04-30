@@ -45,23 +45,25 @@ const ProfilePage = async ({ params }: ProfilePageProps) => {
   return (
     <>
       <Header username={userData.username} />
-      <ProfileLayout
-        bannerInfo={{
-          name: userData.name,
-          username: userData.username,
-          avatar: userData.avatar,
-          avatarPhotos: avatarPhotosWithComments,
-          gender: userData.gender,
-          breed: userData.breed,
-          birthDate: userData.birthDate,
-          city: userData.city,
-          bio: userData.bio,
-          interests: userData.interests,
-          photos: photosWithComments,
-          postwallId: postwallData._id,
-          posts: postsWithComments,
-        }}
-      />
+      <main>
+        <ProfileLayout
+          bannerInfo={{
+            name: userData.name,
+            username: userData.username,
+            avatar: userData.avatar,
+            avatarPhotos: avatarPhotosWithComments,
+            gender: userData.gender,
+            breed: userData.breed,
+            birthDate: userData.birthDate,
+            city: userData.city,
+            bio: userData.bio,
+            interests: userData.interests,
+            photos: photosWithComments,
+            postwallId: postwallData._id,
+            posts: postsWithComments,
+          }}
+        />
+      </main>
     </>
   );
 };

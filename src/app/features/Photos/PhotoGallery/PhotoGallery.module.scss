@@ -2,31 +2,29 @@
   background: var(--bg-card);
   display: flex;
   flex-direction: column;
-  gap: var(--gap-xxl);
+  gap: var(--gap-l);
   padding: var(--padding-xl);
   border-radius: var(--radius-m);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
-.titleWrapper {
+.header {
   display: flex;
-  align-items: center;
-  gap: var(--gap-xs);
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
 .title {
+  font-size: var(--font-l);
   margin: 0;
+  font-weight: 700;
 }
 
-.photosCount {
+.count {
   color: var(--text-secondary);
-  font-size: var(--font-m);
-}
-
-.galleryHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  font-size: var(--font-base);
+  font-weight: 600;
+  margin-left: var(--gap-xs);
 }
 
 .gallery {
@@ -47,8 +45,4 @@
   img {
     object-fit: cover;
   }
-}
-
-.modalTitle {
-  margin: 0;
 }

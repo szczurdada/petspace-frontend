@@ -1,6 +1,12 @@
 import { Modal } from "@/app/uikit/Modal/Modal";
 import styles from "./ProfileInfoModal.module.scss";
-import { FaBirthdayCake, FaMars, FaPaw, FaVenus } from "react-icons/fa";
+import {
+  FaBirthdayCake,
+  FaMars,
+  FaPaw,
+  FaVenus,
+  FaMapMarkerAlt,
+} from "react-icons/fa";
 import { useTranslations, useLocale } from "next-intl";
 import dayjs from "dayjs";
 import "dayjs/locale/pl";
@@ -13,6 +19,7 @@ interface ProfileInfoModalProps {
   birthDate?: number;
   gender?: string;
   bio?: string;
+  city?: string;
   interests?: {
     favoriteToys?: string;
     favoriteTreats?: string;
@@ -30,6 +37,7 @@ export const ProfileInfoModal = ({
   birthDate,
   gender,
   bio,
+  city,
   interests,
 }: ProfileInfoModalProps) => {
   const t = useTranslations();
@@ -38,18 +46,24 @@ export const ProfileInfoModal = ({
 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
-      <h3 className={styles.title}>{t("profileInfoModal.title")}</h3>
       <div className={styles.container}>
-        {bio && <div className={styles.bio}>{bio}</div>}
+        <h2 className={styles.title}>{t("profileInfoModal.title")}</h2>
         <div className={styles.rows}>
-          {birthDate && (
+          {bio && <div className={styles.bio}>{bio}</div>}
+          {breed && (
             <div className={styles.row}>
-              <FaBirthdayCake size={16} className={styles.icon} />
-              <span>
-                {dayjs(birthDate).locale(locale).format("D MMMM YYYY")}
-              </span>
+              <FaPaw size={16} className={styles.icon} />
+              <span>{breed}</span>
             </div>
           )}
+
+          {city && (
+            <div className={styles.row}>
+              <FaMapMarkerAlt size={16} className={styles.icon} />
+              <span>{city}</span>
+            </div>
+          )}
+
           {gender === "female" && (
             <div className={styles.row}>
               <FaVenus size={16} className={styles.icon} />
@@ -64,75 +78,83 @@ export const ProfileInfoModal = ({
             </div>
           )}
 
-          {breed && (
+          {birthDate && (
             <div className={styles.row}>
-              <FaPaw size={16} className={styles.icon} />
-              <span>{breed}</span>
+              <FaBirthdayCake size={16} className={styles.icon} />
+              <span>
+                {dayjs(birthDate).locale(locale).format("D MMMM YYYY")}
+              </span>
             </div>
           )}
 
           {hasInterests && (
-            <div className={styles.interests}>
-              <h3 className={styles.interestsTitle}>
-                {t("profileInfoModal.interestsTitle")}
-              </h3>
-              {interests.favoriteToys && (
-                <div className={styles.interestItem}>
-                  <div className={styles.interestLabel}>
-                    {t("profileInterests.toys")}
+            <>
+              <div className={styles.interests}>
+                <h3 className={styles.interestsTitle}>
+                  {t("profileInfoModal.interestsTitle")}
+                </h3>
+                {interests.favoriteToys && (
+                  <div className={styles.interestItem}>
+                    <div className={styles.interestLabel}>
+                      {t("profileInterests.toys")}
+                    </div>
+                    <div className={styles.interestValue}>
+                      {interests.favoriteToys}
+                    </div>
                   </div>
-                  <div className={styles.interestValue}>
-                    {interests.favoriteToys}
+                )}
+                {interests.favoriteTreats && (
+                  <div className={styles.interestItem}>
+                    <div className={styles.interestLabel}>
+                      {t("profileInterests.treats")}
+                    </div>
+                    <div className={styles.interestValue}>
+                      {interests.favoriteTreats}
+                    </div>
                   </div>
-                </div>
-              )}
-              {interests.favoriteTreats && (
-                <div className={styles.interestItem}>
-                  <div className={styles.interestLabel}>
-                    {t("profileInterests.treats")}
+                )}
+                {interests.favoriteActivities && (
+                  <div className={styles.interestItem}>
+                    <div className={styles.interestLabel}>
+                      {t("profileInterests.activities")}
+                    </div>
+                    <div className={styles.interestValue}>
+                      {interests.favoriteActivities}
+                    </div>
                   </div>
-                  <div className={styles.interestValue}>
-                    {interests.favoriteTreats}
+                )}
+                {interests.crimes && (
+                  <div className={styles.interestItem}>
+                    <div className={styles.interestLabel}>
+                      {t("profileInterests.crimes")}
+                    </div>
+                    <div className={styles.interestValue}>
+                      {interests.crimes}
+                    </div>
                   </div>
-                </div>
-              )}
-              {interests.favoriteActivities && (
-                <div className={styles.interestItem}>
-                  <div className={styles.interestLabel}>
-                    {t("profileInterests.activities")}
+                )}
+                {interests.guiltyHabits && (
+                  <div className={styles.interestItem}>
+                    <div className={styles.interestLabel}>
+                      {t("profileInterests.habits")}
+                    </div>
+                    <div className={styles.interestValue}>
+                      {interests.guiltyHabits}
+                    </div>
                   </div>
-                  <div className={styles.interestValue}>
-                    {interests.favoriteActivities}
+                )}
+                {interests.humans && (
+                  <div className={styles.interestItem}>
+                    <div className={styles.interestLabel}>
+                      {t("profileInterests.humans")}
+                    </div>
+                    <div className={styles.interestValue}>
+                      {interests.humans}
+                    </div>
                   </div>
-                </div>
-              )}
-              {interests.crimes && (
-                <div className={styles.interestItem}>
-                  <div className={styles.interestLabel}>
-                    {t("profileInterests.crimes")}
-                  </div>
-                  <div className={styles.interestValue}>{interests.crimes}</div>
-                </div>
-              )}
-              {interests.guiltyHabits && (
-                <div className={styles.interestItem}>
-                  <div className={styles.interestLabel}>
-                    {t("profileInterests.habits")}
-                  </div>
-                  <div className={styles.interestValue}>
-                    {interests.guiltyHabits}
-                  </div>
-                </div>
-              )}
-              {interests.humans && (
-                <div className={styles.interestItem}>
-                  <div className={styles.interestLabel}>
-                    {t("profileInterests.humans")}
-                  </div>
-                  <div className={styles.interestValue}>{interests.humans}</div>
-                </div>
-              )}
-            </div>
+                )}
+              </div>
+            </>
           )}
         </div>
       </div>

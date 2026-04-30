@@ -35,7 +35,7 @@ export const ProfileEditorLayout = ({
       <div className={styles.sidebar}>
         <Sidebar username={username} />
       </div>
-      <div className={styles.main}>
+      <div className={styles.content}>
         <ProfileEditor
           avatar={avatar}
           avatarPhotos={avatarPhotos}

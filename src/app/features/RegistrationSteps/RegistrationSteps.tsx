@@ -4,14 +4,15 @@ import { ROUTES } from "@/app/uikit/constants/routes";
 import { useRouter } from "next/navigation";
 import { Combobox } from "@/app/uikit/Combobox/Combobox";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { useTranslations } from "use-intl";
 import { Select } from "@/app/uikit/Select/Select";
 import { DatePicker } from "@/app/uikit/DatePicker/DatePicker";
 import dayjs from "dayjs";
 import type { Dayjs } from "dayjs";
 import { toast } from "react-toastify";
-import { API_URL } from "@/config/env";
+import { getBreeds } from "@/app/api/breeds";
+import { getCities, getCountries } from "@/app/api/locations";
+import api from "@/config/axios";
 
 interface RegistrationStepsProps {
   username: string;
@@ -45,22 +46,13 @@ const RegistrationSteps = ({
   const [selectedCountry, setSelectedCountry] = useState(country ?? "");
 
   useEffect(() => {
-    axios
-      .get(`${API_URL}/breeds`)
-      .then((res) => setBreeds(res.data));
-  }, []);
-
-  useEffect(() => {
-    axios
-      .get(`${API_URL}/countries`)
-      .then((res) => setCountries(res.data));
+    getBreeds().then(setBreeds);
+    getCountries().then(setCountries);
   }, []);
 
   useEffect(() => {
     if (!selectedCountry) return;
-    axios
-      .get(`${API_URL}/countries/cities?country=${selectedCountry}`)
-      .then((res) => setCities(res.data));
+    getCities(selectedCountry).then(setCities);
   }, [selectedCountry]);
 
   const skipRegistration = () => {
@@ -69,20 +61,13 @@ const RegistrationSteps = ({
 
   const saveChanges = async () => {
     try {
-      const token = localStorage.getItem("token");
-      await axios.put(
-        `${API_URL}/user/${username}`,
-        {
-          gender: genderValue,
-          birthDate: selectedAge?.valueOf(),
-          country: selectedCountry,
-          city: selectedCity,
-          breed: selectedBreed,
-        },
-        {
-          headers: { Authorization: token },
-        },
-      );
+      await api.put(`/user/${username}`, {
+        gender: genderValue,
+        birthDate: selectedAge?.valueOf(),
+        country: selectedCountry,
+        city: selectedCity,
+        breed: selectedBreed,
+      });
       router.push(ROUTES.registrationStepsAvatar);
     } catch {
       toast.error(t("toast.error"));

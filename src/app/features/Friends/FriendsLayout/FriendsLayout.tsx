@@ -13,7 +13,7 @@ export const FriendsLayout = ({ username }: FriendsLayoutProps) => {
       <div className={styles.sidebar}>
         <Sidebar username={username} />
       </div>
-      <div className={styles.main}>
+      <div className={styles.content}>
         <Friends />
       </div>
       <div className={styles.requests}>

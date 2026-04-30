@@ -6,8 +6,6 @@ import { Post as PostType } from "@/types";
 import dayjs from "dayjs";
 import { Button } from "@/app/uikit/Button/Button";
 import { useRouter } from "next/navigation";
-import { API_URL } from "@/config/env";
-import axios from "axios";
 import { Comment } from "@/app/features/Profile/feed/Comment/Comment";
 import { MdOutlineMoreHoriz } from "react-icons/md";
 import { CommentCreator } from "../CommentCreator/CommentCreator";
@@ -15,6 +13,7 @@ import { useState } from "react";
 import { useLocale } from "next-intl";
 import "dayjs/locale/pl";
 import "dayjs/locale/en";
+import api from "@/config/axios";
 
 export interface PostProps {
   post: PostType;
@@ -25,20 +24,15 @@ export const Post = ({ post }: PostProps) => {
   const [showCommentCreator, setShowCommentCreator] = useState(
     (post.comments?.length ?? 0) > 0,
   );
-
   const locale = useLocale();
 
   const deletePost = async () => {
-    await axios.delete(`${API_URL}/posts/${post.id}`, {
-      headers: { Authorization: localStorage.getItem("token") },
-    });
+    await api.delete(`/posts/${post.id}`);
     router.refresh();
   };
 
   const deleteComment = async (commentId: string) => {
-    await axios.delete(`${API_URL}/comments/${commentId}`, {
-      headers: { Authorization: localStorage.getItem("token") },
-    });
+    await api.delete(`/comments/${commentId}`);
     router.refresh();
   };
 
@@ -47,16 +41,14 @@ export const Post = ({ post }: PostProps) => {
   };
 
   return (
-    <div>
+    <article>
       <div className={styles.wrapper}>
-        <div className={styles.avatar}>
-          <Avatar src={post.user.avatar} />
-        </div>
+        <Avatar src={post.user.avatar} />
         <div className={styles.info}>
           <div className={styles.name}>{post.user.name}</div>
-          <div className={styles.time}>
+          <time className={styles.time}>
             {dayjs(post.createdAt).locale(locale).format("D MMM YYYY")}
-          </div>
+          </time>
         </div>
         <div className={styles.delete}>
           <Button
@@ -72,12 +64,7 @@ export const Post = ({ post }: PostProps) => {
         <div className={styles.content}>{post.content}</div>
         {post.image && (
           <div className={styles.mediaContent}>
-            <Image
-              src={post.image}
-              alt="Post image"
-              width={"100%"}
-              height={400}
-            ></Image>
+            <Image src={post.image} alt="Post image" fill></Image>
           </div>
         )}
       </div>
@@ -95,23 +82,22 @@ export const Post = ({ post }: PostProps) => {
           <span>{post.reposts}</span>
         </div>
       </div>
-      <div className={styles.comments}>
+      <ul className={styles.comments}>
         {(post.comments ?? []).map((comment) => (
-          <Comment
-            key={comment.id}
-            comment={comment}
-            onDelete={() => deleteComment(comment.id)}
-          />
+          <li key={comment.id}>
+            <Comment
+              comment={comment}
+              onDelete={() => deleteComment(comment.id)}
+            />
+          </li>
         ))}
-      </div>
-      <div>
-        {showCommentCreator && (
-          <CommentCreator
-            postId={post.id}
-            avatar={post.user.avatar}
-          ></CommentCreator>
-        )}
-      </div>
-    </div>
+      </ul>
+      {showCommentCreator && (
+        <CommentCreator
+          postId={post.id}
+          avatar={post.user.avatar}
+        ></CommentCreator>
+      )}
+    </article>
   );
 };

@@ -13,15 +13,15 @@ export default function NotFound() {
   return (
     <div className={styles.page}>
       <Header />
-      <div className={styles.content}>
-        <div className={styles.container}>
+      <main className={styles.content}>
+        <main className={styles.container}>
           <h2 className={styles.title}>404</h2>
           <p className={styles.text}>{t("notFound.text")}</p>
           <p className={styles.description}>{t("notFound.description")}</p>
           <Link href={ROUTES.feed}>
             <Button appearance="primary">{t("notFound.goBack")}</Button>
           </Link>
-        </div>
+        </main>
         <Image
           src={notFoundBg}
           alt="background"
@@ -30,7 +30,7 @@ export default function NotFound() {
           className={styles.background}
           priority
         />
-      </div>
+      </main>
     </div>
   );
 }

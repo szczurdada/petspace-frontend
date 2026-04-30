@@ -19,14 +19,14 @@ export const Comment = ({ comment, onDelete }: CommentProps) => {
   const locale = useLocale();
 
   return (
-    <div className={styles.container}>
+    <article className={styles.container}>
       <Avatar size={38} src={comment.user.avatar} />
       <div className={styles.info}>
         <div className={styles.header}>
-          <span className={styles.name}>{comment.user.name}</span>
-          <span className={styles.time}>
+          <div className={styles.name}>{comment.user.name}</div>
+          <time className={styles.time}>
             {dayjs(comment.createdAt).locale(locale).format("D MMM YYYY")}
-          </span>
+          </time>
         </div>
         <div className={styles.content}>{comment.content}</div>
         <div className={styles.footer}>
@@ -46,6 +46,6 @@ export const Comment = ({ comment, onDelete }: CommentProps) => {
           <IoCloseSharp size={20} />
         </Button>
       </div>
-    </div>
+    </article>
   );
 };

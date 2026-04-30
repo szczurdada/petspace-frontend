@@ -3,11 +3,10 @@
 import styles from "./ProfileInterests.module.scss";
 import { Button } from "@/app/uikit/Button/Button";
 import { Textarea } from "@/app/uikit/Textarea/Textarea";
-import axios from "axios";
 import { useTranslations } from "next-intl";
 import { toast } from "react-toastify";
 import { useForm } from "react-hook-form";
-import { API_URL } from "@/config/env";
+import api from "@/config/axios";
 
 interface ProfileInterestsProps {
   username: string;
@@ -36,7 +35,7 @@ export const ProfileInterests = ({
 }: ProfileInterestsProps) => {
   const t = useTranslations();
 
-  const { register, handleSubmit } = useForm<InterestsForm>({
+  const { register, handleSubmit, reset } = useForm<InterestsForm>({
     defaultValues: {
       toys: interests?.favoriteToys ?? "",
       treats: interests?.favoriteTreats ?? "",
@@ -49,21 +48,16 @@ export const ProfileInterests = ({
 
   const onSubmit = async (data: InterestsForm) => {
     try {
-      const token = localStorage.getItem("token");
-      await axios.put(
-        `${API_URL}/user/${username}`,
-        {
-          interests: {
-            favoriteToys: data.toys,
-            favoriteTreats: data.treats,
-            favoriteActivities: data.activities,
-            crimes: data.crimes,
-            guiltyHabits: data.habits,
-            humans: data.humans,
-          },
+      await api.put(`/user/${username}`, {
+        interests: {
+          favoriteToys: data.toys,
+          favoriteTreats: data.treats,
+          favoriteActivities: data.activities,
+          crimes: data.crimes,
+          guiltyHabits: data.habits,
+          humans: data.humans,
         },
-        { headers: { Authorization: token } },
-      );
+      });
       toast.success(t("toasts.saved"));
     } catch {
       toast.error(t("toasts.error"));
@@ -71,75 +65,67 @@ export const ProfileInterests = ({
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div className={styles.container}>
-        <h3 className={styles.title}>{t("profileInterests.title")}</h3>
-        <div className={styles.fields}>
-          <div className={styles.field}>
-            <label className={styles.label}>{t("profileInterests.toys")}</label>
-            <Textarea
-              appearance="primary"
-              {...register("toys")}
-              maxLength={300}
-            />
-          </div>
-          <div className={styles.field}>
-            <label className={styles.label}>
-              {t("profileInterests.treats")}
-            </label>
-            <Textarea
-              appearance="primary"
-              {...register("treats")}
-              maxLength={300}
-            />
-          </div>
-          <div className={styles.field}>
-            <label className={styles.label}>
-              {t("profileInterests.activities")}
-            </label>
-            <Textarea
-              appearance="primary"
-              {...register("activities")}
-              maxLength={300}
-            />
-          </div>
-          <div className={styles.field}>
-            <label className={styles.label}>
-              {t("profileInterests.crimes")}
-            </label>
-            <Textarea
-              appearance="primary"
-              {...register("crimes")}
-              maxLength={300}
-            />
-          </div>
-          <div className={styles.field}>
-            <label className={styles.label}>
-              {t("profileInterests.habits")}
-            </label>
-            <Textarea
-              appearance="primary"
-              {...register("habits")}
-              maxLength={300}
-            />
-          </div>
-          <div className={styles.field}>
-            <label className={styles.label}>
-              {t("profileInterests.humans")}
-            </label>
-            <Textarea
-              appearance="primary"
-              {...register("humans")}
-              maxLength={300}
-            />
-          </div>
+    <form className={styles.container} onSubmit={handleSubmit(onSubmit)}>
+      <h1 className={styles.title}>{t("profileInterests.title")}</h1>
+      <div className={styles.fields}>
+        <div className={styles.field}>
+          <label className={styles.label}>{t("profileInterests.toys")}</label>
+          <Textarea
+            appearance="primary"
+            {...register("toys")}
+            maxLength={300}
+          />
         </div>
-        <div className={styles.actions}>
-          <Button type="submit" appearance="primary">
-            {t("common.save")}
-          </Button>
-          <Button appearance="secondary">{t("common.cancel")}</Button>
+        <div className={styles.field}>
+          <label className={styles.label}>{t("profileInterests.treats")}</label>
+          <Textarea
+            appearance="primary"
+            {...register("treats")}
+            maxLength={300}
+          />
         </div>
+        <div className={styles.field}>
+          <label className={styles.label}>
+            {t("profileInterests.activities")}
+          </label>
+          <Textarea
+            appearance="primary"
+            {...register("activities")}
+            maxLength={300}
+          />
+        </div>
+        <div className={styles.field}>
+          <label className={styles.label}>{t("profileInterests.crimes")}</label>
+          <Textarea
+            appearance="primary"
+            {...register("crimes")}
+            maxLength={300}
+          />
+        </div>
+        <div className={styles.field}>
+          <label className={styles.label}>{t("profileInterests.habits")}</label>
+          <Textarea
+            appearance="primary"
+            {...register("habits")}
+            maxLength={300}
+          />
+        </div>
+        <div className={styles.field}>
+          <label className={styles.label}>{t("profileInterests.humans")}</label>
+          <Textarea
+            appearance="primary"
+            {...register("humans")}
+            maxLength={300}
+          />
+        </div>
+      </div>
+      <div className={styles.actions}>
+        <Button appearance="primary" type="submit">
+          {t("common.save")}
+        </Button>
+        <Button appearance="secondary" type="button" onClick={() => reset()}>
+          {t("common.cancel")}
+        </Button>
       </div>
     </form>
   );

@@ -14,7 +14,11 @@ interface CommentCreatorProps {
   avatar?: string | StaticImageData;
 }
 
-export const CommentCreator = ({ postId, photoId, avatar }: CommentCreatorProps) => {
+export const CommentCreator = ({
+  postId,
+  photoId,
+  avatar,
+}: CommentCreatorProps) => {
   const t = useTranslations();
 
   const [content, setContent] = useState<string>("");
@@ -37,9 +41,7 @@ export const CommentCreator = ({ postId, photoId, avatar }: CommentCreatorProps)
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
-        <div className={styles.avatarWrapper}>
-          <Avatar size={38} src={avatar} />
-        </div>
+        <Avatar size={38} src={avatar} />
         <div className={styles.textareaWrapper}>
           <Textarea
             appearance="secondary"

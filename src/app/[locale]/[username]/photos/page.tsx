@@ -22,12 +22,14 @@ const PhotosPage = async ({ params }: PhotosPageProps) => {
   return (
     <>
       <Header username={userData.username} />
-      <PhotoGalleryLayout
-        username={userData.username}
-        name={userData.name}
-        photos={photosWithComments}
-        avatar={userData.avatar}
-      />
+      <main>
+        <PhotoGalleryLayout
+          username={userData.username}
+          name={userData.name}
+          photos={photosWithComments}
+          avatar={userData.avatar}
+        />
+      </main>
     </>
   );
 };

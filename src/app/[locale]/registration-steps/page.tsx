@@ -9,9 +9,9 @@ interface RegistrationStepsPageProps {
 
 const RegistrationStepsPage = ({ username }: RegistrationStepsPageProps) => {
   return (
-    <div className={styles.page}>
-      <RegistrationSteps username={username} />
-    </div>
+    <main className={styles.page}>
+        <RegistrationSteps username={username} />
+    </main>
   );
 };
 

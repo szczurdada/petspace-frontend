@@ -1,13 +1,11 @@
 import "./../globals.scss";
-import { Inter } from "next/font/google";
+import { Geist } from "next/font/google";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { Toast } from "../uikit/Toast/Toast";
 
-const inter = Inter({
-  subsets: ["latin", "latin-ext"],
-});
+const geist = Geist({ subsets: ["latin"] });
 
 export default async function RootLayout({
   children,
@@ -23,7 +21,7 @@ export default async function RootLayout({
 
   return (
     <html lang={locale}>
-      <body className={inter.className}>
+      <body className={geist.className}>
         <Toast></Toast>
         <NextIntlClientProvider>{children}</NextIntlClientProvider>
       </body>

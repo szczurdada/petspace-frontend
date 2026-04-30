@@ -21,7 +21,7 @@ export const PhotoGalleryLayout = ({
       <div className={styles.sidebar}>
         <Sidebar username={username} />
       </div>
-      <div className={styles.main}>
+      <div className={styles.content}>
         <PhotoGallery photos={photos} avatar={avatar} name={name} />
       </div>
     </div>

@@ -8,14 +8,15 @@ import { Combobox } from "@/app/uikit/Combobox/Combobox";
 import { DatePicker } from "@/app/uikit/DatePicker/DatePicker";
 import { AvatarEdit } from "@/app/uikit/AvatarEdit/AvatarEdit";
 import { toast } from "react-toastify";
-import axios from "axios";
 import { Select } from "@/app/uikit/Select/Select";
 import { useForm, Controller, useWatch } from "react-hook-form";
 import dayjs from "dayjs";
 import type { Dayjs } from "dayjs";
 import { Textarea } from "@/app/uikit/Textarea/Textarea";
-import { API_URL } from "@/config/env";
 import { Photo } from "@/types";
+import { updateProfile } from "@/app/api/profile";
+import { getBreeds } from "@/app/api/breeds";
+import { getCities, getCountries } from "@/app/api/locations";
 
 interface ProfileEditorProps {
   avatar?: string;
@@ -56,7 +57,7 @@ export const ProfileEditor = ({
   const [cities, setCities] = useState([]);
   const [countries, setCountries] = useState([]);
 
-  const { handleSubmit, control, setValue } = useForm<ProfileForm>({
+  const { handleSubmit, control, setValue, reset } = useForm<ProfileForm>({
     defaultValues: {
       bio: bio ?? "",
       gender: gender ?? "",
@@ -71,17 +72,7 @@ export const ProfileEditor = ({
 
   const onSubmit = async (data: ProfileForm) => {
     try {
-      const token = localStorage.getItem("token");
-      await axios.put(
-        `${API_URL}/user/${username}`,
-        {
-          ...data,
-          birthDate: data.birthDate?.valueOf(),
-        },
-        {
-          headers: { Authorization: token },
-        },
-      );
+      await updateProfile(username, data);
       toast.success(t("toasts.saved"));
     } catch {
       toast.error(t("toasts.error"));
@@ -89,31 +80,25 @@ export const ProfileEditor = ({
   };
 
   useEffect(() => {
-    axios.get(`${API_URL}/breeds`).then((res) => setBreeds(res.data));
-  }, []);
-
-  useEffect(() => {
-    axios.get(`${API_URL}/countries`).then((res) => setCountries(res.data));
+    getBreeds().then(setBreeds);
+    getCountries().then(setCountries);
   }, []);
 
   useEffect(() => {
     if (!selectedCountry) return;
-    axios
-      .get(`${API_URL}/countries/cities?country=${selectedCountry}`)
-      .then((res) => setCities(res.data));
+    getCities(selectedCountry).then(setCities);
   }, [selectedCountry]);
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div className={styles.container}>
-        <h3 className={styles.title}>{t("profileEditor.title")}</h3>
+    <form className={styles.container} onSubmit={handleSubmit(onSubmit)}>
+        <h1 className={styles.title}>{t("profileEditor.title")}</h1>
         <div className={styles.profileContent}>
           <div className={styles.avatarSection}>
             <AvatarEdit src={avatar} size={120} avatarPhotos={avatarPhotos} />
           </div>
           <div className={styles.userInfo}>
-            <h4 className={styles.name}>{name}</h4>
-            <div className={styles.username}>Username: /en/{username}</div>
+            <h2 className={styles.name}>{name}</h2>
+            <div className={styles.username}>Username: @{username}</div>
           </div>
         </div>
         <div className={styles.fields}>
@@ -211,11 +196,10 @@ export const ProfileEditor = ({
           <Button appearance="primary" type="submit">
             {t("common.save")}
           </Button>
-          <Button appearance="secondary" type="button">
+          <Button appearance="secondary" type="button" onClick={() => reset()}>
             {t("common.cancel")}
           </Button>
         </div>
-      </div>
     </form>
   );
 };

@@ -9,31 +9,33 @@ export const Friends = () => {
   const t = useTranslations();
 
   return (
-    <div className={styles.container}>
+    <section className={styles.container}>
       <div className={styles.titleWrapper}>
         <h1 className={styles.title}>{t("friends.title")}</h1>
-        <div className={styles.friendsCount}>{MOCK_FRIENDS.length}</div>
+        <span className={styles.count}>{MOCK_FRIENDS.length}</span>
       </div>
-      <div className={styles.list}>
+      <ul className={styles.list}>
         {MOCK_FRIENDS.map((friend) => (
-          <div key={friend.id} className={styles.card}>
+          <li key={friend.id} className={styles.friend}>
             <div className={styles.avatar}>
-              <Image src={friend.avatar} alt={friend.name} fill />
+              {friend.avatar && (
+                <Image src={friend.avatar} alt={friend.name} fill />
+              )}
             </div>
             <div className={styles.info}>
               <div className={styles.name}>{friend.name}</div>
               <div className={styles.breed}>{friend.breed}</div>
               <div className={styles.city}>
-                <MdPlace size={20} className={styles.detailIcon} />
-                {friend.city} · {friend.friendsCount} {t("friends.friends")}
+                <MdPlace size={20} className={styles.icon}/>
+                {friend.city}
               </div>
               <div className={styles.action}>
-                <Button appearance="secondary">{t("friends.message")}</Button>
+                <Button appearance="tertiary">{t("friends.message")}</Button>
               </div>
             </div>
-          </div>
+          </li>
         ))}
-      </div>
-    </div>
+      </ul>
+    </section>
   );
 };

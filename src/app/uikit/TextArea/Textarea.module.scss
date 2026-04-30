@@ -5,6 +5,7 @@
   outline: none;
   border-radius: var(--radius-m);
   resize: none;
+  transition: box-shadow 0.2s ease;
 
   &::placeholder {
     color: var(--text-placeholder);
@@ -22,4 +23,10 @@
   background: var(--bg-input);
   color: var(--text-placeholder);
   height: 40px;
+  overflow: hidden;
+  box-shadow: 0 0 0 0.5px var(--border-field);
+
+  &:hover {
+    box-shadow: 0 0 0 0.5px var(--border-field-hover);
+  }
 }

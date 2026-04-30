@@ -26,14 +26,11 @@ export const ProfileInterestsLayout = ({
       <div className={styles.sidebar}>
         <Sidebar username={username} />
       </div>
-      <div className={styles.main}>
-        <ProfileInterests
-          username={username}
-          interests={interests}
-        ></ProfileInterests>
+      <div className={styles.content}>
+        <ProfileInterests username={username} interests={interests} />
       </div>
       <div className={styles.information}>
-        <ProfileInformation username={username}></ProfileInformation>
+        <ProfileInformation username={username} />
       </div>
     </div>
   );
