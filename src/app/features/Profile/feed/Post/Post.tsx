@@ -4,16 +4,16 @@ import Image from "next/image";
 import { FaComment, FaHeart, FaReply } from "react-icons/fa";
 import { Post as PostType } from "@/types";
 import dayjs from "dayjs";
-import { Button } from "@/app/uikit/Button/Button";
 import { useRouter } from "next/navigation";
 import { Comment } from "@/app/features/Profile/feed/Comment/Comment";
-import { MdOutlineMoreHoriz } from "react-icons/md";
+import { MdDeleteSweep, MdModeEdit, MdOutlineMoreHoriz } from "react-icons/md";
 import { CommentCreator } from "../CommentCreator/CommentCreator";
 import { useState } from "react";
 import { useLocale } from "next-intl";
 import "dayjs/locale/pl";
 import "dayjs/locale/en";
 import api from "@/config/axios";
+import { DropdownMenu } from "@/app/uikit/DropdownMenu/DropdownMenu";
 
 export interface PostProps {
   post: PostType;
@@ -50,14 +50,21 @@ export const Post = ({ post }: PostProps) => {
             {dayjs(post.createdAt).locale(locale).format("D MMM YYYY")}
           </time>
         </div>
-        <div className={styles.delete}>
-          <Button
-            appearance="ghost"
-            className={styles.deleteButton}
-            onClick={deletePost}
-          >
-            <MdOutlineMoreHoriz size={25} />
-          </Button>
+        <div className={styles.dropdown}>
+          <DropdownMenu
+            items={[
+              {
+                label: "Edit",
+                icon: <MdModeEdit size={20} />,
+                onClick: () => {},
+              },
+              {
+                label: "Delete",
+                icon: <MdDeleteSweep size={20} />,
+                onClick: deletePost,
+              },
+            ]}
+          />
         </div>
       </div>
       <div className={styles.contentWrapper}>

@@ -28,18 +28,9 @@
   color: var(--text-secondary);
 }
 
-.delete {
+.dropdown {
   margin-left: auto;
-}
-
-.deleteButton {
-  padding: 0 !important;
-  color: var(--text-secondary);
-  transition: color 0.2s ease;
-
-  &:hover {
-    color: var(--text-primary);
-  }
+  align-self: flex-start;
 }
 
 .content {
