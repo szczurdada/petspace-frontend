@@ -1,0 +1,44 @@
+.wrapper {
+  position: relative;
+
+  &:hover .dropdown {
+    opacity: 1;
+    visibility: visible;
+    transition-delay: 0.5s;
+  }
+}
+
+.trigger {
+  color: var(--text-secondary);
+  padding: 0;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: var(--text-primary);
+  }
+}
+
+.dropdown {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  z-index: var(--z-dropdown);
+  background: var(--button-secondary-bg);
+  border-radius: var(--radius-m);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  min-width: 150px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s, visibility 0.2s;
+  transition-delay: 0.5s;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: var(--gap-s);
+  padding: var(--padding-s);
+}

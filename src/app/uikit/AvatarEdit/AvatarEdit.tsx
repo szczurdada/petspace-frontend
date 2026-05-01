@@ -114,7 +114,7 @@ export const AvatarEdit = ({
       />
 
       <Modal isOpen={isChangeOpen} onClose={() => setIsChangeOpen(false)}>
-        <h3 className={styles.title}>{t("avatarEdit.modalTitle")}</h3>
+        <h2 className={styles.title}>{t("avatarEdit.modalTitle")}</h2>
         <p className={styles.description}>{t("avatarEdit.modalDescription")}</p>
         <p className={styles.hint}>{t("avatarEdit.modalFormats")}</p>
         <div className={styles.upload}>
@@ -129,7 +129,7 @@ export const AvatarEdit = ({
       </Modal>
 
       <Modal isOpen={isDeleteOpen} onClose={() => setIsDeleteOpen(false)}>
-        <h3 className={styles.title}>{t("avatarEdit.deleteModalTitle")}</h3>
+        <h2 className={styles.title}>{t("avatarEdit.deleteModalTitle")}</h2>
         <p className={styles.deleteDescription}>
           {t("avatarEdit.deleteModalDescription")}
         </p>

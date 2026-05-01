@@ -7,13 +7,14 @@ import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 import { useLocale, useTranslations } from "next-intl";
 import { Comment } from "../../Profile/feed/Comment/Comment";
 import { CommentCreator } from "../../Profile/feed/CommentCreator/CommentCreator";
-import axios from "axios";
-import { API_URL } from "@/config/env";
 import { useRouter } from "next/navigation";
 import { Avatar } from "@/app/uikit/Avatar/Avatar";
 import dayjs from "dayjs";
 import "dayjs/locale/pl";
 import "dayjs/locale/en";
+import { DropdownMenu } from "@/app/uikit/DropdownMenu/DropdownMenu";
+import api from "@/config/axios";
+import { MdDeleteSweep, MdModeEdit } from "react-icons/md";
 
 interface PhotoModalProps {
   photo: Photo | null;
@@ -51,9 +52,7 @@ export const PhotoModal = ({
   };
 
   const deleteComment = async (commentId: string) => {
-    await axios.delete(`${API_URL}/comments/${commentId}`, {
-      headers: { Authorization: localStorage.getItem("token") },
-    });
+    await api.delete(`/comments/${commentId}`);
     router.refresh();
   };
 
@@ -117,24 +116,37 @@ export const PhotoModal = ({
                 </div>
                 <div className={styles.info}>
                   <div className={styles.name}>{name}</div>
-                  <div className={styles.time}>
-                    <div className={styles.time}>
-                      {dayjs(photo.createdAt)
-                        .locale(locale)
-                        .format("D MMM YYYY")}
-                    </div>
-                  </div>
+                  <time className={styles.time}>
+                    {dayjs(photo.createdAt).locale(locale).format("D MMM YYYY")}
+                  </time>
+                </div>
+                <div className={styles.dropdown}>
+                  <DropdownMenu
+                    items={[
+                      {
+                        label: "Edit",
+                        icon: <MdModeEdit size={20} />,
+                        onClick: () => {},
+                      },
+                      {
+                        label: "Delete",
+                        icon: <MdDeleteSweep size={20} />,
+                        onClick: () => {},
+                      },
+                    ]}
+                  />
                 </div>
               </div>
             </div>
-            <div className={styles.comments}>
+            <ul className={styles.comments}>
               {photo.comments && photo.comments.length > 0 ? (
                 photo.comments.map((comment) => (
-                  <Comment
-                    key={comment.id}
-                    comment={comment}
-                    onDelete={() => deleteComment(comment.id)}
-                  />
+                  <li key={comment.id}>
+                    <Comment
+                      comment={comment}
+                      onDelete={() => deleteComment(comment.id)}
+                    />
+                  </li>
                 ))
               ) : (
                 <div className={styles.emptyComments}>
@@ -144,7 +156,7 @@ export const PhotoModal = ({
                   <p className={styles.text}>{t("photoModal.commentsText")}</p>
                 </div>
               )}
-            </div>
+            </ul>
             <div className={styles.sidebarFooter}>
               <CommentCreator photoId={photo.id} avatar={avatar} />
             </div>

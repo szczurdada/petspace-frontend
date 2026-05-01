@@ -48,12 +48,6 @@
   }
 }
 
-.deleteButton {
-  padding: var(--padding-xs) 0;
-  z-index: var(--z-dropdown);
-  color: var(--text-secondary);
-}
-
 .sidebar {
   display: flex;
   flex-direction: column;
@@ -79,6 +73,11 @@
   gap: 2px;
 }
 
+.delete {
+  margin-left: auto;
+  align-self: flex-start;
+}
+
 .name {
   font-weight: 600;
   font-size: var(--font-base);
@@ -97,6 +96,11 @@
   font-size: var(--font-m);
   color: var(--text-secondary);
   z-index: 1;
+}
+
+.dropdown {
+  margin-left: auto;
+  align-self: flex-start;
 }
 
 .comments {
@@ -144,5 +148,3 @@
   color: var(--text-secondary);
   font-size: var(--font-m);
 }
-
-

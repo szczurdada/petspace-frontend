@@ -33,18 +33,18 @@
 
 .name {
   font-weight: 600;
-  font-size: var(--font-m);
+  font-size: var(--font-base);
   color: var(--text-primary);
 }
 
 .breed,
 .city {
-  font-size: var(--font-s);
+  font-size: var(--font-m);
   color: var(--text-secondary);
 }
 
 .mutualFriends {
-  font-size: var(--font-s);
+  font-size: var(--font-m);
   color: var(--text-secondary);
 }
 
