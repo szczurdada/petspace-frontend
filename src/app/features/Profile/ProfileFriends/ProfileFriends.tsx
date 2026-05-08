@@ -21,9 +21,9 @@ export const ProfileFriends = ({ username, friends }: ProfileFriendsProps) => {
         <h3 className={styles.title}>{t("profileFriends.title")}</h3>
       </Link>
       <ul className={styles.friends}>
-        {friends && friends.length > 0 ? (
+        {friends.length > 0 ? (
           friends.slice(0, MAX_VISIBLE_FRIENDS).map((friend) => (
-            <li key={friend.id} className={styles.friend}>
+            <li key={friend.username} className={styles.friend}>
               <Avatar
                 src={friend.avatar}
                 size={40}

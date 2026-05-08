@@ -1,3 +1,4 @@
+import { getFriends } from "@/app/api/friends";
 import { getUser } from "@/app/api/user";
 import { Header } from "@/app/components/Header/Header";
 import { FriendsLayout } from "@/app/features/Friends/FriendsLayout/FriendsLayout";
@@ -9,12 +10,13 @@ interface FriendsPageProps {
 const FriendsPage = async ({ params }: FriendsPageProps) => {
   const awaitedParams = await params;
   const userData = await getUser(awaitedParams.username);
+  const friends = await getFriends(awaitedParams.username);
 
   return (
     <>
       <Header username={userData.username} />
       <main>
-        <FriendsLayout username={userData.username} />
+        <FriendsLayout username={userData.username} friends={friends} />
       </main>
     </>
   );

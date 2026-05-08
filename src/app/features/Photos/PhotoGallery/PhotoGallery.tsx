@@ -19,9 +19,21 @@ interface PhotoGalleryProps {
   name: string;
 }
 
+const uploadFile = async (file: File) => {
+  const formData = new FormData();
+  formData.append("image", file);
+  const { data } = await api.post("/api/upload/photo", formData);
+  return {
+    id: data.data._id,
+    publicId: data.data.public_id,
+    createdAt: data.data.createdAt,
+    liked: false,
+    likesCount: 0,
+  };
+};
+
 export const PhotoGallery = ({ photos, avatar, name }: PhotoGalleryProps) => {
   const t = useTranslations();
-
   const [isOpen, setIsOpen] = useState(false);
   const [localPhotos, setLocalPhotos] = useState<Photo[]>(photos);
 
@@ -33,18 +45,7 @@ export const PhotoGallery = ({ photos, avatar, name }: PhotoGalleryProps) => {
 
   const addPhoto = async (files: File[]) => {
     try {
-      const uploaded = await Promise.all(
-        files.map(async (file) => {
-          const formData = new FormData();
-          formData.append("image", file);
-          const { data } = await api.post("/api/upload/photo", formData);
-          return {
-            id: data.data.id,
-            publicId: data.data.public_id,
-            createdAt: data.data.createdAt,
-          };
-        }),
-      );
+      const uploaded = await Promise.all(files.map(uploadFile));
       setLocalPhotos((prev) => [...prev, ...uploaded]);
       setIsOpen(false);
     } catch {

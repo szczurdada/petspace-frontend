@@ -6,14 +6,31 @@ import { PostCreator } from "../feed/PostCreator/PostCreator";
 import { ProfileBanner } from "../info/ProfileBanner/ProfileBanner";
 import styles from "./ProfileLayout.module.scss";
 import { Sidebar } from "@/app/components/Sidebar/Sidebar";
-import { BannerInfo } from "@/types";
+import { BannerInfo, Post } from "@/types";
 import { ProfilePhotos } from "../photos/ProfilePhotos/ProfilePhotos";
+import { useState, useEffect } from "react";
+import { getPosts } from "@/app/api/post";
 
 interface ProfileLayoutProps {
   bannerInfo: BannerInfo;
 }
 
 export const ProfileLayout = ({ bannerInfo }: ProfileLayoutProps) => {
+  const [posts, setPosts] = useState<Post[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [refresh, setRefresh] = useState(0);
+
+  useEffect(() => {
+    getPosts(bannerInfo.postwallId!).then((data) => {
+      setPosts(data ?? []);
+      setLoading(false);
+    });
+  }, [refresh, bannerInfo.postwallId]);
+
+  const triggerRefresh = () => setRefresh((r) => r + 1);
+  const friends = bannerInfo.friends ?? [];
+  const photos = bannerInfo.photos ?? [];
+
   return (
     <div className={styles.layout}>
       <div className={styles.sidebar}>
@@ -28,24 +45,22 @@ export const ProfileLayout = ({ bannerInfo }: ProfileLayoutProps) => {
           name={bannerInfo.name}
           avatar={bannerInfo.avatar}
           postwallId={bannerInfo.postwallId ?? ""}
+          onSuccess={triggerRefresh}
         />
-        <Postwall posts={bannerInfo.posts ?? []} />
+        <Postwall posts={posts} loading={loading} onRefresh={triggerRefresh} />
       </div>
       <div className={styles.rightColumn}>
         <div className={styles.photos}>
           <ProfilePhotos
             username={bannerInfo.username}
-            photos={bannerInfo.photos ?? []}
+            photos={photos}
             avatar={bannerInfo.avatar}
             name={bannerInfo.name}
           />
         </div>
-        {(bannerInfo.friends ?? []).length > 0 && (
+        {friends.length > 0 && (
           <div className={styles.friends}>
-            <ProfileFriends
-              username={bannerInfo.username}
-              friends={bannerInfo.friends ?? []}
-            />
+            <ProfileFriends username={bannerInfo.username} friends={friends} />
           </div>
         )}
       </div>

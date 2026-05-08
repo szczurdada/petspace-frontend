@@ -5,20 +5,36 @@ import styles from "./Postwall.module.scss";
 import { Post as PostType } from "@/types";
 import { useTranslations } from "next-intl";
 
+const SKELETON_ITEMS = [1, 2, 3];
+
 interface PostwallProps {
   posts: PostType[];
+  loading?: boolean;
+  onRefresh: () => void;
 }
 
-export const Postwall = ({ posts }: PostwallProps) => {
+export const Postwall = ({ posts, loading, onRefresh }: PostwallProps) => {
   const t = useTranslations();
+
+  if (loading) {
+    return (
+      <div className={styles.container}>
+        <div className={styles.skeleton}>
+          {SKELETON_ITEMS.map((i) => (
+            <div key={i} className={styles.skeletonPost} />
+          ))}
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className={styles.container}>
-      {posts && posts.length > 0 ? (
+      {posts.length > 0 ? (
         <ul className={styles.list}>
           {posts.map((post) => (
             <li key={post.id}>
-              <Post post={post} />
+              <Post post={post} onRefresh={onRefresh} />
             </li>
           ))}
         </ul>

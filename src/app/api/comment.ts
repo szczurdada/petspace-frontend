@@ -1,13 +1,8 @@
-import { API_URL } from "@/config/env";
-import axios from "axios";
+import api from "@/config/axios";
 
 export const createComment = async (content: string, postId?: string, photoId?: string) => {
   try {
-    const { data } = await axios.post(
-      `${API_URL}/comments`,
-      { content, postId, photoId },
-      { headers: { Authorization: localStorage.getItem("token") } },
-    );
+    const { data } = await api.post("/comments", { content, postId, photoId });
     return data;
   } catch {
     return null;
@@ -16,7 +11,7 @@ export const createComment = async (content: string, postId?: string, photoId?: 
 
 export const getComments = async (postId: string) => {
   try {
-    const { data } = await axios.get(`${API_URL}/comments/postwall/${postId}`);
+    const { data } = await api.get(`/comments/postwall/${postId}`);
     return data;
   } catch {
     return null;
@@ -25,7 +20,7 @@ export const getComments = async (postId: string) => {
 
 export const getPhotoComments = async (photoId: string) => {
   try {
-    const { data } = await axios.get(`${API_URL}/comments/photo/${photoId}`);
+    const { data } = await api.get(`/comments/photo/${photoId}`);
     return data;
   } catch {
     return null;

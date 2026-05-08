@@ -1,3 +1,5 @@
+"use client";
+
 import { Avatar } from "@/app/uikit/Avatar/Avatar";
 import styles from "./FriendRequest.module.scss";
 import { Button } from "@/app/uikit/Button/Button";

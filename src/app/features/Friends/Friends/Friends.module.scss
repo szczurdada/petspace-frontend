@@ -42,44 +42,49 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
-.avatar {
+.link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.photo {
   position: relative;
   width: 100%;
   aspect-ratio: 1 / 1;
-
-  img {
-    object-fit: cover;
-  }
+  overflow: hidden;
 }
 
-.info {
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: var(--padding-m);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.72), transparent);
   display: flex;
   flex-direction: column;
-  gap: var(--gap-xs);
-  padding: var(--padding-m);
+  gap: 2px;
 }
 
 .name {
   font-weight: 600;
   font-size: var(--font-base);
-  color: var(--text-primary);
+  color: var(--text-on-primary);
 }
 
-.breed {
+.info {
+  display: flex;
+  align-items: center;
+  gap: 2px;
   font-size: var(--font-m);
-  color: var(--text-secondary);
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .city {
   display: flex;
   align-items: center;
   gap: 2px;
-  font-size: var(--font-m);
-  color: var(--text-secondary);
-}
-
-.icon {
-  flex-shrink: 0;
 }
 
 .action {

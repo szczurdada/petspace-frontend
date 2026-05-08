@@ -4,9 +4,8 @@ import Image from "next/image";
 import { FaComment, FaHeart, FaReply } from "react-icons/fa";
 import { Post as PostType } from "@/types";
 import dayjs from "dayjs";
-import { useRouter } from "next/navigation";
 import { Comment } from "@/app/features/Profile/feed/Comment/Comment";
-import { MdDeleteSweep, MdModeEdit, MdOutlineMoreHoriz } from "react-icons/md";
+import { MdDeleteSweep, MdModeEdit } from "react-icons/md";
 import { CommentCreator } from "../CommentCreator/CommentCreator";
 import { useState } from "react";
 import { useLocale } from "next-intl";
@@ -14,30 +13,36 @@ import "dayjs/locale/pl";
 import "dayjs/locale/en";
 import api from "@/config/axios";
 import { DropdownMenu } from "@/app/uikit/DropdownMenu/DropdownMenu";
+import { likePost } from "@/app/api/likes";
+import { Button } from "@/app/uikit/Button/Button";
+import { useLike } from "@/app/hooks/useLike";
 
 export interface PostProps {
   post: PostType;
+  onRefresh: () => void;
 }
 
-export const Post = ({ post }: PostProps) => {
-  const router = useRouter();
+export const Post = ({ post, onRefresh }: PostProps) => {
+  const locale = useLocale();
   const [showCommentCreator, setShowCommentCreator] = useState(
     (post.comments?.length ?? 0) > 0,
   );
-  const locale = useLocale();
+
+  const { liked, displayCount, likeLoading, handleLike } = useLike({
+    initialLiked: post.liked,
+    initialCount: post.likesCount,
+    onLike: likePost,
+    id: post.id,
+  });
 
   const deletePost = async () => {
     await api.delete(`/posts/${post.id}`);
-    router.refresh();
+    onRefresh();
   };
 
   const deleteComment = async (commentId: string) => {
     await api.delete(`/comments/${commentId}`);
-    router.refresh();
-  };
-
-  const writeComment = () => {
-    setShowCommentCreator((prev) => !prev);
+    onRefresh();
   };
 
   return (
@@ -71,26 +76,35 @@ export const Post = ({ post }: PostProps) => {
         <div className={styles.content}>{post.content}</div>
         {post.image && (
           <div className={styles.mediaContent}>
-            <Image src={post.image} alt="Post image" fill></Image>
+            <Image src={post.image} alt="Post image" fill />
           </div>
         )}
       </div>
       <div className={styles.stats}>
-        <div className={styles.stat}>
+        <Button
+          appearance="ghost"
+          className={`${styles.stat} ${liked ? styles.statLiked : ""}`}
+          onClick={handleLike}
+          disabled={likeLoading}
+        >
           <FaHeart size={16} />
-          <span>{post.likes}</span>
-        </div>
-        <div className={styles.stat} onClick={writeComment}>
+          <span>{displayCount ?? ""}</span>
+        </Button>
+        <Button
+          appearance="ghost"
+          className={styles.stat}
+          onClick={() => setShowCommentCreator((prev) => !prev)}
+        >
           <FaComment size={16} />
-          <span>{post.comments?.length || null}</span>
-        </div>
-        <div className={styles.stat}>
+          <span>{post.comments?.length || ""}</span>
+        </Button>
+        <Button appearance="ghost" className={styles.stat}>
           <FaReply size={18} />
           <span>{post.reposts}</span>
-        </div>
+        </Button>
       </div>
       <ul className={styles.comments}>
-        {(post.comments ?? []).map((comment) => (
+        {post.comments?.map((comment) => (
           <li key={comment.id}>
             <Comment
               comment={comment}
@@ -103,7 +117,8 @@ export const Post = ({ post }: PostProps) => {
         <CommentCreator
           postId={post.id}
           avatar={post.user.avatar}
-        ></CommentCreator>
+          onSuccess={onRefresh}
+        />
       )}
     </article>
   );
