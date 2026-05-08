@@ -16,7 +16,7 @@ interface ProfileInfoModalProps {
   isOpen: boolean;
   onClose: () => void;
   breed?: string;
-  birthDate?: number;
+  birthDate?: string;
   gender?: string;
   bio?: string;
   city?: string;

@@ -3,7 +3,6 @@ import styles from "./CommentCreator.module.scss";
 import { FaAngleRight } from "react-icons/fa";
 import { useState } from "react";
 import { useTranslations } from "next-intl";
-import { useRouter } from "next/navigation";
 import { createComment } from "@/app/api/comment";
 import { StaticImageData } from "next/image";
 import { Textarea } from "@/app/uikit/Textarea/Textarea";
@@ -12,23 +11,23 @@ interface CommentCreatorProps {
   postId?: string;
   photoId?: string;
   avatar?: string | StaticImageData;
+  onSuccess?: () => void;
 }
 
 export const CommentCreator = ({
   postId,
   photoId,
   avatar,
+  onSuccess,
 }: CommentCreatorProps) => {
   const t = useTranslations();
-
-  const [content, setContent] = useState<string>("");
-  const router = useRouter();
+  const [content, setContent] = useState("");
 
   const handleSubmit = async () => {
-    if (!content) return null;
+    if (!content) return;
     await createComment(content, postId, photoId);
     setContent("");
-    router.refresh();
+    onSuccess?.();
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {

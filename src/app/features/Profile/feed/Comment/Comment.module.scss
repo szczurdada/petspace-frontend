@@ -69,6 +69,10 @@
   }
 }
 
+.liked {
+  color: var(--text-primary);
+}
+
 .delete {
   margin-left: auto;
   opacity: 0;
@@ -76,7 +80,6 @@
 }
 
 .deleteButton {
-  padding: 0 !important;
   color: var(--text-secondary);
   transition: color 0.2s ease;
 

@@ -1,13 +1,12 @@
 import { Modal } from "@/app/uikit/Modal/Modal";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import styles from "./PhotoModal.module.scss";
-import { Photo } from "@/types";
+import { Comment as CommentType, Photo } from "@/types";
 import { Button } from "@/app/uikit/Button/Button";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 import { useLocale, useTranslations } from "next-intl";
 import { Comment } from "../../Profile/feed/Comment/Comment";
 import { CommentCreator } from "../../Profile/feed/CommentCreator/CommentCreator";
-import { useRouter } from "next/navigation";
 import { Avatar } from "@/app/uikit/Avatar/Avatar";
 import dayjs from "dayjs";
 import "dayjs/locale/pl";
@@ -15,10 +14,12 @@ import "dayjs/locale/en";
 import { DropdownMenu } from "@/app/uikit/DropdownMenu/DropdownMenu";
 import api from "@/config/axios";
 import { MdDeleteSweep, MdModeEdit } from "react-icons/md";
+import { useState, useEffect } from "react";
+import { getPhotoComments } from "@/app/api/comment";
 
 interface PhotoModalProps {
   photo: Photo | null;
-  avatar?: string | StaticImageData;
+  avatar?: string;
   name: string;
   photosCount?: number;
   currentIndex?: number;
@@ -42,9 +43,20 @@ export const PhotoModal = ({
   onDelete,
 }: PhotoModalProps) => {
   const t = useTranslations();
-  const router = useRouter();
-
   const locale = useLocale();
+  const [comments, setComments] = useState<CommentType[]>(
+    photo?.comments ?? [],
+  );
+  const [commentRefresh, setCommentRefresh] = useState(0);
+
+  useEffect(() => {
+    if (!photo) return;
+    getPhotoComments(photo.id).then((data) => {
+      if (data) setComments(data);
+    });
+  }, [photo, commentRefresh]);
+
+  const refreshComments = () => setCommentRefresh((r) => r + 1);
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "ArrowLeft") onPrev?.();
@@ -53,7 +65,7 @@ export const PhotoModal = ({
 
   const deleteComment = async (commentId: string) => {
     await api.delete(`/comments/${commentId}`);
-    router.refresh();
+    refreshComments();
   };
 
   return (
@@ -84,21 +96,9 @@ export const PhotoModal = ({
                 src={`https://res.cloudinary.com/${cloudName}/image/upload/${photo.publicId}`}
                 alt="Photo"
                 fill
-                style={{
-                  objectFit: "cover",
-                  filter: "blur(20px)",
-                  opacity: 0.5,
-                }}
-              />
-
-              <Image
-                src={`https://res.cloudinary.com/${cloudName}/image/upload/${photo.publicId}`}
-                alt="Photo"
-                fill
                 style={{ objectFit: "contain" }}
               />
             </div>
-
             <Button
               className={styles.arrow}
               appearance="ghost"
@@ -112,7 +112,7 @@ export const PhotoModal = ({
             <div className={styles.sidebarWrapper}>
               <div className={styles.author}>
                 <div className={styles.avatar}>
-                  <Avatar src={avatar}></Avatar>
+                  <Avatar src={avatar} />
                 </div>
                 <div className={styles.info}>
                   <div className={styles.name}>{name}</div>
@@ -131,7 +131,7 @@ export const PhotoModal = ({
                       {
                         label: "Delete",
                         icon: <MdDeleteSweep size={20} />,
-                        onClick: () => {},
+                        onClick: onDelete ?? (() => {}),
                       },
                     ]}
                   />
@@ -139,8 +139,8 @@ export const PhotoModal = ({
               </div>
             </div>
             <ul className={styles.comments}>
-              {photo.comments && photo.comments.length > 0 ? (
-                photo.comments.map((comment) => (
+              {comments.length > 0 ? (
+                comments.map((comment) => (
                   <li key={comment.id}>
                     <Comment
                       comment={comment}
@@ -158,7 +158,11 @@ export const PhotoModal = ({
               )}
             </ul>
             <div className={styles.sidebarFooter}>
-              <CommentCreator photoId={photo.id} avatar={avatar} />
+              <CommentCreator
+                photoId={photo.id}
+                avatar={avatar}
+                onSuccess={refreshComments}
+              />
             </div>
           </div>
         </div>

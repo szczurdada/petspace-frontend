@@ -8,6 +8,8 @@ import { useLocale, useTranslations } from "next-intl";
 import dayjs from "dayjs";
 import "dayjs/locale/pl";
 import "dayjs/locale/en";
+import { likeComment } from "@/app/api/likes";
+import { useLike } from "@/app/hooks/useLike";
 
 interface CommentProps {
   comment: CommentType;
@@ -17,6 +19,13 @@ interface CommentProps {
 export const Comment = ({ comment, onDelete }: CommentProps) => {
   const t = useTranslations();
   const locale = useLocale();
+
+  const { liked, displayCount, likeLoading, handleLike } = useLike({
+    initialLiked: comment.liked,
+    initialCount: comment.likesCount,
+    onLike: likeComment,
+    id: comment.id,
+  });
 
   return (
     <article className={styles.container}>
@@ -31,10 +40,15 @@ export const Comment = ({ comment, onDelete }: CommentProps) => {
         <div className={styles.content}>{comment.content}</div>
         <div className={styles.footer}>
           <div className={styles.reply}>{t("comment.reply")}</div>
-          <div className={styles.likes}>
+          <Button
+            appearance="ghost"
+            className={`${styles.likes} ${liked ? styles.liked : ""}`}
+            onClick={handleLike}
+            disabled={likeLoading}
+          >
             <FaHeart size={14} />
-            <span>{comment.likes}</span>
-          </div>
+            <span>{displayCount}</span>
+          </Button>
         </div>
       </div>
       <div className={styles.delete}>

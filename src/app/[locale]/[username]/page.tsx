@@ -3,9 +3,6 @@ import { ProfileLayout } from "@/app/features/Profile/ProfileLayout/ProfileLayou
 import { getUser } from "@/app/api/user";
 import { notFound } from "next/navigation";
 import { getPostwall } from "@/app/api/postwall";
-import { getPosts } from "@/app/api/post";
-import { getComments, getPhotoComments } from "@/app/api/comment";
-import { Photo, Post } from "@/types";
 
 interface ProfilePageProps {
   params: Promise<{ username: string }>;
@@ -13,34 +10,13 @@ interface ProfilePageProps {
 
 const ProfilePage = async ({ params }: ProfilePageProps) => {
   const awaitedParams = await params;
-  const userData = await getUser(awaitedParams.username);
-  const postwallData = await getPostwall(awaitedParams.username);
-  const postData: Post[] = await getPosts(postwallData._id);
 
-  if (!userData) {
-    notFound();
-  }
+  const [userData, postwallData] = await Promise.all([
+    getUser(awaitedParams.username),
+    getPostwall(awaitedParams.username),
+  ]);
 
-  const postsWithComments = await Promise.all(
-    postData.map(async (post) => ({
-      ...post,
-      comments: await getComments(post.id),
-    })),
-  );
-
-  const photosWithComments = await Promise.all(
-    (userData.photos ?? []).map(async (photo: Photo) => ({
-      ...photo,
-      comments: await getPhotoComments(photo.id),
-    })),
-  );
-
-  const avatarPhotosWithComments = await Promise.all(
-    (userData.avatarPhotos ?? []).map(async (photo: Photo) => ({
-      ...photo,
-      comments: await getPhotoComments(photo.id),
-    })),
-  );
+  if (!userData) notFound();
 
   return (
     <>
@@ -51,16 +27,16 @@ const ProfilePage = async ({ params }: ProfilePageProps) => {
             name: userData.name,
             username: userData.username,
             avatar: userData.avatar,
-            avatarPhotos: avatarPhotosWithComments,
+            avatarPhotos: userData.avatarPhotos,
             gender: userData.gender,
             breed: userData.breed,
             birthDate: userData.birthDate,
             city: userData.city,
             bio: userData.bio,
             interests: userData.interests,
-            photos: photosWithComments,
+            photos: userData.photos,
+            friends: userData.friends,
             postwallId: postwallData._id,
-            posts: postsWithComments,
           }}
         />
       </main>

@@ -45,7 +45,6 @@
 }
 
 .breed {
-  font-size: var(--font-m);
   color: var(--text-secondary);
   font-size: var(--font-s);
 }
@@ -55,6 +54,8 @@
 }
 
 .showFriends {
+  display: flex;
+  justify-content: center;
   width: 100%;
   background: transparent;
   border: none;

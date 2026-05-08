@@ -1,45 +1,19 @@
-import { StaticImageData } from "next/image";
-
 export interface User {
-  id: string;
+  id?: string;
   username: string;
   name: string;
-  avatar?: string | StaticImageData;
+  avatar?: string;
   city?: string;
   breed?: string;
   isOnline?: boolean;
   friendsCount?: number;
-}
-
-export type Friend = User;
-
-export interface Photo {
-  id: string;
-  publicId: string;
-  createdAt: string;
-  likes?: number;
-  comments?: Comment[];
-  reposts?: number;
-}
-
-export interface Post {
-  id: string;
-  user: User;
-  content: string;
-  image?: string;
-  likes: number;
-  comments?: Comment[];
-  reposts?: number;
-  createdAt: Date;
-}
-
-export interface Comment {
-  id: string;
-  user: User;
-  content: string;
-  image?: string;
-  likes: number;
-  createdAt: Date;
+  bio?: string;
+  gender?: string;
+  birthDate?: string;
+  interests?: Interests;
+  photos?: Photo[];
+  avatarPhotos?: Photo[];
+  friends?: Friend[];
 }
 
 export interface Interests {
@@ -51,19 +25,41 @@ export interface Interests {
   humans?: string;
 }
 
-export interface BannerInfo {
-  username: string;
-  name: string;
-  avatar?: string;
-  avatarPhotos?: Photo[];
-  breed?: string;
-  birthDate?: number;
-  gender?: string;
-  city?: string;
-  bio?: string;
-  interests?: Interests;
-  photos?: Photo[];
-  friends?: Friend[];
+export type Friend = User;
+
+export interface Photo {
+  id: string;
+  publicId: string;
+  createdAt: string;
+  likesCount: number;
+  liked: boolean;
+  comments?: Comment[];
+  reposts?: number;
+}
+
+export interface Post {
+  id: string;
+  user: User;
+  content: string;
+  image?: string;
+  likesCount: number;
+  liked: boolean;
+  comments?: Comment[];
+  reposts?: number;
+  createdAt: Date;
+}
+
+export interface Comment {
+  id: string;
+  user: User;
+  content: string;
+  image?: string;
+  likesCount: number;
+  liked: boolean;
+  createdAt: Date;
+}
+
+export interface BannerInfo extends User {
   postwallId?: string;
   posts?: Post[];
 }

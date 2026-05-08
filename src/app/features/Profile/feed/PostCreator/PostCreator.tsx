@@ -5,17 +5,16 @@ import { FaCamera, FaMapMarkerAlt } from "react-icons/fa";
 import { Link } from "@/app/uikit/Link/Link";
 import { ROUTES } from "@/app/uikit/constants/routes";
 import { useTranslations } from "next-intl";
-import { StaticImageData } from "next/image";
 import { useState } from "react";
 import { createPost } from "@/app/api/post";
-import { useRouter } from "next/navigation";
 import { Textarea } from "@/app/uikit/Textarea/Textarea";
 
 interface PostCreatorProps {
-  avatar?: string | StaticImageData;
+  avatar?: string;
   username: string;
   name: string;
   postwallId: string;
+  onSuccess?: () => void;
 }
 
 export const PostCreator = ({
@@ -23,22 +22,22 @@ export const PostCreator = ({
   username,
   name,
   postwallId,
+  onSuccess,
 }: PostCreatorProps) => {
   const t = useTranslations();
-  const [content, setContent] = useState<string>("");
-  const router = useRouter();
+  const [content, setContent] = useState("");
 
-  const handleSubmit = async () => {
-    if (!content) return null;
+  const publishPost = async () => {
+    if (!content) return;
     await createPost(content, postwallId);
     setContent("");
-    router.refresh();
+    onSuccess?.();
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
-      handleSubmit();
+      publishPost();
     }
   };
 
@@ -70,7 +69,7 @@ export const PostCreator = ({
             {t("postCreator.place")}
           </Link>
         </div>
-        <Button appearance="primary" onClick={handleSubmit}>
+        <Button appearance="primary" onClick={publishPost}>
           {t("postCreator.publish")}
         </Button>
       </div>

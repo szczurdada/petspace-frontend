@@ -1,13 +1,8 @@
-import { API_URL } from "@/config/env";
-import axios from "axios";
+import api from "@/config/axios";
 
 export const createPost = async (content: string, postwallId: string) => {
   try {
-    const { data } = await axios.post(
-      `${API_URL}/posts`,
-      { content, postwallId },
-      { headers: { Authorization: localStorage.getItem("token") } },
-    );
+    const { data } = await api.post("/posts", { content, postwallId });
     return data;
   } catch {
     return null;
@@ -16,7 +11,7 @@ export const createPost = async (content: string, postwallId: string) => {
 
 export const getPosts = async (postwallId: string) => {
   try {
-    const { data } = await axios.get(`${API_URL}/posts/postwall/${postwallId}`);
+    const { data } = await api.get(`/posts/postwall/${postwallId}`);
     return data;
   } catch {
     return null;
