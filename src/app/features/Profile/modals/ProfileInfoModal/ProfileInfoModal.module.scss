@@ -1,5 +1,6 @@
 .title {
   margin: 0;
+  color: var(--text-primary);
   font-size: var(--font-xl);
 }
 
@@ -36,6 +37,7 @@
 .interests {
   display: flex;
   flex-direction: column;
+  color: var(--text-primary);
   gap: var(--gap-m);
   padding-top: var(--gap-m);
 }

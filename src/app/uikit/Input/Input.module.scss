@@ -4,7 +4,9 @@
   cursor: text;
   outline: none;
   border-radius: var(--radius-m);
-  transition: background 0.2s ease;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 
   &::placeholder {
     color: var(--text-placeholder);

@@ -6,6 +6,7 @@ import { IoHomeSharp } from "react-icons/io5";
 import { BsBellFill } from "react-icons/bs";
 import { BiSolidMessage } from "react-icons/bi";
 import { SearchBar } from "../../uikit/SearchBar/SearchBar";
+import { ThemeToggle } from "@/app/uikit/ThemeToggle/ThemeToggle";
 
 interface HeaderProps {
   username?: string;
@@ -25,6 +26,7 @@ export const Header = ({ username }: HeaderProps) => {
           <>
             <SearchBar />
             <nav className={styles.actions}>
+              <ThemeToggle className={styles.iconLink}/>
               <Link href={ROUTES.notifications} className={styles.iconLink}>
                 <BsBellFill size={20} />
               </Link>

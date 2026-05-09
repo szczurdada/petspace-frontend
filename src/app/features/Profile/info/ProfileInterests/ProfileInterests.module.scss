@@ -10,12 +10,14 @@
 
 .title {
   margin: 0;
+  color: var(--text-primary);
   font-size: var(--font-l);
 }
 
 .fields {
   display: flex;
   flex-direction: column;
+  color: var(--text-primary);
   gap: var(--gap-m);
 }
 
