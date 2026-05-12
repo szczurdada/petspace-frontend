@@ -6,28 +6,36 @@ import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { ROUTES } from "@/app/uikit/constants/routes";
 import { AvatarUploadModal } from "@/app/features/Profile/modals/AvatarUploadModal/AvatarUploadModal";
+import { useState } from "react";
+import { toast } from "react-toastify";
+import api from "@/config/axios";
 
 export const RegistrationStepsAvatar = () => {
   const router = useRouter();
   const t = useTranslations();
+  const [avatarFile, setAvatarFile] = useState<File | null>(null);
 
-  const saveAvatar = () => {
+  const navigateToProfile = () => {
     const username = localStorage.getItem("username");
-    if (!username) return;
-    router.push(ROUTES.profile(username));
+    if (username) router.push(ROUTES.profile(username));
   };
 
-  const returnToProfile = () => {
-    const username = localStorage.getItem("username");
-    if (!username) return;
-    router.push(ROUTES.profile(username));
+  const saveAvatar = async () => {
+    try {
+      if (avatarFile) {
+        const formData = new FormData();
+        formData.append("image", avatarFile);
+        await api.post("/api/upload/avatar", formData);
+      }
+      navigateToProfile();
+    } catch {
+      toast.error(t("toasts.error"));
+    }
   };
 
   return (
     <div className={styles.container}>
-      <div>
-        <div className={styles.tag}>{t("registrationStepsAvatar.step")}</div>
-      </div>
+      <div className={styles.tag}>{t("registrationStepsAvatar.step")}</div>
       <div>
         <h2 className={styles.title}>{t("registrationStepsAvatar.title")}</h2>
         <p className={styles.subtitle}>
@@ -36,13 +44,13 @@ export const RegistrationStepsAvatar = () => {
         <div className={styles.formDivider}></div>
       </div>
       <div className={styles.avatar}>
-        <AvatarUploadModal size={120}></AvatarUploadModal>
+        <AvatarUploadModal size={120} onChange={setAvatarFile} />
       </div>
       <div className={styles.actions}>
         <Button appearance="primary" onClick={saveAvatar}>
           {t("common.continue")}
         </Button>
-        <Button appearance="secondary" onClick={returnToProfile}>
+        <Button appearance="secondary" onClick={navigateToProfile}>
           {t("common.skip")}
         </Button>
       </div>

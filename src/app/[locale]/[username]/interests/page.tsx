@@ -14,10 +14,7 @@ const ProfileInterestsPage = async ({ params }: ProfileInterestsPageProps) => {
     <>
       <Header username={userData.username} />
       <main>
-        <ProfileInterestsLayout
-          username={userData.username}
-          interests={userData.interests}
-        ></ProfileInterestsLayout>
+        <ProfileInterestsLayout user={userData} />
       </main>
     </>
   );

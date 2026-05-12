@@ -16,8 +16,15 @@
 
 .title {
   margin: 0;
+  font-weight: 600;
+  color: var(--text-primary);
   font-size: var(--font-l);
-  font-weight: 700;
+}
+
+.empty {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: var(--font-base);
 }
 
 .friends {

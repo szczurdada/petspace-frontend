@@ -7,17 +7,10 @@ import { useTranslations } from "next-intl";
 import { toast } from "react-toastify";
 import { useForm } from "react-hook-form";
 import api from "@/config/axios";
+import { BannerInfo } from "@/types";
 
 interface ProfileInterestsProps {
-  username: string;
-  interests?: {
-    favoriteToys?: string;
-    favoriteTreats?: string;
-    favoriteActivities?: string;
-    crimes?: string;
-    guiltyHabits?: string;
-    humans?: string;
-  };
+  user: BannerInfo;
 }
 
 interface InterestsForm {
@@ -29,26 +22,23 @@ interface InterestsForm {
   humans: string;
 }
 
-export const ProfileInterests = ({
-  username,
-  interests,
-}: ProfileInterestsProps) => {
+export const ProfileInterests = ({ user }: ProfileInterestsProps) => {
   const t = useTranslations();
 
   const { register, handleSubmit, reset } = useForm<InterestsForm>({
     defaultValues: {
-      toys: interests?.favoriteToys ?? "",
-      treats: interests?.favoriteTreats ?? "",
-      activities: interests?.favoriteActivities ?? "",
-      crimes: interests?.crimes ?? "",
-      habits: interests?.guiltyHabits ?? "",
-      humans: interests?.humans ?? "",
+      toys: user.interests?.favoriteToys ?? "",
+      treats: user.interests?.favoriteTreats ?? "",
+      activities: user.interests?.favoriteActivities ?? "",
+      crimes: user.interests?.crimes ?? "",
+      habits: user.interests?.guiltyHabits ?? "",
+      humans: user.interests?.humans ?? "",
     },
   });
 
   const onSubmit = async (data: InterestsForm) => {
     try {
-      await api.put(`/user/${username}`, {
+      await api.put(`/user/${user.username}`, {
         interests: {
           favoriteToys: data.toys,
           favoriteTreats: data.treats,

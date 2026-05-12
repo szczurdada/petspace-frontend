@@ -58,11 +58,9 @@ export const ProfileLayout = ({ bannerInfo }: ProfileLayoutProps) => {
             name={bannerInfo.name}
           />
         </div>
-        {friends.length > 0 && (
-          <div className={styles.friends}>
-            <ProfileFriends username={bannerInfo.username} friends={friends} />
-          </div>
-        )}
+        <div className={styles.friends}>
+          <ProfileFriends username={bannerInfo.username} friends={friends} />
+        </div>
       </div>
     </div>
   );

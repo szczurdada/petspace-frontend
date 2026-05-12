@@ -20,32 +20,35 @@ export const ProfileFriends = ({ username, friends }: ProfileFriendsProps) => {
       <Link href={ROUTES.friends(username)} className={styles.titleLink}>
         <h3 className={styles.title}>{t("profileFriends.title")}</h3>
       </Link>
-      <ul className={styles.friends}>
-        {friends.length > 0 ? (
-          friends.slice(0, MAX_VISIBLE_FRIENDS).map((friend) => (
-            <li key={friend.username} className={styles.friend}>
-              <Avatar
-                src={friend.avatar}
-                size={40}
-                isOnline={friend.isOnline}
-              />
-              <div className={styles.info}>
-                <div className={styles.name}>{friend.name}</div>
-                <div className={styles.breed}>{friend.breed}</div>
-              </div>
-            </li>
-          ))
-        ) : (
-          <li className={styles.emptyFriends}>
-            <p className={styles.text}>{t("profileFriends.empty")}</p>
-          </li>
-        )}
-      </ul>
-      <div className={styles.action}>
-        <Link href={ROUTES.friends(username)} className={styles.showFriends}>
-          {t("profileFriends.showFriends")}
-        </Link>
-      </div>
+      {friends.length === 0 ? (
+        <p className={styles.empty}>{t("profileFriends.empty")}</p>
+      ) : (
+        <>
+          <ul className={styles.friends}>
+            {friends.slice(0, MAX_VISIBLE_FRIENDS).map((friend) => (
+              <li key={friend.username} className={styles.friend}>
+                <Avatar
+                  src={friend.avatar}
+                  size={40}
+                  isOnline={friend.isOnline}
+                />
+                <div className={styles.info}>
+                  <div className={styles.name}>{friend.name}</div>
+                  <div className={styles.breed}>{friend.breed}</div>
+                </div>
+              </li>
+            ))}
+          </ul>
+          <div className={styles.action}>
+            <Link
+              href={ROUTES.friends(username)}
+              className={styles.showFriends}
+            >
+              {t("profileFriends.showFriends")}
+            </Link>
+          </div>
+        </>
+      )}
     </section>
   );
 };

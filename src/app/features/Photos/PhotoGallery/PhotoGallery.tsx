@@ -64,7 +64,7 @@ export const PhotoGallery = ({ photos, avatar, name }: PhotoGalleryProps) => {
   };
 
   return (
-    <div className={styles.container}>
+    <section className={styles.container}>
       <div className={styles.header}>
         <h3 className={styles.title}>
           {t("photoGallery.title")}
@@ -75,18 +75,25 @@ export const PhotoGallery = ({ photos, avatar, name }: PhotoGalleryProps) => {
         </Button>
       </div>
 
-      <ul className={styles.gallery}>
-        {localPhotos.map((photo, index) => (
-          <li key={photo.publicId} className={styles.photo}>
-            <Image
-              onClick={() => setSelectedIndex(index)}
-              src={`https://res.cloudinary.com/${CLOUD_NAME}/image/upload/${photo.publicId}`}
-              alt={`${name}'s photo`}
-              fill
-            />
-          </li>
-        ))}
-      </ul>
+      {localPhotos.length === 0 ? (
+        <div className={styles.emptyPhotos}>
+          <p className={styles.emptyTitle}>{t("photoGallery.emptyPhotosTitle")}</p>
+          <p className={styles.emptyText}>{t("photoGallery.emptyPhotosText")}</p>
+        </div>
+      ) : (
+        <ul className={styles.gallery}>
+          {localPhotos.map((photo, index) => (
+            <li key={photo.publicId} className={styles.photo}>
+              <Image
+                onClick={() => setSelectedIndex(index)}
+                src={`https://res.cloudinary.com/${CLOUD_NAME}/image/upload/${photo.publicId}`}
+                alt={`${name}'s photo`}
+                fill
+              />
+            </li>
+          ))}
+        </ul>
+      )}
 
       <PhotoModal
         photo={selectedPhoto}
@@ -106,6 +113,6 @@ export const PhotoGallery = ({ photos, avatar, name }: PhotoGalleryProps) => {
         onClose={() => setIsOpen(false)}
         onUpload={addPhoto}
       />
-    </div>
+    </section>
   );
 };
