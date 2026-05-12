@@ -23,43 +23,51 @@ export const Friends = ({ friends = [] }: FriendsProps) => {
         <h1 className={styles.title}>{t("friends.title")}</h1>
         <span className={styles.count}>{friends.length}</span>
       </div>
-      <ul className={styles.list}>
-        {friends.map((friend) => (
-          <li key={friend.username} className={styles.friend}>
-            <Link
-              href={ROUTES.profile(friend.username)}
-              className={styles.link}
-            >
-              <div className={styles.photo}>
-                <Image
-                  src={friend.avatar || defaultAvatar}
-                  alt={friend.name}
-                  fill
-                  sizes="33vw"
-                  style={{ objectFit: "cover" }}
-                />
-                <div className={styles.overlay}>
-                  <div className={styles.name}>{friend.name}</div>
-                  {(friend.breed || friend.city) && (
-                    <div className={styles.info}>
-                      {friend.breed && <div>{friend.breed}</div>}
-                      {friend.city && (
-                        <div className={styles.city}>
-                          <MdPlace size={14} />
-                          {friend.city}
-                        </div>
-                      )}
-                    </div>
-                  )}
+      {friends.length > 0 ? (
+        <ul className={styles.list}>
+          {friends.map((friend) => (
+            <li key={friend.username} className={styles.friend}>
+              <Link
+                href={ROUTES.profile(friend.username)}
+                className={styles.link}
+              >
+                <div className={styles.photo}>
+                  <Image
+                    src={friend.avatar || defaultAvatar}
+                    alt={friend.name}
+                    fill
+                    sizes="33vw"
+                    style={{ objectFit: "cover" }}
+                  />
+                  <div className={styles.overlay}>
+                    <div className={styles.name}>{friend.name}</div>
+                    {(friend.breed || friend.city) && (
+                      <div className={styles.info}>
+                        {friend.breed && <div>{friend.breed}</div>}
+                        {friend.city && (
+                          <div className={styles.city}>
+                            <MdPlace size={14} />
+                            {friend.city}
+                          </div>
+                        )}
+                      </div>
+                    )}
+                  </div>
                 </div>
+              </Link>
+              <div className={styles.actions}>
+                <Button appearance="tertiary">{t("friends.message")}</Button>
+                <Button appearance="primary">{t("friends.remove")}</Button>
               </div>
-            </Link>
-            <div className={styles.action}>
-              <Button appearance="tertiary">{t("friends.message")}</Button>
-            </div>
-          </li>
-        ))}
-      </ul>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <div className={styles.emptyFriends}>
+          <p className={styles.title}>{t("friends.emptyFriendsTitle")}</p>
+          <p className={styles.text}>{t("friends.emptyFriendsText")}</p>
+        </div>
+      )}
     </section>
   );
 };

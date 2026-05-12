@@ -70,7 +70,7 @@ const RegistrationSteps = ({
       });
       router.push(ROUTES.registrationStepsAvatar);
     } catch {
-      toast.error(t("toast.error"));
+      toast.error(t("toasts.error"));
     }
   };
 

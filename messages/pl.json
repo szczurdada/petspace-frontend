@@ -91,7 +91,8 @@
   },
   "profileFriends": {
     "title": "Znajomi",
-    "showFriends": "Pokaż wszystkich znajomych"
+    "showFriends": "Pokaż wszystkich znajomych",
+    "empty": "Brak znajomych"
   },
   "profileInfoModal": {
     "title": "Moje informacje",
@@ -105,7 +106,8 @@
     "commentsText": "Bądź pierwszy!"
   },
   "profilePhotos": {
-    "title": "Zdjęcia"
+    "title": "Zdjęcia",
+    "empty": "Brak zdjęć"
   },
   "postCreator": {
     "photo": "Zdjęcie",
@@ -121,24 +123,30 @@
   },
   "photoGallery": {
     "title": "Moje zdjęcia",
-    "addPhoto": "Dodaj zdjęcie"
+    "addPhoto": "Dodaj zdjęcie",
+    "emptyPhotosTitle": "Brak zdjęć",
+    "emptyPhotosText": "Czas uwiecznić chwile merdania ogonem!"
   },
   "friends": {
     "title": "Moi znajomi",
     "message": "Wiadomość",
-    "friends": "znajomych"
+    "friends": "znajomych",
+    "remove": "Usuń",
+    "emptyFriendsTitle": "Brak znajomych",
+    "emptyFriendsText": "Ale każda legenda zaczyna w pojedynkę. Idź i znajdź swoją sforę!"
   },
   "friendRequest": {
     "title": "Zaproszenia do znajomych",
     "accept": "Akceptuj",
     "decline": "Odrzuć",
-    "mutualFriends": "{count} wspólnych znajomych"
+    "mutualFriends": "{count} wspólnych znajomych",
+    "empty": "Brak nowych zaproszeń"
   },
   "photoUploadModal": {
     "addPhoto": "Dodaj nowe zdjęcie",
     "dragAndDrop": "Przeciągnij i upuść lub kliknij tutaj",
     "modalFormats": "JPG, PNG, GIF, WEBP"
-},
+  },
   "profileEditor": {
     "title": "Edytuj profil",
     "bio": "Bio:",
@@ -171,6 +179,11 @@
     "choosePhoto": "Kliknij, aby wybrać zdjęcie",
     "deleteModalTitle": "Usuń zdjęcie",
     "deleteModalDescription": "Czy na pewno chcesz usunąć swoje zdjęcie?"
+  },
+  "achievements": {
+    "title": "Osiągnięcia",
+    "firstFriend": "Pierwszy przyjaciel",
+    "firstPost": "Pierwszy wpis"
   },
   "notFound": {
     "text": "Ups! Jamnik poszedł kopać sobie norkę...",

@@ -4,33 +4,23 @@ import { Sidebar } from "@/app/components/Sidebar/Sidebar";
 import styles from "./ProfileInterestsLayout.module.scss";
 import { ProfileInterests } from "../ProfileInterests/ProfileInterests";
 import ProfileInformation from "../ProfileInformation/ProfileInformation";
+import { BannerInfo } from "@/types";
 
 interface ProfileInterestLayout {
-  username: string;
-  interests?: {
-    favoriteToys?: string;
-    favoriteTreats?: string;
-    favoriteActivities?: string;
-    crimes?: string;
-    guiltyHabits?: string;
-    humans?: string;
-  };
+  user: BannerInfo;
 }
 
-export const ProfileInterestsLayout = ({
-  username,
-  interests,
-}: ProfileInterestLayout) => {
+export const ProfileInterestsLayout = ({ user }: ProfileInterestLayout) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.sidebar}>
-        <Sidebar username={username} />
+        <Sidebar username={user.username} />
       </div>
       <div className={styles.content}>
-        <ProfileInterests username={username} interests={interests} />
+        <ProfileInterests user={user} />
       </div>
       <div className={styles.information}>
-        <ProfileInformation username={username} />
+        <ProfileInformation username={user.username} />
       </div>
     </div>
   );

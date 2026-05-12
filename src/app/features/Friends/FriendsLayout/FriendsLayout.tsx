@@ -19,7 +19,7 @@ export const FriendsLayout = ({ username, friends }: FriendsLayoutProps) => {
         <Friends friends={friends} />
       </div>
       <div className={styles.requests}>
-        <FriendRequest />
+        <FriendRequest friends={friends}/>
       </div>
     </div>
   );

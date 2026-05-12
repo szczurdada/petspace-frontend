@@ -88,8 +88,32 @@
   gap: 2px;
 }
 
-.action {
+.actions {
+  display: flex;
+  gap: var(--gap-s);
+
   button {
-    width: 100%;
+    flex: 1;
   }
+}
+
+.emptyFriends {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-l);
+  text-align: center;
+  padding: 70px 0;
+}
+
+.title {
+  margin: 0;
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: var(--font-l);
+}
+
+.text {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: var(--font-m);
 }
