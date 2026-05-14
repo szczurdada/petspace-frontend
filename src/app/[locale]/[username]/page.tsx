@@ -37,6 +37,7 @@ const ProfilePage = async ({ params }: ProfilePageProps) => {
             photos: userData.photos,
             friends: userData.friends,
             postwallId: postwallData._id,
+            achievements: userData.achievements,
           }}
         />
       </main>

@@ -12,6 +12,7 @@ import { AvatarEdit } from "@/app/uikit/AvatarEdit/AvatarEdit";
 import { useState } from "react";
 import { ProfileInfoModal } from "../../modals/ProfileInfoModal/ProfileInfoModal";
 import { BannerInfo } from "@/types";
+import { AchievementsModal } from "../../modals/AchievementsModal/AchievementsModal";
 
 interface ProfileBannerProps {
   bannerInfo: BannerInfo;
@@ -25,6 +26,7 @@ export const ProfileBanner = ({ bannerInfo }: ProfileBannerProps) => {
   const photosCount = bannerInfo.photos?.length ?? 0;
 
   const [isInfoOpen, setIsInfoOpen] = useState(false);
+  const [isAchievementsOpen, setIsAchievementsOpen] = useState(false);
   const [avatarUrl, setAvatarUrl] = useState<string | undefined>(
     bannerInfo.avatar,
   );
@@ -107,7 +109,11 @@ export const ProfileBanner = ({ bannerInfo }: ProfileBannerProps) => {
         </div>
       </div>
       <div className={styles.actions}>
-        <Button appearance="primary" className={styles.achievementsBtn}>
+        <Button
+          appearance="primary"
+          className={styles.achievementsBtn}
+          onClick={() => setIsAchievementsOpen(true)}
+        >
           {t("profileBanner.achievements")}
         </Button>
         <Button appearance="secondary" onClick={editProfile}>
@@ -115,15 +121,16 @@ export const ProfileBanner = ({ bannerInfo }: ProfileBannerProps) => {
         </Button>
       </div>
 
+      <AchievementsModal
+        isOpen={isAchievementsOpen}
+        onClose={() => setIsAchievementsOpen(false)}
+        achievements={bannerInfo.achievements}
+      />
+
       <ProfileInfoModal
         isOpen={isInfoOpen}
         onClose={() => setIsInfoOpen(false)}
-        bio={bannerInfo.bio}
-        city={bannerInfo.city}
-        birthDate={bannerInfo.birthDate}
-        gender={bannerInfo.gender}
-        breed={bannerInfo.breed}
-        interests={bannerInfo.interests}
+        user={bannerInfo}
       />
     </div>
   );

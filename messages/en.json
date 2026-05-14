@@ -79,6 +79,14 @@
     "title": "Still sniffing around for posts",
     "text": "No bones to fetch here yet. Be the first to leave a mark!"
   },
+  "achievements": {
+    "title": "Achievements",
+    "firstFriend": "First friend",
+    "firstFriendText": "Found your first pack member",
+    "firstPost": "First bark",
+    "firstPostText": "Write your first post",
+    "totalBones": "Total bones collected"
+  },
   "profileBanner": {
     "info": "More info",
     "friends": "friends",
