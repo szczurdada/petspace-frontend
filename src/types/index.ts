@@ -3,6 +3,7 @@ export interface User {
   username: string;
   name: string;
   avatar?: string;
+  country?: string;
   city?: string;
   breed?: string;
   isOnline?: boolean;
@@ -14,6 +15,7 @@ export interface User {
   photos?: Photo[];
   avatarPhotos?: Photo[];
   friends?: Friend[];
+  achievements?: Achievements;
 }
 
 export interface Interests {
@@ -26,6 +28,11 @@ export interface Interests {
 }
 
 export type Friend = User;
+
+export interface Achievements {
+  firstFriend?: boolean;
+  firstPost?: boolean;
+}
 
 export interface Photo {
   id: string;

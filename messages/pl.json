@@ -79,6 +79,14 @@
     "title": "Wciąż węszymy w poszukiwaniu postów",
     "text": "Nie ma tu jeszcze żadnych kości do gryzienia. Bądź pierwszy i zostaw ślad!"
   },
+  "achievements": {
+    "title": "Osiągnięcia",
+    "firstFriend": "Pierwszy przyjaciel",
+    "firstFriendDesc": "Znalazłeś pierwszego członka sfory",
+    "firstPost": "Pierwsze szczekanie",
+    "firstPostDesc": "Napisz swój pierwszy wpis",
+    "totalBones": "Zebrane kości"
+  },
   "profileBanner": {
     "info": "Więcej info",
     "friends": "znajomi",

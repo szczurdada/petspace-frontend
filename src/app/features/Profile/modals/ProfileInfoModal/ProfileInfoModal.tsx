@@ -11,38 +11,23 @@ import { useTranslations, useLocale } from "next-intl";
 import dayjs from "dayjs";
 import "dayjs/locale/pl";
 import "dayjs/locale/en";
+import { BannerInfo } from "@/types";
 
 interface ProfileInfoModalProps {
   isOpen: boolean;
   onClose: () => void;
-  breed?: string;
-  birthDate?: string;
-  gender?: string;
-  bio?: string;
-  city?: string;
-  interests?: {
-    favoriteToys?: string;
-    favoriteTreats?: string;
-    favoriteActivities?: string;
-    crimes?: string;
-    guiltyHabits?: string;
-    humans?: string;
-  };
+  user: BannerInfo;
 }
 
 export const ProfileInfoModal = ({
   isOpen,
   onClose,
-  breed,
-  birthDate,
-  gender,
-  bio,
-  city,
-  interests,
+  user,
 }: ProfileInfoModalProps) => {
   const t = useTranslations();
-  const hasInterests = interests && Object.values(interests).some(Boolean);
   const locale = useLocale();
+  const { bio, breed, city, gender, birthDate, interests } = user;
+  const hasInterests = interests && Object.values(interests).some(Boolean);
 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
