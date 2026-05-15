@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@/app/uikit/Button/Button";
+import { Button } from "@/app/uikit/form/Button/Button";
 import styles from "./PhotoGallery.module.scss";
 import Image from "next/image";
 import { useState } from "react";

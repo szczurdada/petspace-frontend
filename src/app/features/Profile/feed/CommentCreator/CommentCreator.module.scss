@@ -8,26 +8,3 @@
   align-items: center;
   gap: var(--gap-m);
 }
-
-.textareaWrapper {
-  flex: 1;
-  display: flex;
-  align-items: center;
-
-  textarea {
-    width: 100%;
-    box-sizing: border-box;
-  }
-}
-
-.arrow {
-  align-items: center;
-  padding-left: 5px;
-  cursor: pointer;
-  color: var(--text-secondary);
-  transition: color 0.2s ease;
-
-  &:hover {
-    color: var(--text-primary);
-  }
-}

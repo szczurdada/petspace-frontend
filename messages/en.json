@@ -10,17 +10,22 @@
     "close": "Close",
     "or": "or"
   },
-  "gender": {
-    "male": "Male",
-    "female": "Female"
+  "validations": {
+    "minLength": "Must be at least {min} characters",
+    "maxLength": "Must not exceed {max} characters",
+    "required": "This field is required",
+    "emailPattern": "Invalid email address",
+    "usernamePattern": "Username can only contain letters, numbers, and underscores",
+    "passwordPattern": "Password must contain at least one letter and one number"
+  },
+  "errors": {
+    "EMAIL_ALREADY_EXISTS": "This email is already registered",
+    "USERNAME_ALREADY_EXISTS": "This username is already registered",
+    "INVALID_CREDENTIALS": "Invalid email or password"
   },
   "placeholder": {
     "noneSelected": "None selected",
     "chooseDate": "Chose a date"
-  },
-  "toasts": {
-    "saved": "Changes saved successfully",
-    "error": "Error"
   },
   "signin": {
     "title": "Petspace",
@@ -59,9 +64,6 @@
     "title": "Upload a photo",
     "subtitle": "Join the pack — show who you are"
   },
-  "searchBar": {
-    "search": "Search"
-  },
   "sidebar": {
     "profile": "Profile",
     "feed": "Feed",
@@ -71,21 +73,21 @@
     "favorites": "Favorites",
     "places": "Places"
   },
+  "searchBar": {
+    "search": "Search"
+  },
   "dailyTip": {
     "title": "Tip of the day",
     "text": "Regular walks are essential for your pet's physical and mental health. Aim for at least 30 minutes of activity daily to keep them happy, healthy, and well-behaved. Don't forget to bring water and treats!"
   },
-  "feed": {
-    "title": "Still sniffing around for posts",
-    "text": "No bones to fetch here yet. Be the first to leave a mark!"
+  "toasts": {
+    "saved": "Changes saved successfully",
+    "error": "Error"
   },
-  "achievements": {
-    "title": "Achievements",
-    "firstFriend": "First friend",
-    "firstFriendText": "Found your first pack member",
-    "firstPost": "First bark",
-    "firstPostText": "Write your first post",
-    "totalBones": "Total bones collected"
+  "notFound": {
+    "text": "Oops! The dachshund went to dig a little burrow...",
+    "description": "This page got lost somewhere deep in the garden.\nThe dachshund is looking for it, but so far without success.",
+    "goBack": "Go Back"
   },
   "profileBanner": {
     "info": "More info",
@@ -94,21 +96,80 @@
     "places": "places",
     "achievements": "Achievements",
     "editProfile": "Edit profile",
-    "modalTitle": "My info", 
+    "modalTitle": "My info",
     "modalInterests": "Interests"
+  },
+  "profileEditor": {
+    "title": "Edit profile",
+    "bio": "About:",
+    "birthday": "Birthday:",
+    "gender": "Gender:",
+    "country": "Country:",
+    "city": "City:",
+    "breed": "Breed:"
+  },
+  "profileInformation": {
+    "profile": "Profile",
+    "interests": "Interests"
+  },
+  "profileInterests": {
+    "title": "Edit interests",
+    "toys": "My favorite toys:",
+    "treats": "My favorite treats:",
+    "activities": "My favorite activities:",
+    "crimes": "My crimes:",
+    "habits": "Guilty habits:",
+    "humans": "My humans:"
+  },
+  "profileInfoModal": {
+    "title": "My info",
+    "interestsTitle": "My interests"
   },
   "profileFriends": {
     "title": "Friends",
     "showFriends": "Show all friends",
     "empty": "No friends yet"
   },
-  "profileInfoModal": {
-    "title": "My info",
-    "interestsTitle": "My interests"
+  "avatarEdit": {
+    "open": "Open photo",
+    "change": "Change photo",
+    "delete": "Delete photo",
+    "modalTitle": "Upload new photo",
+    "modalDescription": "Show the pack who you are!",
+    "modalFormats": "JPG, PNG, GIF, WEBP",
+    "choosePhoto": "Click to choose a photo",
+    "deleteModalTitle": "Delete photo",
+    "deleteModalDescription": "Are you sure you want to delete your photo?"
   },
-  "photoModal":{
+  "feed": {
+    "title": "Still sniffing around for posts",
+    "text": "No bones to fetch here yet. Be the first to leave a mark!"
+  },
+  "postCreator": {
+    "photo": "Photo",
+    "place": "Place",
+    "publish": "Add post",
+    "placeholder": "What's new, "
+  },
+  "comment": {
+    "reply": "Reply"
+  },
+  "commentCreator": {
+    "placeholder": "Sniff around and comment..."
+  },
+  "photoGallery": {
+    "title": "My photos",
+    "addPhoto": "Add new photo",
+    "emptyPhotosTitle": "No photos yet",
+    "emptyPhotosText": "Time to capture some tail-wagging moments!"
+  },
+  "profilePhotos": {
+    "title": "Photos",
+    "empty": "No photos yet"
+  },
+  "photoModal": {
     "delete": "Delete",
-    "makeProfilePhoto": "Make profile photo", 
+    "makeProfilePhoto": "Make profile photo",
     "counter": "Photos {current} of {total}",
     "commentsTitle": "No tail wags yet...",
     "commentsText": "Be the first!"
@@ -117,16 +178,6 @@
     "addPhoto": "Add new photo",
     "dragAndDrop": "Drag & drop or click here",
     "modalFormats": "JPG, PNG, GIF, WEBP"
-  },
-  "profilePhotos": {
-    "title": "Photos",
-    "empty": "No photos yet"
-  },
-  "photoGallery": {
-    "title": "My photos",
-    "addPhoto": "Add new photo",
-    "emptyPhotosTitle": "No photos yet",
-    "emptyPhotosText": "Time to capture some tail-wagging moments!"
   },
   "friends": {
     "title": "My friends",
@@ -143,72 +194,20 @@
     "mutualFriends": "{count} mutual friends",
     "empty": "No new requests yet"
   },
-  "postCreator": {
-    "photo": "Photo",
-    "place": "Place",
-    "publish": "Add post",
-    "placeholder": "What's new, "
-  },
-  "comment": {
-    "reply": "Reply"
-  },
-  "commentCreator": {
-    "placeholder": "Sniff around and comment..."
-  },
-  "profileEditor": {
-    "title": "Edit profile",
-    "bio": "About:",
-    "birthday": "Birthday:",
-    "gender": "Gender:",
-    "country": "Country:",
-    "city": "City:",
-    "breed": "Breed:"
-  },
-  "profileInterests": {
-    "title": "Edit interests",
-    "toys": "My favorite toys:",
-    "treats": "My favorite treats:",
-    "activities": "My favorite activities:",
-    "crimes": "My crimes:",
-    "habits": "Guilty habits:",
-    "humans": "My humans:"
-  },
-  "profileInformation": {
-    "profile": "Profile",
-    "interests": "Interests"
-  },
-  "avatarEdit": {
-    "open": "Open photo",
-    "change": "Change photo",
-    "delete": "Delete photo",
-    "modalTitle": "Upload new photo",
-    "modalDescription": "Show the pack who you are!",
-    "modalFormats": "JPG, PNG, GIF, WEBP",
-    "choosePhoto": "Click to choose a photo",
-    "deleteModalTitle": "Delete photo",
-    "deleteModalDescription": "Are you sure you want to delete your photo?"
+  "messages": {
+    "title": "Messages",
+    "placeholder": "Write a message..."
   },
   "achievements": {
     "title": "Achievements",
     "firstFriend": "First friend",
-    "firstPost": "First post"
+    "firstFriendText": "Found your first pack member",
+    "firstPost": "First bark",
+    "firstPostText": "Write your first post",
+    "totalBones": "Total bones collected"
   },
-  "notFound": {
-    "text": "Oops! The dachshund went to dig a little burrow...",
-    "description": "This page got lost somewhere deep in the garden.\nThe dachshund is looking for it, but so far without success.",
-    "goBack": "Go Back"
-  },
-  "validations": {
-    "minLength": "Must be at least {min} characters",
-    "maxLength": "Must not exceed {max} characters",
-    "required": "This field is required",
-    "emailPattern": "Invalid email address",
-    "usernamePattern": "Username can only contain letters, numbers, and underscores",
-    "passwordPattern": "Password must contain at least one letter and one number"
-  },
-  "errors": {
-    "EMAIL_ALREADY_EXISTS": "This email is already registered",
-    "USERNAME_ALREADY_EXISTS": "This username is already registered",
-    "INVALID_CREDENTIALS": "Invalid email or password"
+  "gender": {
+    "male": "Male",
+    "female": "Female"
   }
 }

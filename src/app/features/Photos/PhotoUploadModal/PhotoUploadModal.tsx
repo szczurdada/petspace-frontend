@@ -4,8 +4,8 @@ import { useDropzone } from "react-dropzone";
 import { useState } from "react";
 import { MdPhotoCamera } from "react-icons/md";
 import styles from "./PhotoUploadModal.module.scss";
-import { Modal } from "@/app/uikit/Modal/Modal";
-import { Button } from "@/app/uikit/Button/Button";
+import { Modal } from "@/app/uikit/overlays/Modal/Modal";
+import { Button } from "@/app/uikit/form/Button/Button";
 import { useTranslations } from "next-intl";
 
 interface PhotoUploadModalProps {

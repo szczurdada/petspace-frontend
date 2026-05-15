@@ -1,8 +1,8 @@
-import { Avatar } from "@/app/uikit/Avatar/Avatar";
+import { Avatar } from "@/app/uikit/user/Avatar/Avatar";
 import styles from "./Comment.module.scss";
 import { FaHeart } from "react-icons/fa";
 import { IoCloseSharp } from "react-icons/io5";
-import { Button } from "@/app/uikit/Button/Button";
+import { Button } from "@/app/uikit/form/Button/Button";
 import { Comment as CommentType } from "@/types";
 import { useLocale, useTranslations } from "next-intl";
 import dayjs from "dayjs";

@@ -1,13 +1,13 @@
 import styles from "./PostCreator.module.scss";
-import { Button } from "@/app/uikit/Button/Button";
-import { Avatar } from "@/app/uikit/Avatar/Avatar";
+import { Button } from "@/app/uikit/form/Button/Button";
+import { Avatar } from "@/app/uikit/user/Avatar/Avatar";
 import { FaCamera, FaMapMarkerAlt } from "react-icons/fa";
-import { Link } from "@/app/uikit/Link/Link";
-import { ROUTES } from "@/app/uikit/constants/routes";
+import { Link } from "@/app/uikit/navigation/Link/Link";
+import { ROUTES } from "@/routes/routes";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { createPost } from "@/app/api/post";
-import { Textarea } from "@/app/uikit/Textarea/Textarea";
+import { Textarea } from "@/app/uikit/form/Textarea/Textarea";
 
 interface PostCreatorProps {
   avatar?: string;

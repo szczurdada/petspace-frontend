@@ -1,0 +1,48 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.userInfo {
+  padding: var(--padding-m);
+  border-bottom: 1px solid var(--border-divider);
+  flex-shrink: 0;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-m);
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.name {
+  font-size: var(--font-base);
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.status {
+  font-size: var(--font-s);
+  color: var(--color-online);
+}
+
+.list {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--padding-m);
+}
+
+.input {
+  display: flex;
+  align-items: center;
+  padding: var(--padding-m);
+  border-top: 1px solid var(--border-divider);
+  flex-shrink: 0;
+}

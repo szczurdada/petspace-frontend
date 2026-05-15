@@ -1,8 +1,8 @@
 "use client";
 
 import styles from "./ProfileInterests.module.scss";
-import { Button } from "@/app/uikit/Button/Button";
-import { Textarea } from "@/app/uikit/Textarea/Textarea";
+import { Button } from "@/app/uikit/form/Button/Button";
+import { Textarea } from "@/app/uikit/form/Textarea/Textarea";
 import { useTranslations } from "next-intl";
 import { toast } from "react-toastify";
 import { useForm } from "react-hook-form";

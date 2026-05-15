@@ -3,9 +3,9 @@ import { BiSolidMessage } from "react-icons/bi";
 import { FaMapMarkerAlt, FaPaw, FaBone, FaDog } from "react-icons/fa";
 import { FaCamera } from "react-icons/fa6";
 import styles from "./Sidebar.module.scss";
-import { ROUTES } from "@/app/uikit/constants/routes";
-import { DailyTip } from "@/app/uikit/DailyTip/DailyTip";
-import { NavLink } from "@/app/uikit/NavLink/NavLink";
+import { ROUTES } from "@/routes/routes";
+import { DailyTip } from "@/app/uikit/feedback/DailyTip/DailyTip";
+import { NavLink } from "@/app/uikit/navigation/NavLink/NavLink";
 
 export const Sidebar = ({ username }: { username: string }) => {
   const t = useTranslations();
@@ -21,7 +21,7 @@ export const Sidebar = ({ username }: { username: string }) => {
           <FaBone size={20} />
           {t("sidebar.feed")}
         </NavLink>
-        <NavLink href={ROUTES.messages}>
+        <NavLink href={ROUTES.messages(username)}>
           <BiSolidMessage size={20} />
           {t("sidebar.messages")}
         </NavLink>

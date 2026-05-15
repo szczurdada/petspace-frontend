@@ -3,7 +3,7 @@ import { Geist } from "next/font/google";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
-import { Toast } from "../uikit/Toast/Toast";
+import { Toast } from "../uikit/feedback/Toast/Toast";
 
 const geist = Geist({ subsets: ["latin"] });
 

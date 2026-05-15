@@ -1,12 +1,12 @@
-import { ROUTES } from "@/app/uikit/constants/routes";
+import { ROUTES } from "@/routes/routes";
 import styles from "./ProfilePhotos.module.scss";
 import Image from "next/image";
-import { Link } from "@/app/uikit/Link/Link";
+import { Link } from "@/app/uikit/navigation/Link/Link";
 import { useTranslations } from "next-intl";
 import { Photo } from "@/types";
 import { CLOUD_NAME } from "@/config/env";
 import { usePhotoNavigation } from "@/app/hooks/usePhotoNavigation";
-import { PhotoModal } from "@/app/features/Photos/PhotoModal/PhotoModal";
+import { PhotoModal } from "@/app/features/photos/PhotoModal/PhotoModal";
 
 interface ProfilePhotosProps {
   photos: Photo[];

@@ -1,22 +1,22 @@
 "use client";
 
 import styles from "./ProfileEditor.module.scss";
-import { Button } from "@/app/uikit/Button/Button";
+import { Button } from "@/app/uikit/form/Button/Button";
 import { useTranslations } from "use-intl";
 import { useEffect, useState } from "react";
-import { Combobox } from "@/app/uikit/Combobox/Combobox";
-import { DatePicker } from "@/app/uikit/DatePicker/DatePicker";
-import { AvatarEdit } from "@/app/uikit/AvatarEdit/AvatarEdit";
+import { DatePicker } from "@/app/uikit/form/DatePicker/DatePicker";
+import { AvatarEdit } from "@/app/uikit/user/AvatarEdit/AvatarEdit";
 import { toast } from "react-toastify";
-import { Select } from "@/app/uikit/Select/Select";
 import { useForm, Controller, useWatch } from "react-hook-form";
 import dayjs from "dayjs";
 import type { Dayjs } from "dayjs";
-import { Textarea } from "@/app/uikit/Textarea/Textarea";
+import { Textarea } from "@/app/uikit/form/Textarea/Textarea";
 import { BannerInfo } from "@/types";
 import { updateProfile } from "@/app/api/profile";
 import { getBreeds } from "@/app/api/breeds";
 import { getCities, getCountries } from "@/app/api/locations";
+import { Combobox } from "@/app/uikit/form/Combobox/Combobox";
+import { Select } from "@/app/uikit/form/Select/Select";
 
 interface ProfileEditorProps {
   user: BannerInfo;

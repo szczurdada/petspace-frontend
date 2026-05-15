@@ -1,6 +1,6 @@
 "use client";
 
-import { Post } from "@/app/features/Profile/feed/Post/Post";
+import { Post } from "@/app/features/profile/feed/Post/Post";
 import styles from "./Postwall.module.scss";
 import { Post as PostType } from "@/types";
 import { useTranslations } from "next-intl";

@@ -1,4 +1,4 @@
-import { RegistrationStepsAvatar } from "@/app/features/RegistrationSteps/RegistrationStepsAvatar/RegistrationStepsAvatar";
+import { RegistrationStepsAvatar } from "@/app/features/auth/RegistrationStepsAvatar/RegistrationStepsAvatar";
 import styles from "./page.module.scss";
 
 const RegistrationStepsAvatarPage = () => {

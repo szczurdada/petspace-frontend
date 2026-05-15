@@ -1,8 +1,8 @@
 import styles from "./not-found.module.scss";
 import Link from "next/link";
-import { Button } from "../uikit/Button/Button";
+import { Button } from "../uikit/form/Button/Button";
 import { Header } from "../components/Header/Header";
-import { ROUTES } from "../uikit/constants/routes";
+import { ROUTES } from "../../routes/routes";
 import { useTranslations } from "next-intl";
 import notFoundBg from "@/public/notFound.svg";
 import Image from "next/image";

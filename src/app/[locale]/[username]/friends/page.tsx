@@ -1,7 +1,7 @@
 import { getFriends } from "@/app/api/friends";
 import { getUser } from "@/app/api/user";
 import { Header } from "@/app/components/Header/Header";
-import { FriendsLayout } from "@/app/features/Friends/FriendsLayout/FriendsLayout";
+import { FriendsLayout } from "@/app/features/friends/FriendsLayout/FriendsLayout";
 
 interface FriendsPageProps {
   params: Promise<{ username: string }>;

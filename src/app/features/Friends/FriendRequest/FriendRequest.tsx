@@ -1,8 +1,8 @@
 "use client";
 
-import { Avatar } from "@/app/uikit/Avatar/Avatar";
+import { Avatar } from "@/app/uikit/user/Avatar/Avatar";
 import styles from "./FriendRequest.module.scss";
-import { Button } from "@/app/uikit/Button/Button";
+import { Button } from "@/app/uikit/form/Button/Button";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { ROUTES } from "@/app/uikit/constants/routes";

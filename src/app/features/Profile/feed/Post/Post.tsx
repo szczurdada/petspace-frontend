@@ -1,10 +1,10 @@
-import { Avatar } from "@/app/uikit/Avatar/Avatar";
+import { Avatar } from "@/app/uikit/user/Avatar/Avatar";
 import styles from "./Post.module.scss";
 import Image from "next/image";
 import { FaComment, FaHeart, FaReply } from "react-icons/fa";
 import { Post as PostType } from "@/types";
 import dayjs from "dayjs";
-import { Comment } from "@/app/features/Profile/feed/Comment/Comment";
+import { Comment } from "@/app/features/profile/feed/Comment/Comment";
 import { MdDeleteSweep, MdModeEdit } from "react-icons/md";
 import { CommentCreator } from "../CommentCreator/CommentCreator";
 import { useState } from "react";
@@ -12,9 +12,9 @@ import { useLocale } from "next-intl";
 import "dayjs/locale/pl";
 import "dayjs/locale/en";
 import api from "@/config/axios";
-import { DropdownMenu } from "@/app/uikit/DropdownMenu/DropdownMenu";
+import { DropdownMenu } from "@/app/uikit/overlays/DropdownMenu/DropdownMenu";
 import { likePost } from "@/app/api/likes";
-import { Button } from "@/app/uikit/Button/Button";
+import { Button } from "@/app/uikit/form/Button/Button";
 import { useLike } from "@/app/hooks/useLike";
 
 export interface PostProps {
