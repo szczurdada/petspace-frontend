@@ -1,6 +1,6 @@
 "use client";
 
-import RegistrationSteps from "@/app/features/RegistrationSteps/RegistrationSteps";
+import RegistrationSteps from "@/app/features/auth/RegistrationSteps/RegistrationSteps";
 import styles from "./page.module.scss";
 
 interface RegistrationStepsPageProps {

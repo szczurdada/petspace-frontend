@@ -2,8 +2,8 @@
 
 import styles from "./ProfileInformation.module.scss";
 import { useTranslations } from "use-intl";
-import { ROUTES } from "@/app/uikit/constants/routes";
-import { NavLink } from "@/app/uikit/NavLink/NavLink";
+import { ROUTES } from "@/routes/routes";
+import { NavLink } from "@/app/uikit/navigation/NavLink/NavLink";
 
 interface ProfileInformationProps {
   username: string;

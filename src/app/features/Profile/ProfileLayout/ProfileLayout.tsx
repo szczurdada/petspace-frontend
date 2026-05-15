@@ -1,7 +1,7 @@
 "use client";
 
 import { Postwall } from "../feed/Postwall/Postwall";
-import { ProfileFriends } from "../ProfileFriends/ProfileFriends";
+import { ProfileFriends } from "../friends/ProfileFriends/ProfileFriends";
 import { PostCreator } from "../feed/PostCreator/PostCreator";
 import { ProfileBanner } from "../info/ProfileBanner/ProfileBanner";
 import styles from "./ProfileLayout.module.scss";

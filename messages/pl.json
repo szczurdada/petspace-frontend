@@ -10,17 +10,22 @@
     "close": "Zamknij",
     "or": "lub"
   },
-  "gender": {
-    "male": "Samiec",
-    "female": "Samica"
+  "validations": {
+    "minLength": "Musi zawierać co najmniej {min} znaków",
+    "maxLength": "Nie może przekraczać {max} znaków",
+    "required": "To pole jest wymagane",
+    "emailPattern": "Nieprawidłowy adres e-mail",
+    "usernamePattern": "Nazwa użytkownika może zawierać tylko litery, cyfry i podkreślenia",
+    "passwordPattern": "Hasło musi zawierać co najmniej jedną literę i jedną cyfrę"
+  },
+  "errors": {
+    "EMAIL_ALREADY_EXISTS": "Ten email jest już zarejestrowany",
+    "USERNAME_ALREADY_EXISTS": "Ta nazwa użytkownika jest już zajęta",
+    "INVALID_CREDENTIALS": "Nieprawidłowy email lub hasło"
   },
   "placeholder": {
     "noneSelected": "Nie wybrano",
     "chooseDate": "Wybierz datę"
-  },
-  "toasts": {
-    "saved": "Zmiany zostały zapisane pomyślnie",
-    "error": "Błąd"
   },
   "signin": {
     "title": "Petspace",
@@ -59,9 +64,6 @@
     "title": "Dodaj zdjęcie",
     "subtitle": "Dołącz do sfory — pokaż kim jesteś"
   },
-  "searchBar": {
-    "search": "Szukaj"
-  },
   "sidebar": {
     "profile": "Profil",
     "feed": "Aktualności",
@@ -71,21 +73,21 @@
     "favorites": "Ulubione",
     "places": "Miejsca"
   },
+  "searchBar": {
+    "search": "Szukaj"
+  },
   "dailyTip": {
     "title": "Porada dnia",
     "text": "Regularne spacery są niezbędne dla fizycznego i psychicznego zdrowia Twojego pupila. Staraj się zapewnić co najmniej 30 minut aktywności dziennie, aby był szczęśliwy, zdrowy i dobrze wychowany. Nie zapomnij zabrać wody i smakołyków!"
   },
-  "feed": {
-    "title": "Wciąż węszymy w poszukiwaniu postów",
-    "text": "Nie ma tu jeszcze żadnych kości do gryzienia. Bądź pierwszy i zostaw ślad!"
+  "toasts": {
+    "saved": "Zmiany zostały zapisane pomyślnie",
+    "error": "Błąd"
   },
-  "achievements": {
-    "title": "Osiągnięcia",
-    "firstFriend": "Pierwszy przyjaciel",
-    "firstFriendDesc": "Znalazłeś pierwszego członka sfory",
-    "firstPost": "Pierwsze szczekanie",
-    "firstPostDesc": "Napisz swój pierwszy wpis",
-    "totalBones": "Zebrane kości"
+  "notFound": {
+    "text": "Ups! Jamnik poszedł kopać sobie norkę...",
+    "description": "Ta strona zaginęła gdzieś w ogrodzie. Jamnik jej szuka, ale jak dotąd bez powodzenia.",
+    "goBack": "Wróć wstecz"
   },
   "profileBanner": {
     "info": "Więcej info",
@@ -97,25 +99,51 @@
     "modalTitle": "Moje info",
     "modalInterests": "Zainteresowania"
   },
-  "profileFriends": {
-    "title": "Znajomi",
-    "showFriends": "Pokaż wszystkich znajomych",
-    "empty": "Brak znajomych"
+  "profileEditor": {
+    "title": "Edytuj profil",
+    "bio": "Bio:",
+    "birthday": "Wiek:",
+    "gender": "Płeć:",
+    "country": "Kraj",
+    "city": "Miasto:",
+    "breed": "Rasa:"
+  },
+  "profileInformation": {
+    "profile": "Profil",
+    "interests": "Zainteresowania"
+  },
+  "profileInterests": {
+    "title": "Edytuj zainteresowania",
+    "toys": "Moje ulubione zabawki:",
+    "treats": "Moje ulubione przysmaki:",
+    "activities": "Moje ulubione aktywności:",
+    "crimes": "Moje zbrodnie:",
+    "habits": "Winne nawyki:",
+    "humans": "Moi ludzie:"
   },
   "profileInfoModal": {
     "title": "Moje informacje",
     "interestsTitle": "Moje zainteresowania"
   },
-  "photoModal":{
-    "delete": "Usuń",
-    "makeProfilePhoto": "Ustaw jako zdjęcie profilowe",
-    "counter": "Zdjęcia {current} z {total}",
-    "commentsTitle": "Jeszcze żadnych merdań ogonem...",
-    "commentsText": "Bądź pierwszy!"
+  "profileFriends": {
+    "title": "Znajomi",
+    "showFriends": "Pokaż wszystkich znajomych",
+    "empty": "Brak znajomych"
   },
-  "profilePhotos": {
-    "title": "Zdjęcia",
-    "empty": "Brak zdjęć"
+  "avatarEdit": {
+    "open": "Otwórz zdjęcie",
+    "change": "Zmień zdjęcie",
+    "delete": "Usuń zdjęcie",
+    "modalTitle": "Prześlij nowe zdjęcie",
+    "modalDescription": "Pokaż sforze kim jesteś!",
+    "modalFormats": "JPG, PNG, GIF, WEBP",
+    "choosePhoto": "Kliknij, aby wybrać zdjęcie",
+    "deleteModalTitle": "Usuń zdjęcie",
+    "deleteModalDescription": "Czy na pewno chcesz usunąć swoje zdjęcie?"
+  },
+  "feed": {
+    "title": "Wciąż węszymy w poszukiwaniu postów",
+    "text": "Nie ma tu jeszcze żadnych kości do gryzienia. Bądź pierwszy i zostaw ślad!"
   },
   "postCreator": {
     "photo": "Zdjęcie",
@@ -135,6 +163,22 @@
     "emptyPhotosTitle": "Brak zdjęć",
     "emptyPhotosText": "Czas uwiecznić chwile merdania ogonem!"
   },
+  "profilePhotos": {
+    "title": "Zdjęcia",
+    "empty": "Brak zdjęć"
+  },
+  "photoModal": {
+    "delete": "Usuń",
+    "makeProfilePhoto": "Ustaw jako zdjęcie profilowe",
+    "counter": "Zdjęcia {current} z {total}",
+    "commentsTitle": "Jeszcze żadnych merdań ogonem...",
+    "commentsText": "Bądź pierwszy!"
+  },
+  "photoUploadModal": {
+    "addPhoto": "Dodaj nowe zdjęcie",
+    "dragAndDrop": "Przeciągnij i upuść lub kliknij tutaj",
+    "modalFormats": "JPG, PNG, GIF, WEBP"
+  },
   "friends": {
     "title": "Moi znajomi",
     "message": "Wiadomość",
@@ -150,65 +194,20 @@
     "mutualFriends": "{count} wspólnych znajomych",
     "empty": "Brak nowych zaproszeń"
   },
-  "photoUploadModal": {
-    "addPhoto": "Dodaj nowe zdjęcie",
-    "dragAndDrop": "Przeciągnij i upuść lub kliknij tutaj",
-    "modalFormats": "JPG, PNG, GIF, WEBP"
-  },
-  "profileEditor": {
-    "title": "Edytuj profil",
-    "bio": "Bio:",
-    "birthday": "Wiek:",
-    "gender": "Płeć:",
-    "country": "Kraj",
-    "city": "Miasto:",
-    "breed": "Rasa:"
-  },
-  "profileInterests": {
-    "title": "Edytuj zainteresowania",
-    "toys": "Moje ulubione zabawki:",
-    "treats": "Moje ulubione przysmaki:",
-    "activities": "Moje ulubione aktywności:",
-    "crimes": "Moje zbrodnie:",
-    "habits": "Winne nawyki:",
-    "humans": "Moi ludzie:"
-  },
-  "profileInformation": {
-    "profile": "Profil",
-    "interests": "Zainteresowania"
-  },
-  "avatarEdit": {
-    "open": "Otwórz zdjęcie",
-    "change": "Zmień zdjęcie",
-    "delete": "Usuń zdjęcie",
-    "modalTitle": "Prześlij nowe zdjęcie",
-    "modalDescription": "Pokaż sforze kim jesteś!",
-    "modalFormats": "JPG, PNG, GIF, WEBP",
-    "choosePhoto": "Kliknij, aby wybrać zdjęcie",
-    "deleteModalTitle": "Usuń zdjęcie",
-    "deleteModalDescription": "Czy na pewno chcesz usunąć swoje zdjęcie?"
+  "messages": {
+    "title": "Wiadomości",
+    "placeholder": "Napisz wiadomość..."
   },
   "achievements": {
     "title": "Osiągnięcia",
     "firstFriend": "Pierwszy przyjaciel",
-    "firstPost": "Pierwszy wpis"
+    "firstFriendText": "Znalazłeś pierwszego członka sfory",
+    "firstPost": "Pierwsze szczekanie",
+    "firstPostText": "Napisz swój pierwszy wpis",
+    "totalBones": "Zebrane kości"
   },
-  "notFound": {
-    "text": "Ups! Jamnik poszedł kopać sobie norkę...",
-    "description": "Ta strona zaginęła gdzieś w ogrodzie. Jamnik jej szuka, ale jak dotąd bez powodzenia.",
-    "goBack": "Wróć wstecz"
-  },
-  "validations": {
-    "minLength": "Musi zawierać co najmniej {min} znaków",
-    "maxLength": "Nie może przekraczać {max} znaków",
-    "required": "To pole jest wymagane",
-    "emailPattern": "Nieprawidłowy adres e-mail",
-    "usernamePattern": "Nazwa użytkownika może zawierać tylko litery, cyfry i podkreślenia",
-    "passwordPattern": "Hasło musi zawierać co najmniej jedną literę i jedną cyfrę"
-  },
-  "errors": {
-    "EMAIL_ALREADY_EXISTS": "Ten email jest już zarejestrowany",
-    "USERNAME_ALREADY_EXISTS": "Ta nazwa użytkownika jest już zajęta",
-    "INVALID_CREDENTIALS": "Nieprawidłowy email lub hasło"
+  "gender": {
+    "male": "Samiec",
+    "female": "Samica"
   }
 }

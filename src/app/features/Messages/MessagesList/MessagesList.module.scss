@@ -1,0 +1,27 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  flex-shrink: 0;
+  border-right: 1px solid var(--border-divider);
+}
+
+.toolbar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-s);
+  padding: var(--padding-m);
+  border-bottom: 1px solid var(--border-divider);
+  flex-shrink: 0;
+}
+
+.title {
+  margin: 0;
+  font-size: var(--font-l);
+  color: var(--text-primary);
+}
+
+.list {
+  flex: 1;
+  overflow-y: auto;
+}

@@ -1,7 +1,7 @@
 import { getPhotoComments } from "@/app/api/comment";
 import { getUser } from "@/app/api/user";
 import { Header } from "@/app/components/Header/Header";
-import { PhotoGalleryLayout } from "@/app/features/Photos/PhotoGalleryLayout/PhotoGalleryLayout";
+import { PhotoGalleryLayout } from "@/app/features/photos/PhotoGalleryLayout/PhotoGalleryLayout";
 import { Photo } from "@/types";
 
 interface PhotosPageProps {

@@ -1,14 +1,14 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { Button } from "../../../../uikit/Button/Button";
+import { Button } from "../../../../uikit/form/Button/Button";
 import styles from "./ProfileBanner.module.scss";
 import { FaMapMarkerAlt, FaPaw } from "react-icons/fa";
 import { FaCamera } from "react-icons/fa6";
-import { ROUTES } from "@/app/uikit/constants/routes";
-import { Link } from "../../../../uikit/Link/Link";
+import { ROUTES } from "@/routes/routes";
+import { Link } from "../../../../uikit/navigation/Link/Link";
 import { useRouter } from "next/navigation";
-import { AvatarEdit } from "@/app/uikit/AvatarEdit/AvatarEdit";
+import { AvatarEdit } from "@/app/uikit/user/AvatarEdit/AvatarEdit";
 import { useState } from "react";
 import { ProfileInfoModal } from "../../modals/ProfileInfoModal/ProfileInfoModal";
 import { BannerInfo } from "@/types";

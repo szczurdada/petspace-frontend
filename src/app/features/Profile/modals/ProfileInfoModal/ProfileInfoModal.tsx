@@ -1,4 +1,4 @@
-import { Modal } from "@/app/uikit/Modal/Modal";
+import { Modal } from "@/app/uikit/overlays/Modal/Modal";
 import styles from "./ProfileInfoModal.module.scss";
 import {
   FaBirthdayCake,

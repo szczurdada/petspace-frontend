@@ -1,5 +1,5 @@
 import { Header } from "@/app/components/Header/Header";
-import { ProfileEditorLayout } from "@/app/features/Profile/info/ProfileEditorLayout/ProfileEditorLayout";
+import { ProfileEditorLayout } from "@/app/features/profile/info/ProfileEditorLayout/ProfileEditorLayout";
 import { getUser } from "@/app/api/user";
 
 interface EditPageProps {

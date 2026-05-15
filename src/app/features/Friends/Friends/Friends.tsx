@@ -2,11 +2,11 @@
 
 import { useTranslations } from "next-intl";
 import styles from "./Friends.module.scss";
-import { Button } from "@/app/uikit/Button/Button";
+import { Button } from "@/app/uikit/form/Button/Button";
 import { MdPlace } from "react-icons/md";
 import Image from "next/image";
 import Link from "next/link";
-import { ROUTES } from "@/app/uikit/constants/routes";
+import { ROUTES } from "@/routes/routes";
 import { Friend } from "@/types";
 import defaultAvatar from "@/public/avatars/default.png";
 

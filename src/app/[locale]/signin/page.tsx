@@ -1,6 +1,6 @@
 "use client";
 
-import SignIn from "@/app/features/SignIn/SignIn";
+import SignIn from "@/app/features/auth/SignIn/SignIn";
 import styles from "./page.module.scss";
 import { Header } from "@/app/components/Header/Header";
 

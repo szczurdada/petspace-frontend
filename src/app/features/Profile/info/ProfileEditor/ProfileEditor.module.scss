@@ -1,17 +1,17 @@
 .container {
-  background: var(--bg-card);
   display: flex;
   flex-direction: column;
   gap: var(--gap-l);
   padding: var(--padding-xl);
+  background: var(--bg-card);
   border-radius: var(--radius-m);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 .title {
   margin: 0;
-  color: var(--text-primary);
   font-size: var(--font-l);
+  color: var(--text-primary);
 }
 
 .profileContent {
@@ -26,13 +26,6 @@
   align-items: center;
 }
 
-.profileActions {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: var(--gap-s);
-}
-
 .userInfo {
   display: flex;
   flex-direction: column;
@@ -43,8 +36,8 @@
 .name {
   margin: 0;
   font-size: var(--font-l);
-  color: var(--text-primary);
   font-weight: 600;
+  color: var(--text-primary);
 }
 
 .username {
@@ -54,9 +47,9 @@
 
 .fields {
   display: flex;
-  color: var(--text-primary);
   flex-direction: column;
   gap: var(--gap-m);
+  color: var(--text-primary);
 }
 
 .field {
@@ -68,6 +61,13 @@
 
 .label {
   padding: var(--padding-s);
+}
+
+.profileActions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--gap-s);
 }
 
 .actions {
